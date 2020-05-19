@@ -145,11 +145,18 @@ class App extends Component {
               <div>
                 <span>{this.state.amount} </span>
                 <span>{this.state.fromCurrency} = </span>
-                <span>{this.state.result && <h3>{this.state.result}</h3>}</span>
+                <span>{<h3>{this.state.result}</h3>}</span>
                 <span>{this.state.toCurrency} </span>
               </div>
             </div>
             <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+              <h4>Rates Table</h4>
+              <Rates/>
+              <br></br>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
               <h4>Line chart</h4>
               <button> 1 day</button>
               <button> 1 Week</button>
@@ -157,19 +164,8 @@ class App extends Component {
               <button> 1 Year</button>
               <br></br>
             </div>
-          </div>
-          <div className="row">
-            <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-              <h4>Rates Table</h4>
-              <Rates/>
-              <br></br>
-            </div>
-            <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
               <h4>Monthly Average</h4>
-              <br></br>
-            </div>
-            <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-              <h4>Historic Lookup</h4>
               <br></br>
             </div>
           </div>
