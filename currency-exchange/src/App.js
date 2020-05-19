@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import "./App.css";
 //import "bootstrap-4-grid/css/grid.min.css";
 import axios from "axios";
+import Rates from "./components/Rates";
 
 class App extends Component {
   constructor(props) {
@@ -45,7 +46,8 @@ class App extends Component {
         .catch((error) => {
           console.log("Oops", error.message);
         });
-    } else {
+    } 
+    else {
       this.setState({ result: "You cant convert the same currency!" });
     }
   };
@@ -159,6 +161,7 @@ class App extends Component {
           <div className="row">
             <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
               <h4>Rates Table</h4>
+              <Rates/>
               <br></br>
             </div>
             <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
