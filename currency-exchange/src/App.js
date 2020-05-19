@@ -1,55 +1,152 @@
-import React, { Component } from 'react';
-import './App.css';
-import 'bootstrap-4-grid/css/grid.min.css';
+import { Fragment } from "react";
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Button } from "reactstrap";
+//import Converter from "./Component/converter";
+import React, { Component } from "react";
+import "./App.css";
+//import "bootstrap-4-grid/css/grid.min.css";
+import axios from "axios";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      result: null,
+      fromCurrency: "USD",
+      toCurrency: "GBP",
+      amount: 1,
+      currencies: [],
+    };
+  }
+  componentDidMount() {
+    axios
+      .get("https://api.exchangeratesapi.io/latest")
+      .then((response) => {
+        const currencyAr = ["EUR"];
+        for (const key in response.data.rates) {
+          currencyAr.push(key);
+        }
+        this.setState({ currencies: currencyAr });
+      })
+      .catch((err) => {
+        console.log("oops", err);
+      });
+  }
+  convertHandler = () => {
+    if (this.state.fromCurrency !== this.state.toCurrency) {
+      axios
+        .get(
+          `https://api.exchangeratesapi.io/latest?base=${this.state.fromCurrency}&symbols=${this.state.toCurrency}`
+        )
+        .then((response) => {
+          const result =
+            this.state.amount * response.data.rates[this.state.toCurrency];
+          this.setState({ result: result.toFixed(5) });
+        })
+        .catch((error) => {
+          console.log("Oops", error.message);
+        });
+    } else {
+      this.setState({ result: "You cant convert the same currency!" });
+    }
+  };
+  selectHandler = (event) => {
+    if (event.target.name === "from") {
+      this.setState({ fromCurrency: event.target.value });
+    } else {
+      if (event.target.name === "to") {
+        this.setState({ toCurrency: event.target.value });
+      }
+    }
+  };
+
   render() {
     return (
       <div className="bootstrap-wrapper">
         <div className="app-container container">
           <div className="row">
-            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-              <h1>X-ratesDash</h1>
-            </div>
-            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-              <ul>
-                <li>
-                  <a href="index.html">Rates Table</a>
-                </li>
-                <li>
-                  <a href="index.html">historic Lookup</a>
-                </li>
-              </ul>  
+            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <Fragment>
+                <Navbar bg="dark" variant="dark" expand="md">
+                  <NavbarBrand className="Brand" href="/">
+                    X-rates Dash
+                  </NavbarBrand>
+                  <Nav className="ml-auto" navbar>
+                    <NavItem className="d-flex align-items-center">
+                      <NavLink className="font-weight-bold" href="/">
+                        Rates Table
+                      </NavLink>
+                    </NavItem>
+                    <NavItem className="d-flex align-items-center">
+                      <NavLink className="font-weight-bold" href="/">
+                        Historic Data
+                      </NavLink>
+                    </NavItem>
+                  </Nav>
+                </Navbar>
+              </Fragment>
             </div>
           </div>
+
           <div className="row">
             <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-              <h4>Currency Converter</h4>
-              <br></br>
-              <form>
-                <div class="form-inline">
-                  <label for="from">From</label>
-                  <input type="text" id="from" name="from"></input>
+              <div className="Converter">
+                <h4>
+                  <span>Currency</span>Converter
+                  <span role="img" aria-label="money">
+                    &#x1f4b5;
+                  </span>
+                </h4>
+
+                <div className="From">
+                  <div>
+                    <label>Amount </label>
+                    <input
+                      name="amount"
+                      type="text"
+                      value={this.state.amount}
+                      onChange={(event) =>
+                        this.setState({ amount: event.target.value })
+                      }
+                    />
+                  </div>
+                  <div>
+                    <label>From </label>
+                    <select
+                      name="from"
+                      onChange={(event) => this.selectHandler(event)}
+                      value={this.state.fromCurrency}
+                    >
+                      {this.state.currencies.map((cur) => (
+                        <option key={cur}>{cur}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label>To </label>
+                    <select
+                      name="to"
+                      onChange={(event) => this.selectHandler(event)}
+                      value={this.state.toCurrency}
+                    >
+                      {this.state.currencies.map((cur) => (
+                        <option key={cur}>{cur}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <button onClick={this.convertHandler}>Convert</button>
                 </div>
-                <br></br>
-                <div class="form-inline">
-                  <label for="to">To</label>
-                  <input type="text" id="to" name="to"></input>
-                </div>
-                <br></br>
-                <div class="form-inline">
-                  <label for="amount">Amount</label>
-                  <input type="text" id="amount" name="amount"></input>
-                </div>
-                <br></br>
-                <button>Enter</button>
-                <br></br>
-              </form>
+              </div>
             </div>
             <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
               <h4>Calculation results</h4>
               <br></br>
-            </div>  
+              <div>
+                <span>{this.state.amount} </span>
+                <span>{this.state.fromCurrency} = </span>
+                <span>{this.state.result && <h3>{this.state.result}</h3>}</span>
+                <span>{this.state.toCurrency} </span>
+              </div>
+            </div>
             <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
               <h4>Line chart</h4>
               <button> 1 day</button>

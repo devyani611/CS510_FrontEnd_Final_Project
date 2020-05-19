@@ -1,8 +1,16 @@
-h1 {
-  color:rgb(63, 81, 181);
-  font-weight: bold;
+body {
+  background-color: #404c68;
+  color: #fff;
+  font-family: sans-serif;
 }
-.buttons-right>button {
+.Brand {
+  color: #fff;
+}
+.font-weight-bold {
+  color: #fff;
+}
+
+.buttons-right > button {
   float: right;
   margin: 5px;
 }
@@ -27,4 +35,32 @@ h1 {
 }
 .container .row div {
   outline: solid 1px black;
+}
+.Converter {
+  width: 100%;
+  padding: 0 15%;
+  box-sizing: border-box;
+  text-align: center;
+}
+.From {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.From input,
+select {
+  padding: 5px;
+  margin: 5px 10px;
+  border: 1px solid rgba(119, 119, 119, 0.5);
+}
+.From button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: black;
+  border: none;
+}
+.Converter h3 {
+  background-color: #ccc;
+  padding: 15px;
+  font-size: 30px;
 }
