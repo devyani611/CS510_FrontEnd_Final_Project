@@ -90,7 +90,7 @@ class App extends Component {
           </div>
 
           <div className="row">
-            <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <div className="col-lg-4 col-xl-4">
               <div className="Converter">
                 <h4>
                   <span>Currency</span>Converter
@@ -139,7 +139,7 @@ class App extends Component {
                 </div>
               </div>
             </div>
-            <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <div className="col-lg-4 col-xl-4">
               <h4>Calculation results</h4>
               <br></br>
               <div>
@@ -149,14 +149,14 @@ class App extends Component {
                 <span>{this.state.toCurrency} </span>
               </div>
             </div>
-            <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <div className="col-lg-4 col-xl-4">
               <h4>Rates Table</h4>
               <Rates/>
               <br></br>
             </div>
           </div>
           <div className="row">
-            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <div className="col-lg-6 col-xl-6">
               <h4>Line chart</h4>
               <button> 1 day</button>
               <button> 1 Week</button>
@@ -164,7 +164,7 @@ class App extends Component {
               <button> 1 Year</button>
               <br></br>
             </div>
-            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <div className="col-lg-6 col-xl-6">
               <h4>Monthly Average</h4>
               <br></br>
             </div>

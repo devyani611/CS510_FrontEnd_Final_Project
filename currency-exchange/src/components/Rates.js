@@ -25,11 +25,11 @@ class Rates extends React.Component {
           for(var i=0;i<=10;i++){
             if(top10[i]===key){
               currencycountry.push(key);
-              currencyrates.push(response.data.rates[key]);
+              currencyrates.push(response.data.rates[key].toFixed(5));
               axios
                 .get(`https://api.exchangeratesapi.io/latest?base=${key}`)
                 .then((response) =>{
-                  invcurrency.push(response.data.rates[this.state.fromCurrency])
+                  invcurrency.push(response.data.rates[this.state.fromCurrency].toFixed(5))
                   this.setState({invcurrencies:invcurrency});
                 })
                 .catch((err) => {
