@@ -1,13 +1,31 @@
 import { Fragment } from "react";
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Button } from "reactstrap";
-//import Converter from "./Component/converter";
 import React, { Component } from "react";
 import "./App.css";
-//import "bootstrap-4-grid/css/grid.min.css";
 import axios from "axios";
 import Rates from "./components/Rates";
+import { BrowserRouter as Router, Route, Link ,Switch} from "react-router-dom";
+import Ratespage from "./Ratespage";
+import Navigation from './Navigation';
+import Historic from "./Historic";
 
-class App extends Component {
+function App(){
+  return(
+    <div className="row">
+      <Router>
+        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <Navigation/>
+          <Switch>
+            <Route path="/" exact component={Home}/>
+            <Route path="/Ratespage" component={Ratespage} />
+            <Route path="/Historic" component={Historic}/>
+          </Switch>
+        </div>
+      </Router>
+    </div>
+  )
+};
+
+class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -60,35 +78,12 @@ class App extends Component {
       }
     }
   };
-
+  
   render() {
+
     return (
       <div className="bootstrap-wrapper">
         <div className="app-container container">
-          <div className="row">
-            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-              <Fragment>
-                <Navbar bg="dark" variant="dark" expand="md">
-                  <NavbarBrand className="Brand" href="/">
-                    X-rates Dash
-                  </NavbarBrand>
-                  <Nav className="ml-auto" navbar>
-                    <NavItem className="d-flex align-items-center">
-                      <NavLink className="font-weight-bold" href="/">
-                        Rates Table
-                      </NavLink>
-                    </NavItem>
-                    <NavItem className="d-flex align-items-center">
-                      <NavLink className="font-weight-bold" href="/">
-                        Historic Data
-                      </NavLink>
-                    </NavItem>
-                  </Nav>
-                </Navbar>
-              </Fragment>
-            </div>
-          </div>
-
           <div className="row">
             <div className="col-lg-4 col-xl-4">
               <div className="Converter">
@@ -98,7 +93,6 @@ class App extends Component {
                     &#x1f4b5;
                   </span>
                 </h4>
-
                 <div className="From">
                   <div>
                     <label>Amount </label>

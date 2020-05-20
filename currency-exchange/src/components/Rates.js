@@ -2,6 +2,9 @@ import React from 'react';
 import {Table} from "reactstrap";
 import axios from "axios";
 
+const tableStyle={
+    color:'white'
+  };
 class Rates extends React.Component {
   constructor(props) {
     super(props);
@@ -13,6 +16,7 @@ class Rates extends React.Component {
       invcurrencies:[],
     };
   }
+
   componentDidMount() {
     axios
       .get(`https://api.exchangeratesapi.io/latest?base=${this.state.fromCurrency}`)
@@ -58,23 +62,22 @@ class Rates extends React.Component {
     	  <Table borderless>
   			  <thead>
     			  <tr>
-      				<th>{this.state.fromCurrency}</th>
-      				<th>1.00 {this.state.fromCurrency}</th>
-      				<th>inv. 1.00 {this.state.fromCurrency}</th>
+      				<th style={tableStyle}>{this.state.fromCurrency}</th>
+      				<th style={tableStyle}>1.00 {this.state.fromCurrency}</th>
+      				<th style={tableStyle}>inv. 1.00 {this.state.fromCurrency}</th>
     			  </tr>
   			  </thead>
   			  <tbody>
     			  <tr>
-      				<td>{this.state.currencies.map((cur) => (
+      				<td style={tableStyle}>{this.state.currencies.map((cur) => (
                         <tr>{cur}</tr>
                       ))}</td>
-      				<td>{this.state.currencyrates.map((cur) => (
+      				<td style={tableStyle}>{this.state.currencyrates.map((cur) => (
                         <tr>{cur}</tr>
                       ))}</td>
-      				<td>{this.state.invcurrencies.map((cur) => (
+      				<td style={tableStyle}>{this.state.invcurrencies.map((cur) => (
                         <tr>{cur}</tr>
                       ))}</td>
-      				
     			  </tr>
     		  </tbody>
 		    </Table>
