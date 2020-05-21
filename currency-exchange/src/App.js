@@ -3,12 +3,16 @@ import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
 import Rates from "./components/Rates";
+import LineChart from "./components/LineChart";
 import { BrowserRouter as Router, Route, Link ,Switch} from "react-router-dom";
 import Ratespage from "./Ratespage";
 import Navigation from './Navigation';
 import Historic from "./Historic";
+import React, {useState, useEffect} from 'react';
 
-function App(){
+
+
+function App(){ 
   return(
     <div className="row">
       <Router>
@@ -22,10 +26,13 @@ function App(){
         </div>
       </Router>
     </div>
+
+
   )
 };
 
 class Home extends Component {
+ 
   constructor(props) {
     super(props);
     this.state = {
@@ -45,11 +52,15 @@ class Home extends Component {
           currencyAr.push(key);
         }
         this.setState({ currencies: currencyAr });
+        console.log(response.data.rates);
       })
       .catch((err) => {
         console.log("oops", err);
       });
-  }
+
+     
+    } 
+  
   convertHandler = () => {
     if (this.state.fromCurrency !== this.state.toCurrency) {
       axios
@@ -78,6 +89,7 @@ class Home extends Component {
       }
     }
   };
+
   
   render() {
 
@@ -157,6 +169,7 @@ class Home extends Component {
               <button> 1 Month</button>
               <button> 1 Year</button>
               <br></br>
+              <LineChart/>
             </div>
             <div className="col-lg-6 col-xl-6">
               <h4>Monthly Average</h4>
