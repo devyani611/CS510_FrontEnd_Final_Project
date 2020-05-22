@@ -93,9 +93,7 @@ class Home extends Component {
     }
   };
 
-  
   render() {
-
     return (
       <div className="bootstrap-wrapper">
         <div className="app-container container">
