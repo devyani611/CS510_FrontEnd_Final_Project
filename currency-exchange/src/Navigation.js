@@ -24,7 +24,7 @@ const Navigation = () => {
                     	<NavItem className="d-flex align-items-center">
                       		<NavLink className="font-weight-bold">
                       			<Link style={navStyle} to="/Historic">
-                        			Historic Data
+                        			Historic Lookup
                         		</Link>
                       		</NavLink>
                     	</NavItem>
