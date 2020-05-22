@@ -4,7 +4,6 @@ import axios from "axios";
 
 const tableStyle={
     color:'white',
-    backgroundcolor:'pink'
   };
 class Ratespage extends React.Component {
   constructor(props) {
