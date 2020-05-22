@@ -7,31 +7,37 @@ const Navigation = () => {
 		color:'white'
 	};
     return (
-       	<div>
-          <Fragment>
-                <Navbar bg="dark" variant="dark" expand="md">
-                  	<NavbarBrand className="Brand" href="/">
-                    	X-rates Dash
-                  	</NavbarBrand>
-                  	<Nav className="ml-auto" navbar>
-                    	<NavItem className="d-flex align-items-center">
-                      		<NavLink className="font-weight-bold">
-                      			<Link style={navStyle} to="/Ratespage">
-                        			Rates Table
-                        		</Link>
-                      		</NavLink>
-                    	</NavItem>
-                    	<NavItem className="d-flex align-items-center">
-                      		<NavLink className="font-weight-bold">
-                      			<Link style={navStyle} to="/Historic">
-                        			Historic Lookup
-                        		</Link>
-                      		</NavLink>
-                    	</NavItem>
-                  	</Nav>
-                </Navbar>
-            </Fragment>
-       	</div>
+    	<div className="bootstrap-wrapper">
+        	<div className="app-container container">
+          		<div className="row">
+            		<div className="col-lg-12 col-xl-12">
+			          	<Fragment>
+			                <Navbar bg="dark" variant="dark" expand="md">
+			                  	<NavbarBrand className="Brand" href="/">
+			                    	X-rates Dash
+			                  	</NavbarBrand>
+			                  	<Nav className="ml-auto" navbar>
+			                    	<NavItem className="d-flex align-items-center">
+			                      		<NavLink className="font-weight-bold">
+			                      			<Link style={navStyle} to="/Ratespage">
+			                        			Rates Table
+			                        		</Link>
+			                      		</NavLink>
+			                    	</NavItem>
+			                    	<NavItem className="d-flex align-items-center">
+			                      		<NavLink className="font-weight-bold">
+			                      			<Link style={navStyle} to="/Historic">
+			                        			Historic Lookup
+			                        		</Link>
+			                      		</NavLink>
+			                    	</NavItem>
+			                  	</Nav>
+			                </Navbar>
+			            </Fragment>
+			        </div>
+			    </div>
+			</div>
+		</div>
     );
 }
  
