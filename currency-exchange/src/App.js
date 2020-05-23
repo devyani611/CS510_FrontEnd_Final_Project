@@ -45,10 +45,17 @@ class Home extends Component {
       .get("https://api.exchangeratesapi.io/latest")
       .then((response) => {
         const currencyAr = ["EUR"];
+        var amt=1;
         for (const key in response.data.rates) {
           currencyAr.push(key);
         }
-        this.setState({ currencies: currencyAr });
+        axios
+        	.get(`https://api.exchangeratesapi.io/latest?base=${this.state.fromCurrency}`)
+        	.then((response)=>{
+        		amt=response.data.rates[this.state.toCurrency].toFixed(5);
+        		this.setState({result:amt});
+        	})
+        this.setState({ currencies: currencyAr});
         console.log(response.data.rates);
       })
       .catch((err) => {
@@ -89,65 +96,83 @@ class Home extends Component {
       <div className="bootstrap-wrapper">
         <div className="app-container container">
           <div className="row">
-            <div className="col-lg-4 col-xl-4">
-              <div className="Converter">
-                <h4>
-                  <span>Currency</span>Converter
-                  <span role="img" aria-label="money">
-                    &#x1f4b5;
-                  </span>
-                </h4>
-                <div className="From">
+            <div className="col-lg-8 col-xl-8">
+              <div className="row">
+                <div className="col-lg-6 col-xl-6">
+                  <div className="Converter">
+                    <h4>
+                      <span>Currency</span>Converter
+                      <span role="img" aria-label="money">
+                        &#x1f4b5;
+                      </span>
+                    </h4>
+                    <div className="From">
+                      <div>
+                        <label>Amount </label>
+                        <input
+                          name="amount"
+                          type="text"
+                          value={this.state.amount}
+                          onChange={(event) =>
+                            this.setState({ amount: event.target.value })
+                          }
+                        />
+                      </div>
+                      <div>
+                        <label>From </label>
+                        <select
+                          name="from"
+                          onChange={(event) => this.selectHandler(event)}
+                          value={this.state.fromCurrency}
+                        >
+                          {this.state.currencies.map((cur) => (
+                            <option key={cur}>{cur}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <div>
+                        <label>To </label>
+                        <select
+                          name="to"
+                          onChange={(event) => this.selectHandler(event)}
+                          value={this.state.toCurrency}
+                        >
+                          {this.state.currencies.map((cur) => (
+                            <option key={cur}>{cur}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <button onClick={this.convertHandler}>Convert</button>
+                    </div>
+                 </div>
+                </div>
+                <div className="col-lg-6 col-xl-6">
+                  <h4>Calculation results</h4>
+                  <br></br>
                   <div>
-                    <label>Amount </label>
-                    <input
-                      name="amount"
-                      type="text"
-                      value={this.state.amount}
-                      onChange={(event) =>
-                        this.setState({ amount: event.target.value })
-                      }
-                    />
+                    <span>{this.state.amount} </span>
+                    <span>{this.state.fromCurrency} = </span>
+                    <span>{<h3>{this.state.result}</h3>}</span>
+                    <span>{this.state.toCurrency} </span>
                   </div>
-                  <div>
-                    <label>From </label>
-                    <select
-                      name="from"
-                      onChange={(event) => this.selectHandler(event)}
-                      value={this.state.fromCurrency}
-                    >
-                      {this.state.currencies.map((cur) => (
-                        <option key={cur}>{cur}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label>To </label>
-                    <select
-                      name="to"
-                      onChange={(event) => this.selectHandler(event)}
-                      value={this.state.toCurrency}
-                    >
-                      {this.state.currencies.map((cur) => (
-                        <option key={cur}>{cur}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <button onClick={this.convertHandler}>Convert</button>
                 </div>
               </div>
-            </div>
-            <div className="col-lg-4 col-xl-4">
-              <h4>Calculation results</h4>
-              <br></br>
-              <div>
-                <span>{this.state.amount} </span>
-                <span>{this.state.fromCurrency} = </span>
-                <span>{<h3>{this.state.result}</h3>}</span>
-                <span>{this.state.toCurrency} </span>
+              <div className="row">
+                <div className="col-lg-6 col-xl-6">
+                  <h4>Line chart</h4>
+                  <button> 1 day</button>
+                  <button> 1 Week</button>
+                  <button> 1 Month</button>
+                  <button> 1 Year</button>
+                  <br></br>
+                </div>
+                <div className="col-lg-6 col-xl-6">
+                  <h4>Monthly Average</h4>
+                  <br></br>
+                </div>
               </div>
-            </div>
-            <div className="col-lg-4 col-xl-4">
+            </div> 
+            <div className="col-lg-4 col-xl-4"> 
               <h4>Rates Table</h4>
               <Rates />
               <br></br>
@@ -169,7 +194,7 @@ class Home extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </div>         
     );
   }
 }
