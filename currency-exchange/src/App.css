@@ -1,7 +1,9 @@
-body {
-  background-color: #3759aa;
+html, body {
+  background-color: #505c75;
   color: #fff;
   font-family: sans-serif;
+  height: 100%;
+  margin: 0;
 }
 .Brand {
   color: #fff;
@@ -15,11 +17,14 @@ body {
   margin: 5px;
 }
 .app-container {
-  padding: 25px;
+ padding: 25px;
+ 
 }
+
 
 .container .row div {
   outline: solid 1px black;
+  
 }
 .Converter {
   width: 100%;

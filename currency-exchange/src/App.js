@@ -1,36 +1,33 @@
 import { Fragment } from "react";
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import Rates from "./components/Rates";
-//import LineChart from "./components/LineChart";
-import { BrowserRouter as Router, Route, Link ,Switch} from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Ratespage from "./Ratespage";
-import Navigation from './Navigation';
+import Navigation from "./Navigation";
 import Historic from "./Historic";
-//import React, {useState, useEffect} from 'react';
+import LineChart from "./components/LineChart";
 
-
-
-function App(){ 
-  return(
+function App() {
+  return (
     <div className="row">
       <Router>
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <Navigation/>
+          <Navigation />
           <Switch>
-            <Route path="/" exact component={Home}/>
+            <Route path="/" exact component={Home} />
             <Route path="/Ratespage" component={Ratespage} />
-            <Route path="/Historic" component={Historic}/>
+            <Route path="/Historic" component={Historic} />
           </Switch>
         </div>
       </Router>
+      
     </div>
-  )
-};
+  );
+}
 
 class Home extends Component {
- 
   constructor(props) {
     super(props);
     this.state = {
@@ -39,9 +36,11 @@ class Home extends Component {
       toCurrency: "GBP",
       amount: 1,
       currencies: [],
+      rate_data: [],
     };
   }
   componentDidMount() {
+
     axios
       .get("https://api.exchangeratesapi.io/latest")
       .then((response) => {
@@ -62,8 +61,8 @@ class Home extends Component {
       .catch((err) => {
         console.log("oops", err);
       });
-    } 
-  
+  }
+
   convertHandler = () => {
     if (this.state.fromCurrency !== this.state.toCurrency) {
       axios
@@ -78,8 +77,7 @@ class Home extends Component {
         .catch((error) => {
           console.log("Oops", error.message);
         });
-    } 
-    else {
+    } else {
       this.setState({ result: "You cant convert the same currency!" });
     }
   };
@@ -95,11 +93,8 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="bootstrap-wrapper">
         <div className="app-container container">
-          <div className="row">
-            <div className="col-lg-8 col-xl-8">
-              <div className="row">
+               <div className="row">
                 <div className="col-lg-6 col-xl-6">
                   <div className="Converter">
                     <h4>
@@ -149,6 +144,18 @@ class Home extends Component {
                  </div>
                 </div>
                 <div className="col-lg-6 col-xl-6">
+              <h4>Line chart</h4>
+              <LineChart />
+              <button> 1 day</button>
+              <button> 1 Week</button>
+              <button> 1 Month</button>
+              <button> 1 Year</button>
+              <br></br>
+            </div>
+               
+              </div>
+              <div className="row">
+              <div className="col-lg-4 col-xl-4">
                   <h4>Calculation results</h4>
                   <br></br>
                   <div>
@@ -158,30 +165,21 @@ class Home extends Component {
                     <span>{this.state.toCurrency} </span>
                   </div>
                 </div>
-              </div>
-              <div className="row">
-                <div className="col-lg-6 col-xl-6">
-                  <h4>Line chart</h4>
-                  <button> 1 day</button>
-                  <button> 1 Week</button>
-                  <button> 1 Month</button>
-                  <button> 1 Year</button>
-                  <br></br>
-                </div>
-                <div className="col-lg-6 col-xl-6">
-                  <h4>Monthly Average</h4>
-                  <br></br>
-                </div>
-              </div>
-            </div> 
             <div className="col-lg-4 col-xl-4"> 
               <h4>Rates Table</h4>
-              <Rates/>
+              <Rates />
+              <br></br>
+            </div>
+            <div className="col-lg-4 col-xl-4">
+              <h4>Monthly Average</h4>
               <br></br>
             </div>
           </div>
-        </div>
-      </div>         
+           
+          </div>
+     
+  
+        
     );
   }
 }
