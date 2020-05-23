@@ -22,6 +22,7 @@ function App() {
           </Switch>
         </div>
       </Router>
+      
     </div>
   );
 }
@@ -39,7 +40,6 @@ class Home extends Component {
     };
   }
   componentDidMount() {
-    //const [closeData, setcloseData] = useState({});
 
     axios
       .get("https://api.exchangeratesapi.io/latest")
@@ -93,11 +93,8 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="bootstrap-wrapper">
         <div className="app-container container">
-          <div className="row">
-            <div className="col-lg-8 col-xl-8">
-              <div className="row">
+               <div className="row">
                 <div className="col-lg-6 col-xl-6">
                   <div className="Converter">
                     <h4>
@@ -147,6 +144,18 @@ class Home extends Component {
                  </div>
                 </div>
                 <div className="col-lg-6 col-xl-6">
+              <h4>Line chart</h4>
+              <LineChart />
+              <button> 1 day</button>
+              <button> 1 Week</button>
+              <button> 1 Month</button>
+              <button> 1 Year</button>
+              <br></br>
+            </div>
+               
+              </div>
+              <div className="row">
+              <div className="col-lg-4 col-xl-4">
                   <h4>Calculation results</h4>
                   <br></br>
                   <div>
@@ -156,45 +165,21 @@ class Home extends Component {
                     <span>{this.state.toCurrency} </span>
                   </div>
                 </div>
-              </div>
-              <div className="row">
-                <div className="col-lg-6 col-xl-6">
-                  <h4>Line chart</h4>
-                  <button> 1 day</button>
-                  <button> 1 Week</button>
-                  <button> 1 Month</button>
-                  <button> 1 Year</button>
-                  <br></br>
-                </div>
-                <div className="col-lg-6 col-xl-6">
-                  <h4>Monthly Average</h4>
-                  <br></br>
-                </div>
-              </div>
-            </div> 
             <div className="col-lg-4 col-xl-4"> 
               <h4>Rates Table</h4>
               <Rates />
               <br></br>
             </div>
-          </div>
-          <div className="row">
-            <div className="col-lg-6 col-xl-6">
-              <h4>Line chart</h4>
-              <LineChart />
-              <button> 1 day</button>
-              <button> 1 Week</button>
-              <button> 1 Month</button>
-              <button> 1 Year</button>
-              <br></br>
-            </div>
-            <div className="col-lg-6 col-xl-6">
+            <div className="col-lg-4 col-xl-4">
               <h4>Monthly Average</h4>
               <br></br>
             </div>
           </div>
-        </div>
-      </div>         
+           
+          </div>
+     
+  
+        
     );
   }
 }
