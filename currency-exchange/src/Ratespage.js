@@ -26,11 +26,17 @@ class Ratespage extends React.Component {
         const invcurrency=[];
         for (const key in response.data.rates) {
             currencycountry.push(key);
+            console.log(key,"key1")
+            console.log(this.state.fromCurrency,"from")
             currencyrates.push(response.data.rates[key].toFixed(5));
+            console.log(response.data.rates[key])
             axios
               .get(`https://api.exchangeratesapi.io/latest?base=${key}`)
               .then((response) =>{
+                console.log(key,"key2")
+                console.log(response.data)
                 invcurrency.push(response.data.rates[this.state.fromCurrency].toFixed(5))
+                console.log(response.data.rates[this.state.fromCurrency])
                 this.setState({invcurrencies:invcurrency});
               })
               .catch((err) => {
@@ -50,7 +56,38 @@ class Ratespage extends React.Component {
       this.setState({ fromCurrency: event.target.value });
     } 
   };
-
+  convertHandler = () =>axios
+      .get(`https://api.exchangeratesapi.io/latest?base=${this.state.fromCurrency}`)
+      .then((response) => {
+        const currencyrates = [];
+        const currencycountry=[];
+        const invcurrency=[];
+        for (const key in response.data.rates) {
+            currencycountry.push(key);
+            console.log(key,"key1")
+            console.log(this.state.fromCurrency,"from")
+            currencyrates.push(response.data.rates[key].toFixed(5));
+            console.log(response.data.rates[key])
+            axios
+              .get(`https://api.exchangeratesapi.io/latest?base=${key}`)
+              .then((response) =>{
+                console.log(key,"key2")
+                console.log(response.data)
+                invcurrency.push(response.data.rates[this.state.fromCurrency].toFixed(5))
+                console.log(response.data.rates[this.state.fromCurrency])
+                this.setState({invcurrencies:invcurrency});
+              })
+              .catch((err) => {
+                console.log("oops", err);
+              });   
+          
+        }
+        this.setState({ currencies: currencycountry, currencyrates:currencyrates});
+      })
+      .catch((err) => {
+        console.log("oops", err);
+      });
+  
   render() {
     return (
     	<div className="app-container container">
@@ -88,7 +125,16 @@ class Ratespage extends React.Component {
 		      		<div className="row">
 		      			<div className="col-lg-12 col-xl-12">
 		      				<h4>choose the currency</h4>
-		      				<h1>To be added - dropdown box</h1>
+                  <select
+                          name="from"
+                          onChange={(event) => this.selectHandler(event)}
+                          value={this.state.fromCurrency}
+                        >
+                          {this.state.currencies.map((cur) => (
+                            <option key={cur}>{cur}</option>
+                          ))}
+                  </select>
+                  <button onClick={this.convertHandler}>Go</button>
 		      			</div>
 		      		</div>
 		      		<div className="row">
