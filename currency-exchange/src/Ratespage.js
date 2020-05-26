@@ -1,7 +1,6 @@
 import React from 'react';
 import {Table} from "reactstrap";
 import axios from "axios";
-
 const tableStyle={
     color:'white',
   };
@@ -12,6 +11,7 @@ class Ratespage extends React.Component {
       result: null,
       fromCurrency: "USD",
       currencies: [],
+      currency:[],
       currencyrates:[],
       invcurrencies:[],
     };
@@ -23,28 +23,26 @@ class Ratespage extends React.Component {
       .then((response) => {
         const currencyrates = [];
         const currencycountry=[];
+        const currency=[];
         const invcurrency=[];
         for (const key in response.data.rates) {
-            currencycountry.push(key);
-            console.log(key,"key1")
-            console.log(this.state.fromCurrency,"from")
-            currencyrates.push(response.data.rates[key].toFixed(5));
-            console.log(response.data.rates[key])
-            axios
-              .get(`https://api.exchangeratesapi.io/latest?base=${key}`)
-              .then((response) =>{
-                console.log(key,"key2")
-                console.log(response.data)
+          currency.push(key);
+          if(key==this.state.fromCurrency)
+            continue;
+          currencycountry.push(key);
+          currencyrates.push(response.data.rates[key].toFixed(5));
+          axios
+            .get(`https://api.exchangeratesapi.io/latest?base=${key}`)
+            .then((response) =>{
+              if(key!=this.state.fromCurrency)
                 invcurrency.push(response.data.rates[this.state.fromCurrency].toFixed(5))
-                console.log(response.data.rates[this.state.fromCurrency])
-                this.setState({invcurrencies:invcurrency});
-              })
-              .catch((err) => {
-                console.log("oops", err);
-              });   
-          
+              this.setState({invcurrencies:invcurrency});
+            })
+            .catch((err) => {
+              console.log("oops", err);
+            });   
         }
-        this.setState({ currencies: currencycountry, currencyrates:currencyrates});
+        this.setState({ currencies: currencycountry, currencyrates:currencyrates, currency:currency});
       })
       .catch((err) => {
         console.log("oops", err);
@@ -63,23 +61,20 @@ class Ratespage extends React.Component {
         const currencycountry=[];
         const invcurrency=[];
         for (const key in response.data.rates) {
-            currencycountry.push(key);
-            console.log(key,"key1")
-            console.log(this.state.fromCurrency,"from")
-            currencyrates.push(response.data.rates[key].toFixed(5));
-            console.log(response.data.rates[key])
-            axios
-              .get(`https://api.exchangeratesapi.io/latest?base=${key}`)
-              .then((response) =>{
-                console.log(key,"key2")
-                console.log(response.data)
-                invcurrency.push(response.data.rates[this.state.fromCurrency].toFixed(5))
-                console.log(response.data.rates[this.state.fromCurrency])
-                this.setState({invcurrencies:invcurrency});
-              })
-              .catch((err) => {
-                console.log("oops", err);
-              });   
+          if(key==this.state.fromCurrency)
+            continue;
+          currencycountry.push(key);
+          currencyrates.push(response.data.rates[key].toFixed(5));
+          axios
+            .get(`https://api.exchangeratesapi.io/latest?base=${key}`)
+            .then((response) =>{
+              invcurrency.push(response.data.rates[this.state.fromCurrency].toFixed(5))
+                
+              this.setState({invcurrencies:invcurrency});
+            })
+            .catch((err) => {
+              console.log("oops", err);
+            });   
           
         }
         this.setState({ currencies: currencycountry, currencyrates:currencyrates});
@@ -124,23 +119,23 @@ class Ratespage extends React.Component {
 		      	<div className="col-lg-6 col-xl-6">
 		      		<div className="row">
 		      			<div className="col-lg-12 col-xl-12">
-		      				<h4>choose the currency</h4>
+		      				<br></br>
+                  <center>
+                  <h5>Choose the currency</h5>
                   <select
-                          name="from"
-                          onChange={(event) => this.selectHandler(event)}
-                          value={this.state.fromCurrency}
-                        >
-                          {this.state.currencies.map((cur) => (
-                            <option key={cur}>{cur}</option>
-                          ))}
+                    name="from"
+                    onChange={(event) => this.selectHandler(event)}
+                    value={this.state.fromCurrency}
+                  >
+                    {this.state.currency.map((cur) => (
+                    <option key={cur}>{cur}</option>
+                    ))}
                   </select>
+                  <br></br>
+                  <br></br>
                   <button onClick={this.convertHandler}>Go</button>
-		      			</div>
-		      		</div>
-		      		<div className="row">
-		      			<div className="col-lg-12 col-xl-12">
-		      				<h4>currency details</h4>
-		      				<h1>To be added - api of the currency details along with country</h1>
+                  <br></br>
+                  </center>
 		      			</div>
 		      		</div>
 		      	</div>
