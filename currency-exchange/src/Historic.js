@@ -1,7 +1,7 @@
 import React from 'react';
 import {Table} from "reactstrap";
 import axios from "axios";
-import Calendar from 'react-input-calendar'
+
 
 
 const tableStyle={
@@ -142,8 +142,7 @@ class Historic extends React.Component {
                   			<br></br>
                   			<br></br>
                   			<h5>Choose the date</h5>
-			      			      <Calendar format='DD/MM/YYYY' date='4-12-2014' />
-
+			      			      
                         <br></br>
       			  			    <br></br>
                   			<button onClick={this.convertHandler}>Go</button>
