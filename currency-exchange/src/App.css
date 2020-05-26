@@ -22,7 +22,8 @@ html, body {
 }
 
 
-.container .row div {
+
+.container div {
   outline: solid 1px black;
   
 }

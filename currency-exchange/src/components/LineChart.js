@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 import { Line } from "react-chartjs-2";
 import axios from "axios";
+import {
+  Container, Col, Form,
+  FormGroup, Label, Input,
+  Button,Row
+} from 'reactstrap';
+import "./LineChart.css";
+
+
+
 
 export default class BarChartComponent extends Component {
   constructor(props) {
@@ -52,6 +61,8 @@ export default class BarChartComponent extends Component {
                   "rgba(255, 159, 64, 1)",
                   "rgba(159, 159, 159, 1)",
                 ],
+                hoverBackgroundColor: "rgba(255,99,132,0.4)",
+                hoverBorderColor: "rgba(255,99,132,1)"
               },
             ],
           },
@@ -60,10 +71,45 @@ export default class BarChartComponent extends Component {
       });
   }
   render() {
+    
     return (
       <div>
+    
+      <div>
         <Line data={this.state.Data} options={{ maintainAspectRatio: false }} />
+       
       </div>
+      <div>
+     
+      <Container fluid>
+          <Row class= "row1">
+           
+          <Col sm={3} md={3}>
+                <Button variant="5day" className="button"  onClick={this.OneDayClose} id="oned">1 D</Button>
+            </Col>
+            <Col sm={3} md={3}>
+                <Button variant="1month" className="button"  onClick={this.OneWeekClose} id="onew">1 W</Button>
+            </Col>
+            <Col sm={3} md={3}> 
+                <Button variant="6months" className="button"  onClick={this.OneMonthClose} id="onem">1 M</Button>
+            </Col>
+            <Col sm={3} md={3}>
+                <Button variant="ytd" className="button" onClick={this.OneYearClose} id="oney">1 Y</Button>
+            </Col>
+            
+           
+         
+          
+           
+            </Row>
+            </Container>
+      </div>
+      </div>
+      
+
+   
+     
+      
     );
   }
 }

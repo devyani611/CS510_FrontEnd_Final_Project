@@ -8,20 +8,28 @@ import Ratespage from "./Ratespage";
 import Navigation from "./Navigation";
 import Historic from "./Historic";
 import LineChart from "./components/LineChart";
+import {
+  Container, Col, Form,
+  FormGroup, Label, Input,
+  Button,
+} from 'reactstrap';
 
 function App() {
   return (
     <div className="row">
       <Router>
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
           <Navigation />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/Ratespage" component={Ratespage} />
             <Route path="/Historic" component={Historic} />
           </Switch>
+         
         </div>
       </Router>
+      
       
     </div>
   );
@@ -106,7 +114,8 @@ class Home extends Component {
                     <div className="From">
                       <div>
                         <label>Amount </label>
-                        <input
+                        <br></br>
+                        <input style={{width: '200px'}}
                           name="amount"
                           type="text"
                           value={this.state.amount}
@@ -115,9 +124,11 @@ class Home extends Component {
                           }
                         />
                       </div>
+                   
                       <div>
                         <label>From </label>
-                        <select
+                        <br></br>
+                        <select style={{width: '200px'}}
                           name="from"
                           onChange={(event) => this.selectHandler(event)}
                           value={this.state.fromCurrency}
@@ -127,9 +138,11 @@ class Home extends Component {
                           ))}
                         </select>
                       </div>
+                      
                       <div>
                         <label>To </label>
-                        <select
+                       <br></br>
+                        <select style={{width: '200px'}}
                           name="to"
                           onChange={(event) => this.selectHandler(event)}
                           value={this.state.toCurrency}
@@ -138,18 +151,15 @@ class Home extends Component {
                             <option key={cur}>{cur}</option>
                           ))}
                         </select>
+                        <br></br>
                       </div>
                       <button onClick={this.convertHandler}>Convert</button>
                     </div>
                  </div>
                 </div>
                 <div className="col-lg-6 col-xl-6">
-              <h4>Line chart</h4>
+              <h4>Time Series Graph for Closing Rates</h4>
               <LineChart />
-              <button> 1 day</button>
-              <button> 1 Week</button>
-              <button> 1 Month</button>
-              <button> 1 Year</button>
               <br></br>
             </div>
                
