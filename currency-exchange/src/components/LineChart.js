@@ -29,13 +29,11 @@ export default class BarChartComponent extends Component {
         let close_rate = [];
         for (var i = 0; i <= 7; i++) {
           dates.push(Object.keys(response.data["Time Series FX (Daily)"])[i]);
-          //console.log(dates);
           close_rate.push(
             Object.values(response.data["Time Series FX (Daily)"])[i][
               "4. close"
             ]
           );
-          //console.log(close_rate);
         }
         this.setState({
           Data: {

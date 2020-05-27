@@ -105,7 +105,8 @@ class Home extends Component {
                     <div className="From">
                       <div>
                         <label>Amount </label>
-                        <input
+                        <br></br>
+                        <input style={{ width: "200px" }}
                           name="amount"
                           type="text"
                           value={this.state.amount}
@@ -113,10 +114,13 @@ class Home extends Component {
                             this.setState({ amount: event.target.value })
                           }
                         />
+                        <br></br>
+                      
                       </div>
                       <div>
                         <label>From </label>
-                        <select
+                        <br></br>
+                        <select style={{ width: "200px" }}
                           name="from"
                           onChange={(event) => this.selectHandler(event)}
                           value={this.state.fromCurrency}
@@ -127,8 +131,10 @@ class Home extends Component {
                         </select>
                       </div>
                       <div>
+                   
                         <label>To </label>
-                        <select
+                        <br></br>
+                        <select style={{ width: "200px" }}
                           name="to"
                           onChange={(event) => this.selectHandler(event)}
                           value={this.state.toCurrency}
@@ -137,7 +143,9 @@ class Home extends Component {
                             <option key={cur}>{cur}</option>
                           ))}
                         </select>
+                        <br></br>
                       </div>
+                    
                       <button onClick={this.convertHandler}>Convert</button>
                     </div>
                  </div>
@@ -145,11 +153,7 @@ class Home extends Component {
                 <div className="col-lg-6 col-xl-6">
               <h4>Line chart</h4>
               <LineChart />
-              <button> 1 day</button>
-              <button> 1 Week</button>
-              <button> 1 Month</button>
-              <button> 1 Year</button>
-              <br></br>
+        
             </div>
                
               </div>
