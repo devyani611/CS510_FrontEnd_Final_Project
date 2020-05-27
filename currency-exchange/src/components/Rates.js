@@ -10,13 +10,12 @@ const Rates =(props)=> {
   const [currencies,setcurrencies]=useState([]);
   const [currencyrates,setcurrencyrates]=useState([]);
   const [invcurrencies,setinvcurrencies]=useState([]);
-
+  
   useEffect(()=>{
     getrates();
-  },[]);
+  },[props.currencyfrom]);
   
-  const getrates=()=>{
-    console.log(props.currencyfrom)
+  const getrates=(prop)=>{
     axios
       .get(`https://api.exchangeratesapi.io/latest?base=${props.currencyfrom}`)
       .then((response) => {
