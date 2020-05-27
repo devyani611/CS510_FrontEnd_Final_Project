@@ -11,7 +11,8 @@ import {
   Button,
   Row,
 } from "reactstrap";
-import "./LineChart.css";
+//import "./LineChart.css";
+import "../App.css";
 
 export default class BarChartComponent extends Component {
   constructor(props) {
