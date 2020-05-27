@@ -16,28 +16,17 @@ const Rates =(props)=> {
   },[props.currencyfrom]);
   
   const getrates=(prop)=>{
+    const top10=['CAD','GBP','INR','CHF','EUR','MYR','CNY','USD','SGD','AUD']
     axios
       .get(`https://api.exchangeratesapi.io/latest?base=${props.currencyfrom}`)
       .then((response) => {
         const currencyrates = [];
         const currencycountry=[];
-        const invcurrency=[];
-        const top10=['INR','USD','EUR','GBP','AUD','CAD','SGD','CHF','MYR','CNY']
-        console.log(response.data)
         for (const key in response.data.rates) {
           for(var i=0;i<=10;i++){
             if(top10[i]===key){
               currencycountry.push(key);
-              currencyrates.push(response.data.rates[key].toFixed(5));
-              axios
-                .get(`https://api.exchangeratesapi.io/latest?base=${key}`)
-                .then((response) =>{
-                  invcurrency.push(response.data.rates[props.currencyfrom].toFixed(5))
-                  setinvcurrencies(invcurrency);
-                })
-                .catch((err) => {
-                  console.log("oops", err);
-                });   
+              currencyrates.push(response.data.rates[key].toFixed(5));  
             }
           }
         }
@@ -47,6 +36,19 @@ const Rates =(props)=> {
       .catch((err) => {
         console.log("oops", err);
       });
+      const invcurrency=[];
+      for(var i=0;i<=9;i++){
+        var r=top10[i]
+        axios
+          .get(`https://api.exchangeratesapi.io/latest?base=${r}`)
+          .then((response) => {
+            invcurrency.push(response.data.rates[props.currencyfrom].toFixed(5)) 
+          })
+          .catch((err) => {
+            console.log("oops", err);
+          });
+      }
+      setinvcurrencies(invcurrency);  
   }
 
 
