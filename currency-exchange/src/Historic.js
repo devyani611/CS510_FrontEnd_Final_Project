@@ -1,15 +1,17 @@
 import React from 'react';
 import {Table} from "reactstrap";
 import axios from "axios";
-
-
+import  Calendar  from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import "./App.css"
 
 const tableStyle={
     color:'white',
   };
+
 class Historic extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
     this.state = {
       result: null,
       fromCurrency: "USD",
@@ -17,10 +19,10 @@ class Historic extends React.Component {
       currency:[],
       currencyrates:[],
       invcurrencies:[],
-      
+      date: new Date()
     };
   }
-
+  onChange = date => this.setState({ date })
   componentDidMount() {
     axios
       .get(`https://api.exchangeratesapi.io/latest?base=${this.state.fromCurrency}`)
@@ -61,8 +63,19 @@ class Historic extends React.Component {
     } 
   };
   convertHandler = () =>{
+    
+    var d=this.state.date.toString().split(" ");
+    var month_num;
+    var month=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    for(var i=0;i<12;i++){
+      if(d[1]==month[i]){
+        month_num=i+1;
+      }
+    }
+    var Cdate=d[3]+"-"+month_num+"-"+d[2];
+
   	axios
-      .get(`https://api.exchangeratesapi.io/latest?base=${this.state.fromCurrency}`)
+      .get(`https://api.exchangeratesapi.io/${Cdate}?base=${this.state.fromCurrency}`)
       .then((response) => {
         const currencyrates = [];
         const currencycountry=[];
@@ -73,7 +86,7 @@ class Historic extends React.Component {
         	currencycountry.push(key);
             currencyrates.push(response.data.rates[key].toFixed(5));
             axios
-              .get(`https://api.exchangeratesapi.io/latest?base=${key}`)
+              .get(`https://api.exchangeratesapi.io/${Cdate}?base=${key}`)
               .then((response) =>{
               	if(key!=this.state.fromCurrency)
                 	invcurrency.push(response.data.rates[this.state.fromCurrency].toFixed(5))
@@ -142,7 +155,13 @@ class Historic extends React.Component {
                   			<br></br>
                   			<br></br>
                   			<h5>Choose the date</h5>
-			      			      
+			      			      <Calendar 
+                          weekNumbers={true}
+                          onChange={this.onChange}
+                          value={this.state.date}
+                          maxDate={new Date()}
+                        />
+                        
                         <br></br>
       			  			    <br></br>
                   			<button onClick={this.convertHandler}>Go</button>

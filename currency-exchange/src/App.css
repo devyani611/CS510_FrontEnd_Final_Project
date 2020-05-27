@@ -57,3 +57,6 @@ select {
     margin-top: 20px;
     color: black;
 }
+.react-calendar__month-view__weekdays {
+  color:black;
+}
