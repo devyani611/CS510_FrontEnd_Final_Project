@@ -151,8 +151,8 @@ class Home extends Component {
                  </div>
                 </div>
                 <div className="col-lg-6 col-xl-6">
-              <h4>Line chart</h4>
-              <LineChart />
+             
+              <LineChart currencyfrom={this.state.fromCurrency} currencyto={this.state.toCurrency} />
         
             </div>
                

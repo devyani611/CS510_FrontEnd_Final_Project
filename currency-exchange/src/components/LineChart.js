@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import { Line } from "react-chartjs-2";
 import axios from "axios";
 import {
-  Container, Col, Form,
-  FormGroup, Label, Input,
-  Button,Row
-} from 'reactstrap';
+  Container,
+  Col,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+  Row,
+} from "reactstrap";
 import "./LineChart.css";
-
-
-
 
 export default class BarChartComponent extends Component {
   constructor(props) {
@@ -18,16 +20,18 @@ export default class BarChartComponent extends Component {
       Data: {},
     };
   }
-  componentDidMount() {
+
+  OneWeekClose = () => {
+    console.log("1 week close data");
     axios
       .get(
-        `https://www.alphavantage.co/query?function=FX_DAILY&from_symbol=USD&to_symbol=GBP&apikey=X2DRFB6QVEIV9IXL`
+        `https://www.alphavantage.co/query?function=FX_DAILY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&apikey=X2DRFB6QVEIV9IXL`
       )
       .then((response) => {
         const data = response.data["Time Series FX (Daily)"];
         let dates = [];
         let close_rate = [];
-        for (var i = 0; i <= 7; i++) {
+        for (var i = 0; i <= 5; i++) {
           dates.push(Object.keys(response.data["Time Series FX (Daily)"])[i]);
           close_rate.push(
             Object.values(response.data["Time Series FX (Daily)"])[i][
@@ -42,72 +46,127 @@ export default class BarChartComponent extends Component {
               {
                 label: "Closing Rate for the week",
                 data: close_rate,
-                backgroundColor: [
-                  "rgba(255,105,145,0.6)",
-                  "rgba(155,100,210,0.6)",
-                  "rgba(90,178,255,0.6)",
-                  "rgba(240,134,67,0.6)",
-                  "rgba(120,120,120,0.6)",
-                  "rgba(250,55,197,0.6)",
-                ],
-                borderColor: [
-                  "rgba((34,139,34 1)",
-                  "rgba(255, 206, 86, 1)",
-                  "rgba(255, 99, 132, 1)",
-                  "rgba(75, 192, 192, 1)",
-                  "rgba(153, 102, 255, 1)",
-                  "rgba(255, 159, 64, 1)",
-                  "rgba(159, 159, 159, 1)",
-                ],
+                backgroundColor: ["rgba(255,105,145,0.6)"],
+                borderColor: ["rgba((34,139,34 1)"],
                 hoverBackgroundColor: "rgba(255,99,132,0.4)",
-                hoverBorderColor: "rgba(255,99,132,1)"
+                hoverBorderColor: "rgba(255,99,132,1)",
               },
             ],
           },
-        
+        });
+      });
+  };
+  componentDidMount= () => {
+    axios
+      .get(
+        `https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&interval=30min&apikey=X2DRFB6QVEIV9IXL`
+      )
+      .then((response) => {
+        var close_rates = [];
+        var dates = [];
+        const data = response.data["Time Series FX (30min)"];
+
+        const Oneday_date = Object.keys(
+          response.data["Time Series FX (30min)"]
+        );
+
+        var date1 = Oneday_date.filter(function (obj) {
+          var temp = new Date(obj);
+
+          var date2 = temp.getDate();
+
+          var today = new Date().getDate();
+
+          return date2 == today;
+        });
+
+        for (var i = 0; i < date1.length; i++) {
+          close_rates.push(
+            Object.values(response.data["Time Series FX (30min)"])[i][
+              "4. close"
+            ]
+          );
+        }
+
+        this.setState({
+          Data: {
+            labels: date1,
+            datasets: [
+              {
+                label: "Closing Rate for the day",
+                data: close_rates,
+                backgroundColor: ["rgba(255,105,145,0.6)"],
+                borderColor: ["rgba((34,139,34 1)"],
+                hoverBackgroundColor: "rgba(255,99,132,0.4)",
+                hoverBorderColor: "rgba(255,99,132,1)",
+              },
+            ],
+          },
         });
       });
   }
+
   render() {
-    
     return (
       <div>
-    
-      <div>
-        <Line data={this.state.Data} options={{ maintainAspectRatio: false }} />
-       
-      </div>
-      <div>
-     
-      <Container fluid>
-          <Row class= "row1">
-           
-          <Col sm={3} md={3}>
-                <Button variant="5day" className="button"  onClick={this.OneDayClose} id="oned">1 D</Button>
-            </Col>
-            <Col sm={3} md={3}>
-                <Button variant="1month" className="button"  onClick={this.OneWeekClose} id="onew">1 W</Button>
-            </Col>
-            <Col sm={3} md={3}> 
-                <Button variant="6months" className="button"  onClick={this.OneMonthClose} id="onem">1 M</Button>
-            </Col>
-            <Col sm={3} md={3}>
-                <Button variant="ytd" className="button" onClick={this.OneYearClose} id="oney">1 Y</Button>
-            </Col>
-            
-           
-         
-          
-           
+        <h4>
+          Time Series Graph for {this.props.currencyfrom} to{" "}
+          {this.props.currencyto}
+        </h4>
+        <div>
+          <Line
+            data={this.state.Data}
+            options={{ maintainAspectRatio: false }}
+          />
+        </div>
+        <div>
+          <Container fluid>
+            <Row class="row1">
+              <Col sm={3} md={3}>
+                <Button
+                  variant="5day"
+                  className="button"
+                  //onClick={this.OneDayClose}
+                  onClick={this.componentDidMount}
+                  id="oned"
+                >
+                  1 D
+                </Button>
+              </Col>
+              <Col sm={3} md={3}>
+                <Button
+                  variant="1month"
+                  className="button"
+                  onClick={this.OneWeekClose}
+                  id="onew"
+                >
+                  1 W
+                </Button>
+              </Col>
+              <Col sm={3} md={3}>
+                <Button
+                  variant="6months"
+                  className="button"
+                  onClick={this.OneMonthClose}
+                  id="onem"
+                >
+                  1 M
+                </Button>
+              </Col>
+              <Col sm={3} md={3}>
+                <Button
+                  variant="ytd"
+                  className="button"
+                  onClick={this.OneYearClose}
+                  id="oney"
+                >
+                  1 Y
+                </Button>
+              </Col>
             </Row>
-            </Container>
+          </Container>
+        </div>
       </div>
-      </div>
-      
-
-   
-     
-      
     );
   }
 }
