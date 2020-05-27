@@ -1,24 +1,24 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Table} from "reactstrap";
 import axios from "axios";
 
 const tableStyle={
     color:'white'
   };
-class Rates extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currencies: [],
-      currencyrates:[],
-      invcurrencies:[],
-    };
-  }
-
+const Rates =(props)=> {
   
-  componentDidMount() {
+  const [currencies,setcurrencies]=useState([]);
+  const [currencyrates,setcurrencyrates]=useState([]);
+  const [invcurrencies,setinvcurrencies]=useState([]);
+
+  useEffect(()=>{
+    getrates();
+  },[]);
+  
+  const getrates=()=>{
+    console.log(props.currencyfrom)
     axios
-      .get(`https://api.exchangeratesapi.io/latest?base=${this.props.currencyfrom}`)
+      .get(`https://api.exchangeratesapi.io/latest?base=${props.currencyfrom}`)
       .then((response) => {
         const currencyrates = [];
         const currencycountry=[];
@@ -33,8 +33,8 @@ class Rates extends React.Component {
               axios
                 .get(`https://api.exchangeratesapi.io/latest?base=${key}`)
                 .then((response) =>{
-                  invcurrency.push(response.data.rates[this.props.currencyfrom].toFixed(5))
-                  this.setState({invcurrencies:invcurrency});
+                  invcurrency.push(response.data.rates[props.currencyfrom].toFixed(5))
+                  setinvcurrencies(invcurrency);
                 })
                 .catch((err) => {
                   console.log("oops", err);
@@ -42,7 +42,8 @@ class Rates extends React.Component {
             }
           }
         }
-        this.setState({ currencies: currencycountry, currencyrates:currencyrates});
+        setcurrencies(currencycountry);
+        setcurrencyrates(currencyrates);
       })
       .catch((err) => {
         console.log("oops", err);
@@ -50,28 +51,27 @@ class Rates extends React.Component {
   }
 
 
-  render() {
     return (
       <div>
         <h4> Top 10 currencies</h4>
-        <h3>{this.props.currencyfrom}</h3>
+        <h3>{props.currencyfrom}</h3>
     	  <Table borderless>
   			  <thead>
     			  <tr>
-      				<th style={tableStyle}>{this.props.currencyfrom}</th>
-      				<th style={tableStyle}>1.00 {this.props.currencyfrom}</th>
-      				<th style={tableStyle}>inv. 1.00 {this.props.currencyfrom}</th>
+      				<th style={tableStyle}>{props.currencyfrom}</th>
+      				<th style={tableStyle}>1.00 {props.currencyfrom}</th>
+      				<th style={tableStyle}>inv. 1.00 {props.currencyfrom}</th>
     			  </tr>
   			  </thead>
   			  <tbody>
     			  <tr>
-      				<td style={tableStyle}>{this.state.currencies.map((cur) => (
+      				<td style={tableStyle}>{currencies.map((cur) => (
                         <tr>{cur}</tr>
                       ))}</td>
-      				<td style={tableStyle}>{this.state.currencyrates.map((cur) => (
+      				<td style={tableStyle}>{currencyrates.map((cur) => (
                         <tr>{cur}</tr>
                       ))}</td>
-      				<td style={tableStyle}>{this.state.invcurrencies.map((cur) => (
+      				<td style={tableStyle}>{invcurrencies.map((cur) => (
                         <tr>{cur}</tr>
                       ))}</td>
     			  </tr>
@@ -79,7 +79,7 @@ class Rates extends React.Component {
 		    </Table>
       </div>
     );
-  }
+  
 }
 
 export default Rates;

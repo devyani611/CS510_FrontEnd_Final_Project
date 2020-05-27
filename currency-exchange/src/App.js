@@ -32,7 +32,7 @@ class Home extends Component {
     super(props);
     this.state = {
       result: null,
-      fromCurrency: "INR",
+      fromCurrency: "USD",
       toCurrency: "GBP",
       amount: 1,
       currencies: [],
