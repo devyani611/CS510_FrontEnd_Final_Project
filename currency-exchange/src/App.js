@@ -42,7 +42,6 @@ class Home extends Component {
       toCurrency: "GBP",
       amount: 1,
       currencies: [],
-      rate_data: [],
     };
   }
 
@@ -50,7 +49,7 @@ class Home extends Component {
     axios
       .get("https://api.exchangeratesapi.io/latest")
       .then((response) => {
-      	var amt = 1;
+      	var ratevalue = 1;
         const currencyAr = ["EUR"];
         for (const key in response.data.rates) {
           currencyAr.push(key);
@@ -58,8 +57,8 @@ class Home extends Component {
         axios
           .get(`https://api.exchangeratesapi.io/latest?base=${this.state.fromCurrency}`)
           .then((response) => {
-            amt = response.data.rates[this.state.toCurrency].toFixed(5);
-            this.setState({ result: amt });
+            ratevalue = response.data.rates[this.state.toCurrency].toFixed(5);
+            this.setState({ result: ratevalue });
           });
         this.setState({ currencies: currencyAr });
       })
