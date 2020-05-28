@@ -11,16 +11,19 @@ class Ratespage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      result: null,
       fromCurrency: "USD",
       currencies: [],
       currency:[],
       currencyrates:[],
       invcurrencies:[],
+      cname:null,
+      ccountry:null,
+      csymbol:null,
     };
   }
 
   componentDidMount() {
+    console.log(this.state.csymbol,"sym")
     axios
       .get(`https://api.exchangeratesapi.io/latest?base=${this.state.fromCurrency}`)
       .then((response) => {
@@ -45,6 +48,27 @@ class Ratespage extends React.Component {
               console.log("oops", err);
             });   
         }
+        axios
+          .get('https://restcountries.eu/rest/v2/all?fields=currencies;name;flag;')
+          .then((response)=>{
+            var cur;
+            var cname=null;
+            var csymbol=null;
+            var countries=[];
+            var res=response.data;
+            for (var e=0;e<res.length;e++){
+              cur= res[e].currencies
+              for(var t=0;t<cur.length;t++){
+                if(cur[t].code==this.state.fromCurrency){
+                  cname=cur[t].name;
+                  csymbol=cur[t].symbol;
+                  countries.push(res[e].name);
+                  countries.push(", ");
+                }
+              }
+            }
+            this.setState({ cname: cname, csymbol: csymbol, ccountry: countries});
+          })
         this.setState({ currencies: currencycountry, currencyrates:currencyrates, currency:currency});
       })
       .catch((err) => {
@@ -73,13 +97,33 @@ class Ratespage extends React.Component {
             .get(`https://api.exchangeratesapi.io/latest?base=${key}`)
             .then((response) =>{
               invcurrency.push(response.data.rates[this.state.fromCurrency].toFixed(5))
-                
               this.setState({invcurrencies:invcurrency});
             })
             .catch((err) => {
               console.log("oops", err);
             });     
         }
+        axios
+          .get('https://restcountries.eu/rest/v2/all?fields=currencies;name;flag;')
+          .then((response)=>{
+            var cur;
+            var cname=null;
+            var csymbol=null;
+            var countries=[];
+            var res=response.data;
+            for (var e=0;e<res.length;e++){
+              cur= res[e].currencies
+              for(var t=0;t<cur.length;t++){
+                if(cur[t].code==this.state.fromCurrency){
+                  cname=cur[t].name;
+                  csymbol=cur[t].symbol;
+                  countries.push(res[e].name);
+                  countries.push(", ");
+                }
+              }
+            }
+            this.setState({ cname: cname, csymbol: csymbol, ccountry: countries});
+          })
         this.setState({ currencies: currencycountry, currencyrates:currencyrates});
       })
       .catch((err) => {
@@ -141,6 +185,19 @@ class Ratespage extends React.Component {
                 </center>
 		      		</div>
 		      	</div>
+            <div className="row">
+              <div className="col-lg-12 col-xl-12">
+                <br></br>
+                <center>
+                <h5>Currency Facts</h5>
+                </center>
+                <br></br>
+                <p><b>Name :</b> {this.state.cname}</p>
+                <p><b>Symbol :</b> {this.state.csymbol}</p>
+                <p><b>Users :</b> {this.state.ccountry}</p>
+                <br></br>
+              </div>
+            </div>
 		      </div>
 		    </div>
 		  </div>
