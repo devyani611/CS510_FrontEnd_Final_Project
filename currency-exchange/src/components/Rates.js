@@ -5,6 +5,7 @@ import axios from "axios";
 const tableStyle={
     color:'white'
   };
+
 const Rates =(props)=> {
   
   const [currencies,setcurrencies]=useState([]);
@@ -51,7 +52,6 @@ const Rates =(props)=> {
       setinvcurrencies(invcurrency);  
   }
 
-
     return (
       <div>
         <h4> Top 10 currencies</h4>
@@ -79,7 +79,6 @@ const Rates =(props)=> {
 		    </Table>
       </div>
     );
-  
 }
 
 export default Rates;

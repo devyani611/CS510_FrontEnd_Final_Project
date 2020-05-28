@@ -1,11 +1,20 @@
 import React from 'react';
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Button } from "reactstrap";
+import { 
+	Navbar, 
+	NavbarBrand, 
+	Nav, 
+	NavItem, 
+	NavLink, 
+	Button 
+} from "reactstrap";
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
+
 const Navigation = () => {
 	const navStyle={
 		color:'white'
 	};
+	
     return (
     	<div className="bootstrap-wrapper">
         	<div className="app-container container">

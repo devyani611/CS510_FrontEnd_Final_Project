@@ -7,7 +7,6 @@ const tableStyle={
   };
 
 class Ratespage extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -23,7 +22,6 @@ class Ratespage extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.state.csymbol,"sym")
     axios
       .get(`https://api.exchangeratesapi.io/latest?base=${this.state.fromCurrency}`)
       .then((response) => {
@@ -82,7 +80,8 @@ class Ratespage extends React.Component {
     } 
   };
 
-  convertHandler = () =>axios
+  convertHandler = () =>{
+    axios
       .get(`https://api.exchangeratesapi.io/latest?base=${this.state.fromCurrency}`)
       .then((response) => {
         const currencyrates = [];
@@ -129,6 +128,7 @@ class Ratespage extends React.Component {
       .catch((err) => {
         console.log("oops", err);
       });
+  }
   
   render() {
     return (

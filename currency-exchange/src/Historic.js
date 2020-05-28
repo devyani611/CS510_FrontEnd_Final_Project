@@ -7,13 +7,12 @@ import "./App.css"
 
 const tableStyle={
     color:'white',
-  };
+};
 
 class Historic extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      result: null,
       fromCurrency: "USD",
       currencies: [],
       currency:[],
@@ -22,7 +21,9 @@ class Historic extends React.Component {
       date: new Date()
     };
   }
+
   onChange = date => this.setState({ date })
+
   componentDidMount() {
     axios
       .get(`https://api.exchangeratesapi.io/latest?base=${this.state.fromCurrency}`)
@@ -47,7 +48,6 @@ class Historic extends React.Component {
               .catch((err) => {
                 console.log("oops", err);
               });   
-          
         }
         this.setState({ currencies: currencycountry, currencyrates:currencyrates,currency:currency});
       })
@@ -56,7 +56,6 @@ class Historic extends React.Component {
       });
   }
   	
-
   selectHandler = (event) => {
     if (event.target.name === "from") {
       this.setState({ fromCurrency: event.target.value });
@@ -64,7 +63,6 @@ class Historic extends React.Component {
   };
   
   convertHandler = () =>{
-    
     var d=this.state.date.toString().split(" ");
     var month_num;
     var month=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -74,7 +72,6 @@ class Historic extends React.Component {
       }
     }
     var Cdate=d[3]+"-"+month_num+"-"+d[2];
-
   	axios
       .get(`https://api.exchangeratesapi.io/${Cdate}?base=${this.state.fromCurrency}`)
       .then((response) => {
@@ -91,13 +88,11 @@ class Historic extends React.Component {
               .then((response) =>{
               	if(key!=this.state.fromCurrency)
                 	invcurrency.push(response.data.rates[this.state.fromCurrency].toFixed(5))
-                
                 this.setState({invcurrencies:invcurrency});
               })
               .catch((err) => {
                 console.log("oops", err);
               });   
-          
         }
         this.setState({ currencies: currencycountry, currencyrates:currencyrates});
       })
@@ -105,6 +100,7 @@ class Historic extends React.Component {
         console.log("oops", err);
       });
   }
+
   render() {
     return (
     	<div className="app-container container">
@@ -115,64 +111,63 @@ class Historic extends React.Component {
     		</div>
      		<div className="row">
      			<div className="col-lg-6 col-xl-6">
-		    	  	<Table borderless >
-		  			  	<thead>
-		    			  	<tr>
-		      					<th style={tableStyle}>{this.state.fromCurrency}</th>
-		      					<th style={tableStyle}>1.00 {this.state.fromCurrency}</th>
-		      					<th style={tableStyle}>inv. 1.00 {this.state.fromCurrency}</th>
-		    			  	</tr>
-		  			  	</thead>
-		  			  	<tbody>
-		    			  	<tr>
-		      					<td style={tableStyle}>{this.state.currencies.map((cur) => (
-		                        	<tr>{cur}</tr>
-		                      	))}</td>
-		      					<td style={tableStyle}>{this.state.currencyrates.map((cur) => (
-		                        	<tr>{cur}</tr>
-		                      	))}</td>
-		      					<td style={tableStyle}>{this.state.invcurrencies.map((cur) => (
-		                        	<tr>{cur}</tr>
-		                      	))}</td>
-		    			  	</tr>
-		    		  	</tbody>
+		    	  <Table borderless >
+		  			  <thead>
+		    			  <tr>
+		      				<th style={tableStyle}>{this.state.fromCurrency}</th>
+		      				<th style={tableStyle}>1.00 {this.state.fromCurrency}</th>
+		      				<th style={tableStyle}>inv. 1.00 {this.state.fromCurrency}</th>
+		    			  </tr>
+		  			  </thead>
+		  			  <tbody>
+		    			  <tr>
+		      				<td style={tableStyle}>{this.state.currencies.map((cur) => (
+		                        <tr>{cur}</tr>
+		                      ))}</td>
+		      				<td style={tableStyle}>{this.state.currencyrates.map((cur) => (
+		                        <tr>{cur}</tr>
+		                      ))}</td>
+		      				<td style={tableStyle}>{this.state.invcurrencies.map((cur) => (
+		                        <tr>{cur}</tr>
+		                      ))}</td>
+		    			  </tr>
+		    		  </tbody>
 				    </Table>
-		      	</div>
-		      	<div className="col-lg-6 col-xl-6">
-		      		<div className="row">
-		      			<div className="col-lg-12 col-xl-12">
-		      				<br></br>
-		      				<center>
-		      				<h5>Choose the currency</h5>
-                  			<select
-                          		name="from"
-                          		onChange={(event) => this.selectHandler(event)}
-                          		value={this.state.fromCurrency}
-                        	>
-                          	{this.state.currency.map((cur) => (
-                            <option key={cur}>{cur}</option>
-                          	))}
-                  			</select>
-                  			<br></br>
-                  			<br></br>
-                  			<h5>Choose the date</h5>
-			      			      <Calendar 
-                          weekNumbers={true}
-                          onChange={this.onChange}
-                          value={this.state.date}
-                          maxDate={new Date()}
-                        />
-                        
-                        <br></br>
-      			  			    <br></br>
-                  			<button onClick={this.convertHandler}>Go</button>
-                  			<br></br>
-                  			</center>
-		      			</div>
+		      </div>
+		      <div className="col-lg-6 col-xl-6">
+		      	<div className="row">
+		      		<div className="col-lg-12 col-xl-12">
+		      			<br></br>
+		      			<center>
+  		      			<h5>Choose the currency</h5>
+                  <select
+                    name="from"
+                    onChange={(event) => this.selectHandler(event)}
+                    value={this.state.fromCurrency}
+                  >
+                    {this.state.currency.map((cur) => (
+                      <option key={cur}>{cur}</option>
+                    ))}
+                  </select>
+                  <br></br>
+                  <br></br>
+                  <h5>Choose the date</h5>
+  			      		<Calendar 
+                    weekNumbers={true}
+                    onChange={this.onChange}
+                    value={this.state.date}
+                    maxDate={new Date()}
+                  />
+                  <br></br>
+        			  	<br></br>
+                  <button onClick={this.convertHandler}>Go</button>
+                  <br></br>
+                </center>
 		      		</div>
 		      	</div>
+		      </div>
 		    </div>
-		</div>
+		  </div>
     );
   }
 }
