@@ -1,12 +1,12 @@
-import { Fragment } from "react";
 import React, { Component, useState, useEffect } from "react";
-import "./App.css";
-import axios from "axios";
-import Rates from "./components/Rates";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import Ratespage from "./Ratespage";
+import { Fragment } from "react";
+import axios from "axios";
+import "./App.css";
 import Navigation from "./Navigation";
+import Ratespage from "./Ratespage";
 import Historic from "./Historic";
+import Rates from "./components/Rates";
 import LineChart from "./components/LineChart";
 import BarGraph from "./components/BarGraph";
 
@@ -28,6 +28,7 @@ function App() {
 }
 
 class Home extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -39,6 +40,7 @@ class Home extends Component {
       rate_data: [],
     };
   }
+
   componentDidMount() {
     axios
       .get("https://api.exchangeratesapi.io/latest")
@@ -79,6 +81,7 @@ class Home extends Component {
       this.setState({ result: "You cant convert the same currency!" });
     }
   };
+
   selectHandler = (event) => {
     if (event.target.name === "from") {
       this.setState({ fromCurrency: event.target.value });
@@ -170,10 +173,10 @@ class Home extends Component {
           </div>
           <div className="col-lg-4 col-xl-4">
             <h4>Rates Table</h4>
-            <Rates currencyfrom={this.state.fromCurrency} />
+            <Rates currencyfrom = {this.state.fromCurrency} />
             <br></br>
           </div>
-          <div className="col-lg-4 col-xl-4">
+          <div className ="col-lg-4 col-xl-4">
             <BarGraph />
             <br></br>
           </div>
