@@ -11,56 +11,55 @@ import LineChart from "./components/LineChart";
 import BarGraph from "./components/BarGraph";
 
 function App() {
-  	return (
-    	<div className="row">
-      	<Router>
-        	<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          	<Navigation />
-          	<Switch>
-            	<Route path="/" exact component={Home} />
-            	<Route path="/Ratespage" component={Ratespage} />
-            	<Route path="/Historic" component={Historic} />
-          	</Switch>
-        	</div>
-      	</Router>
-    	</div>
-  	);
+  return (
+    <div className="row">
+      <Router>
+        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <Navigation />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/Ratespage" component={Ratespage} />
+            <Route path="/Historic" component={Historic} />
+          </Switch>
+        </div>
+      </Router>
+    </div>
+  );
 }
 
 class Home extends Component {
-  	constructor(props) {
-    	super(props);
-    	this.state = {
-      		result: null,
-      		fromCurrency: "USD",
-      		toCurrency: "GBP",
-      		amount: 1,
-      		currencies: [],
-      		rate_data: [],
-    	};
-  	}
-
-  	componentDidMount() {
-    	axios
-      	.get("https://api.exchangeratesapi.io/latest")
-      	.then((response) => {
-       		const currencyAr = ["EUR"];
-        	var amt = 1;
-        	for (const key in response.data.rates) {
-          		currencyAr.push(key);
-        	}
-       		axios
-          	.get(`https://api.exchangeratesapi.io/latest?base=${this.state.fromCurrency}`)
-          	.then((response) => {
-            	amt = response.data.rates[this.state.toCurrency].toFixed(5);
-            	this.setState({ result: amt });
-          	});
-        	this.setState({ currencies: currencyAr });
-      	})
-      	.catch((err) => {
-        	console.log("oops", err);
-      	});
-  	}
+  constructor(props) {
+    super(props);
+    this.state = {
+      result: null,
+      fromCurrency: "USD",
+      toCurrency: "GBP",
+      amount: 1,
+      currencies: [],
+      rate_data: [],
+    };
+  }
+  componentDidMount() {
+    axios
+      .get("https://api.exchangeratesapi.io/latest")
+      .then((response) => {
+      	var amt = 1;
+        const currencyAr = ["EUR"];
+        for (const key in response.data.rates) {
+          currencyAr.push(key);
+        }
+        axios
+          .get(`https://api.exchangeratesapi.io/latest?base=${this.state.fromCurrency}`)
+          .then((response) => {
+            amt = response.data.rates[this.state.toCurrency].toFixed(5);
+            this.setState({ result: amt });
+          });
+        this.setState({ currencies: currencyAr });
+      })
+      .catch((err) => {
+        console.log("oops", err);
+      });
+  }
 
   convertHandler = () => {
     if (this.state.fromCurrency !== this.state.toCurrency) {
@@ -80,7 +79,6 @@ class Home extends Component {
       this.setState({ result: "You cant convert the same currency!" });
     }
   };
-
   selectHandler = (event) => {
     if (event.target.name === "from") {
       this.setState({ fromCurrency: event.target.value });
@@ -147,6 +145,7 @@ class Home extends Component {
                   </select>
                   <br></br>
                 </div>
+
                 <button onClick={this.convertHandler}>Convert</button>
               </div>
             </div>
