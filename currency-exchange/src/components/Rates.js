@@ -55,7 +55,6 @@ const Rates =(props)=> {
     return (
       <div>
         <h4> Top 10 currencies</h4>
-        <h3>{props.currencyfrom}</h3>
     	  <Table borderless>
   			  <thead>
     			  <tr>
