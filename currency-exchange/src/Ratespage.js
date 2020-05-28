@@ -194,6 +194,7 @@ class Ratespage extends React.Component {
                 <br></br>
                 <p><b>Name :</b> {this.state.cname}</p>
                 <p><b>Symbol :</b> {this.state.csymbol}</p>
+                <p><b>Code :</b> {this.state.fromCurrency}</p>
                 <p><b>Users :</b> {this.state.ccountry}</p>
                 <br></br>
               </div>
