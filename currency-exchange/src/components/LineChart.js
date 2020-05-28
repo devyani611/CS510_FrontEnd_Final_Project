@@ -22,6 +22,61 @@ export default class BarChartComponent extends Component {
     };
   }
 
+  OneYearClose = () => {
+    console.log("one year data");
+    axios
+      .get(
+        `https://www.alphavantage.co/query?function=FX_MONTHLY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&apikey=X2DRFB6QVEIV9IXL`
+      )
+      .then((response) => {
+        var today = new Date();
+        //var dd = String(today.getDate()).padStart(2, "0");
+        var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+        var yyyy = today.getFullYear();
+
+        let close_rates = [];
+
+        var OneYear = Object.keys(response.data["Time Series FX (Monthly)"]);
+        var date1 = OneYear.filter(function (obj) {
+          var temp = new Date(obj);
+          //var date2 = temp.getDate();
+          var month = temp.getMonth();
+          var year = temp.getFullYear();
+          return (month <=mm && year == yyyy)|| (month >=mm && year == (yyyy-1))
+            
+        });
+        console.log(date1);
+
+        for (var i = 0; i < date1.length; i++) {
+          close_rates.push(
+            Object.values(response.data["Time Series FX (Monthly)"])[i][
+              "4. close"
+            ]
+          );
+        }
+        this.setState({
+          Data: {
+            labels: date1,
+            datasets: [
+              {
+                label: "Closing Rates for the year",
+                data: close_rates,
+                backgroundColor: ["rgba(255,105,145,0.6)"],
+                borderColor: ["rgba((34,139,34 1)"],
+                borderWidth: "2px",
+                fill: true,
+                lineTension: 0.5,
+                hoverBackgroundColor: "rgba(255,99,132,0.4)",
+                hoverBorderColor: "rgba(255,99,132,1)",
+              },
+            ],
+          },
+        });
+      });
+  };
+
+  
+
   OneMonthClose = () => {
     console.log("one month data");
     axios
@@ -31,12 +86,16 @@ export default class BarChartComponent extends Component {
       .then((response) => {
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, "0");
+      
         var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+      
         var yyyy = today.getFullYear();
+       
 
         let close_rates = [];
 
         var OneMonth = Object.keys(response.data["Time Series FX (Daily)"]);
+      
         var date1 = OneMonth.filter(function (obj) {
           var temp = new Date(obj);
           var date2 = temp.getDate();
@@ -44,9 +103,10 @@ export default class BarChartComponent extends Component {
           var year = temp.getFullYear();
           return (
             (date2 <= dd && month == mm && year == yyyy) ||
-            (month == mm - 1 && year == yyyy)
-          );
+            (month == (mm - 1) && year == yyyy)
+          )
         });
+        console.log(date1);
         for (var i = 0; i < date1.length; i++) {
           close_rates.push(
             Object.values(response.data["Time Series FX (Daily)"])[i][
