@@ -148,7 +148,6 @@ class Home extends Component {
                   </select>
                   <br></br>
                 </div>
-
                 <button onClick={this.convertHandler}>Convert</button>
               </div>
             </div>
