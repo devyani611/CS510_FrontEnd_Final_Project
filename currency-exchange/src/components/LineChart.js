@@ -11,8 +11,7 @@ import {
   Button,
   Row,
 } from "reactstrap";
-//import "./LineChart.css";
-import "../App.css";
+import "./LineChart.css";
 
 export default class BarChartComponent extends Component {
   constructor(props) {
@@ -26,30 +25,32 @@ export default class BarChartComponent extends Component {
     console.log("one year data");
     axios
       .get(
-        `https://www.alphavantage.co/query?function=FX_MONTHLY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&apikey=X2DRFB6QVEIV9IXL`
+        `https://www.alphavantage.co/query?function=FX_DAILY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&outputsize=full&apikey=X2DRFB6QVEIV9IXL`
       )
       .then((response) => {
         var today = new Date();
-        //var dd = String(today.getDate()).padStart(2, "0");
+        var dd = String(today.getDate()).padStart(2, "0");
         var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
         var yyyy = today.getFullYear();
 
         let close_rates = [];
 
-        var OneYear = Object.keys(response.data["Time Series FX (Monthly)"]);
+        var OneYear = Object.keys(response.data["Time Series FX (Daily)"]);
         var date1 = OneYear.filter(function (obj) {
           var temp = new Date(obj);
-          //var date2 = temp.getDate();
+          var date2 = temp.getDate();
           var month = temp.getMonth();
           var year = temp.getFullYear();
-          return (month <=mm && year == yyyy)|| (month >=mm && year == (yyyy-1))
-            
+          return (
+            (date2 <= dd && month <= mm && year == yyyy) ||
+            (date2 >= dd && month >= mm && year == yyyy - 1)
+          );
         });
         console.log(date1);
 
         for (var i = 0; i < date1.length; i++) {
           close_rates.push(
-            Object.values(response.data["Time Series FX (Monthly)"])[i][
+            Object.values(response.data["Time Series FX (Daily)"])[i][
               "4. close"
             ]
           );
@@ -75,8 +76,6 @@ export default class BarChartComponent extends Component {
       });
   };
 
-  
-
   OneMonthClose = () => {
     console.log("one month data");
     axios
@@ -86,16 +85,15 @@ export default class BarChartComponent extends Component {
       .then((response) => {
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, "0");
-      
+
         var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-      
+
         var yyyy = today.getFullYear();
-       
 
         let close_rates = [];
 
         var OneMonth = Object.keys(response.data["Time Series FX (Daily)"]);
-      
+
         var date1 = OneMonth.filter(function (obj) {
           var temp = new Date(obj);
           var date2 = temp.getDate();
@@ -103,8 +101,8 @@ export default class BarChartComponent extends Component {
           var year = temp.getFullYear();
           return (
             (date2 <= dd && month == mm && year == yyyy) ||
-            (month == (mm - 1) && year == yyyy)
-          )
+            (month == mm - 1 && year == yyyy)
+          );
         });
         console.log(date1);
         for (var i = 0; i < date1.length; i++) {
@@ -230,7 +228,7 @@ export default class BarChartComponent extends Component {
           Time Series Graph for {this.props.currencyfrom} to{" "}
           {this.props.currencyto}
         </h4>
-        <div className = "chart_container">
+        <div className="chart_container">
           <Line
             data={this.state.Data}
             options={{

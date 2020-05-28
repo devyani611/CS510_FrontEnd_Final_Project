@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   background-color: #afdf99;
   color: #fff;
   font-family: sans-serif;
@@ -17,12 +18,10 @@ html, body {
   margin: 5px;
 }
 .app-container {
- padding: 25px;
- 
+  padding: 25px;
 }
 .container div {
   outline: solid 1px black;
-  
 }
 .Converter {
   width: 100%;
@@ -52,11 +51,7 @@ select {
   padding: 15px;
   font-size: 30px;
 }
-#oned, #onew, #onem, #oney{
-    background-color: white;
-    margin-top: 20px;
-    color: black;
-}
+
 .react-calendar__month-view__weekdays {
-  color:black;
+  color: black;
 }
