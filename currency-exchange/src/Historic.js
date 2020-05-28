@@ -62,6 +62,7 @@ class Historic extends React.Component {
       this.setState({ fromCurrency: event.target.value });
     } 
   };
+  
   convertHandler = () =>{
     
     var d=this.state.date.toString().split(" ");

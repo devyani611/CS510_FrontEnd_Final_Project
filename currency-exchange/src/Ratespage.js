@@ -52,6 +52,12 @@ class Ratespage extends React.Component {
       });
   }
 
+  selectHandler = (event) => {
+    if (event.target.name === "from") {
+      this.setState({ fromCurrency: event.target.value });
+    } 
+  };
+
   convertHandler = () =>axios
       .get(`https://api.exchangeratesapi.io/latest?base=${this.state.fromCurrency}`)
       .then((response) => {
