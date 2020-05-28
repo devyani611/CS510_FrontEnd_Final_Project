@@ -176,7 +176,7 @@ class Home extends Component {
             <Rates currencyfrom = {this.state.fromCurrency} />
             <br></br>
           </div>
-          <div className ="col-lg-4 col-xl-4">
+          <div className="col-lg-4 col-xl-4">
             <BarGraph />
             <br></br>
           </div>
