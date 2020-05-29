@@ -33,7 +33,6 @@ function App() {
 }
 
 class Home extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -42,6 +41,8 @@ class Home extends Component {
       toCurrency: "GBP",
       amount: 1,
       currencies: [],
+      crate: 1,
+      cinvrate: 1,
     };
   }
 
@@ -50,6 +51,8 @@ class Home extends Component {
       .get("https://api.exchangeratesapi.io/latest")
       .then((response) => {
       	var amt = 1;
+      	var rate;
+      	var invrate;
         const currencyAr = ["EUR"];
         for (const key in response.data.rates) {
           currencyAr.push(key);
@@ -58,7 +61,14 @@ class Home extends Component {
           .get(`https://api.exchangeratesapi.io/latest?base=${this.state.fromCurrency}`)
           .then((response) => {
             amt = response.data.rates[this.state.toCurrency].toFixed(5);
-            this.setState({ result: amt });
+            rate = response.data.rates[this.state.toCurrency].toFixed(5);
+            this.setState({ result: amt, crate: rate });
+            axios
+            	.get(`https://api.exchangeratesapi.io/latest?base=${this.state.toCurrency}&symbols=${this.state.fromCurrency}`)
+            	.then((response) =>{
+            		invrate=response.data.rates[this.state.fromCurrency].toFixed(5); 
+            		this.setState({ cinvrate: invrate});
+            	})
           });
         this.setState({ currencies: currencyAr });
       })
@@ -77,6 +87,16 @@ class Home extends Component {
           const result =
             this.state.amount * response.data.rates[this.state.toCurrency];
           this.setState({ result: result.toFixed(5) });
+          var rate;
+      	  var invrate;
+      	  rate = response.data.rates[this.state.toCurrency].toFixed(5);
+      	  this.setState({ crate: rate});
+      	  axios
+            	.get(`https://api.exchangeratesapi.io/latest?base=${this.state.toCurrency}&symbols=${this.state.fromCurrency}`)
+            	.then((response) =>{
+            		invrate=response.data.rates[this.state.fromCurrency].toFixed(5); 
+            		this.setState({ cinvrate: invrate});
+            	})
         })
         .catch((error) => {
           console.log("Oops", error.message);
@@ -164,14 +184,25 @@ class Home extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-4 col-xl-4">
+          <div className="col-lg-3 col-xl-3">
             <h4>Calculation results</h4>
             <br></br>
             <div>
+              <center>
               <span>{this.state.amount} </span>
               <span>{this.state.fromCurrency} = </span>
               <span>{<h3>{this.state.result}</h3>}</span>
               <span>{this.state.toCurrency} </span>
+              <br></br>
+              <br></br>
+              <span> 1 {this.state.fromCurrency} = </span>
+              <span>{this.state.crate} </span>
+              <span>{this.state.toCurrency} </span>
+              <br></br>
+              <span> 1 {this.state.toCurrency} = </span>
+              <span>{this.state.cinvrate} </span>
+              <span>{this.state.fromCurrency}</span>
+              </center>
             </div>
           </div>
           <div className="col-lg-4 col-xl-4">
@@ -179,7 +210,7 @@ class Home extends Component {
             <Rates currencyfrom = {this.state.fromCurrency} />
             <br></br>
           </div>
-          <div className="col-lg-4 col-xl-4">
+          <div className="col-lg-5 col-xl-5">
             <BarGraph />
             <br></br>
           </div>
