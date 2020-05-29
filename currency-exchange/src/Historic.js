@@ -10,6 +10,7 @@ const tableStyle={
 };
 
 class Historic extends React.Component {
+  
   constructor(props, context) {
     super(props, context);
     this.state = {

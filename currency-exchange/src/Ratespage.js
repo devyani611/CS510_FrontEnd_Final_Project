@@ -7,6 +7,7 @@ const tableStyle={
   };
 
 class Ratespage extends React.Component {
+  
   constructor(props) {
     super(props);
     this.state = {
