@@ -63,13 +63,13 @@ class Home extends Component {
           .then((response) => {
             amt = response.data.rates[this.state.toCurrency].toFixed(5);
             rate = response.data.rates[this.state.toCurrency].toFixed(5);
-            this.setState({ result: amt, crate: rate });
             axios
             	.get(`https://api.exchangeratesapi.io/latest?base=${this.state.toCurrency}&symbols=${this.state.fromCurrency}`)
             	.then((response) =>{
             		invrate=response.data.rates[this.state.fromCurrency].toFixed(5); 
             		this.setState({ cinvrate: invrate});
             	})
+            this.setState({ result: amt, crate: rate });
           });
         this.setState({ currencies: currencyAr });
       })
@@ -91,13 +91,13 @@ class Home extends Component {
           var rate;
       	  var invrate;
       	  rate = response.data.rates[this.state.toCurrency].toFixed(5);
-      	  this.setState({ crate: rate});
       	  axios
             	.get(`https://api.exchangeratesapi.io/latest?base=${this.state.toCurrency}&symbols=${this.state.fromCurrency}`)
             	.then((response) =>{
             		invrate=response.data.rates[this.state.fromCurrency].toFixed(5); 
             		this.setState({ cinvrate: invrate});
             	})
+          this.setState({ crate: rate});
         })
         .catch((error) => {
           console.log("Oops", error.message);
