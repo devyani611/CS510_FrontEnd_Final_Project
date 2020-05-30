@@ -22,7 +22,7 @@ const Navigation = () => {
             		<div className="col-lg-12 col-xl-12">
 			          	<Fragment>
 			                <Navbar bg="dark" variant="dark" expand="md">
-			                  	<NavbarBrand className="Brand" href="/">
+			                  	<NavbarBrand style={navStyle}  className="Brand" href="/">
 			                    	X-rates Dash
 			                  	</NavbarBrand>
 			                  	<Nav className="ml-auto" navbar>

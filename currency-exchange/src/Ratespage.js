@@ -1,6 +1,7 @@
 import React from 'react';
 import {Table} from "reactstrap";
 import axios from "axios";
+import "./App.css";
 
 const tableStyle={
     color:'white',

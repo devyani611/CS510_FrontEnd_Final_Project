@@ -10,8 +10,8 @@ const Rates =(props)=> {
   
   const [currencies,setcurrencies]=useState([]);
   const [currencyrates,setcurrencyrates]=useState([]);
-  const [invcurrencies,setinvcurrencies]=useState([]);
   
+
   useEffect(()=>{
     getrates();
   },[props.currencyfrom]);
@@ -37,30 +37,17 @@ const Rates =(props)=> {
       .catch((err) => {
         console.log("oops", err);
       });
-      const invcurrency=[];
-      for(var i=0;i<=9;i++){
-        var r=top10[i]
-        axios
-          .get(`https://api.exchangeratesapi.io/latest?base=${r}`)
-          .then((response) => {
-            invcurrency.push(response.data.rates[props.currencyfrom].toFixed(5)) 
-          })
-          .catch((err) => {
-            console.log("oops", err);
-          });
-      }
-      setinvcurrencies(invcurrency);  
   }
 
     return (
       <div>
-        <h4> Top 10 currencies</h4>
+        <center><h4> Top 10 currencies</h4></center>
     	  <Table borderless>
+        <center>
   			  <thead>
     			  <tr>
       				<th style={tableStyle}>{props.currencyfrom}</th>
       				<th style={tableStyle}>1.00 {props.currencyfrom}</th>
-      				<th style={tableStyle}>inv. 1.00 {props.currencyfrom}</th>
     			  </tr>
   			  </thead>
   			  <tbody>
@@ -71,11 +58,9 @@ const Rates =(props)=> {
       				<td style={tableStyle}>{currencyrates.map((cur) => (
                         <tr>{cur}</tr>
                       ))}</td>
-      				<td style={tableStyle}>{invcurrencies.map((cur) => (
-                        <tr>{cur}</tr>
-                      ))}</td>
     			  </tr>
     		  </tbody>
+        </center>
 		    </Table>
       </div>
     );

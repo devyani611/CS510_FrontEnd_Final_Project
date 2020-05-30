@@ -1,7 +1,7 @@
 html, 
 body {
-  background-color: #afdf99;
-  color: #fff;
+  background-color: white;
+  color: white;
   font-family: sans-serif;
   height: 100%;
   margin: 0;
@@ -22,10 +22,13 @@ body {
 
 .app-container {
   padding: 25px;
+
 }
 
 .container div {
   outline: solid 1px black;
+  background-color: #afdf99;
+  
 }
 
 .Converter {
@@ -34,6 +37,7 @@ body {
   box-sizing: border-box;
   text-align: center;
 }
+
 
 .From {
   margin: 0 auto;
