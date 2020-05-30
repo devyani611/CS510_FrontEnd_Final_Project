@@ -104,7 +104,7 @@ class Ratespage extends React.Component {
             });     
         }
         axios
-          .get('https://restcountries.eu/rest/v2/all?fields=currencies;name;flag;')
+          .get('https://restcountries.eu/rest/v2/all?fields=currencies;name;')
           .then((response)=>{
             var cur;
             var cname=null;
