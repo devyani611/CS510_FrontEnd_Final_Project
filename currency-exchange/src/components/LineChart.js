@@ -20,6 +20,11 @@ export default class BarChartComponent extends Component {
       Data: {},
     };
   }
+  componentDidUpdate(prevProps) {
+    if (prevProps.currencyfrom !== this.props.currencyfrom || prevProps.currencyto !== this.props.currencyto) {
+        this.componentDidMount();
+    }
+}
 
   OneYearClose = () => {
     console.log("one year data");
