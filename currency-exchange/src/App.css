@@ -22,13 +22,11 @@ body {
 
 .app-container {
   padding: 25px;
-
 }
 
 .container div {
   outline: solid 1px black;
   background-color: #afdf99;
-  
 }
 
 .Converter {
@@ -37,7 +35,6 @@ body {
   box-sizing: border-box;
   text-align: center;
 }
-
 
 .From {
   margin: 0 auto;
@@ -67,3 +64,4 @@ select {
 .react-calendar__month-view__weekdays {
   color: black;
 }
+

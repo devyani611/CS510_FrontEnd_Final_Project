@@ -7,6 +7,7 @@ import "./App.css"
 
 const tableStyle={
     color:'white',
+    
 };
 
 class Historic extends React.Component {
@@ -50,7 +51,9 @@ class Historic extends React.Component {
                 console.log("oops", err);
               });   
         }
-        this.setState({ currencies: currencycountry, currencyrates:currencyrates,currency:currency});
+        this.setState({ currencies: currencycountry})
+        this.setState({ currencyrates: currencyrates}) 
+        this.setState({ currency: currency});
       })
       .catch((err) => {
         console.log("oops", err);
@@ -95,7 +98,8 @@ class Historic extends React.Component {
                 console.log("oops", err);
               });   
         }
-        this.setState({ currencies: currencycountry, currencyrates:currencyrates});
+        this.setState({ currencies: currencycountry})
+        this.setState({ currencyrates:currencyrates});
       })
       .catch((err) => {
         console.log("oops", err);

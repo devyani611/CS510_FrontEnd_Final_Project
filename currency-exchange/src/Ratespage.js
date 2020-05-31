@@ -67,9 +67,13 @@ class Ratespage extends React.Component {
                 }
               }
             }
-            this.setState({ cname: cname, csymbol: csymbol, ccountry: countries});
+            this.setState({ cname: cname})
+            this.setState({ csymbol: csymbol})
+            this.setState({ ccountry: countries});
           })
-        this.setState({ currencies: currencycountry, currencyrates:currencyrates, currency:currency});
+        this.setState({ currencies: currencycountry })
+        this.setState({ currencyrates:currencyrates}) 
+        this.setState({ currency:currency});
       })
       .catch((err) => {
         console.log("oops", err);
@@ -123,9 +127,12 @@ class Ratespage extends React.Component {
                 }
               }
             }
-            this.setState({ cname: cname, csymbol: csymbol, ccountry: countries});
+            this.setState({ cname: cname})
+            this.setState({ csymbol: csymbol})
+            this.setState({ ccountry: countries});
           })
-        this.setState({ currencies: currencycountry, currencyrates:currencyrates});
+        this.setState({ currencies: currencycountry})
+        this.setState({ currencyrates:currencyrates});
       })
       .catch((err) => {
         console.log("oops", err);

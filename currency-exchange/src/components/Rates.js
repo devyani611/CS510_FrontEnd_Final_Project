@@ -11,7 +11,6 @@ const Rates =(props)=> {
   const [currencies,setcurrencies]=useState([]);
   const [currencyrates,setcurrencyrates]=useState([]);
   
-
   useEffect(()=>{
     getrates();
   },[props.currencyfrom]);
