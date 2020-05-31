@@ -20,7 +20,8 @@ class Historic extends React.Component {
       currency:[],
       currencyrates:[],
       invcurrencies:[],
-      date: new Date()
+      date: new Date(),
+      from: "USD",
     };
   }
 
@@ -98,8 +99,9 @@ class Historic extends React.Component {
                 console.log("oops", err);
               });   
         }
-        this.setState({ currencies: currencycountry})
+        this.setState({ currencies: currencycountry});
         this.setState({ currencyrates:currencyrates});
+        this.setState({ from: this.state.fromCurrency});
       })
       .catch((err) => {
         console.log("oops", err);
@@ -119,9 +121,9 @@ class Historic extends React.Component {
 		    	  <Table borderless >
 		  			  <thead>
 		    			  <tr>
-		      				<th style={tableStyle}>{this.state.fromCurrency}</th>
-		      				<th style={tableStyle}>1.00 {this.state.fromCurrency}</th>
-		      				<th style={tableStyle}>inv. 1.00 {this.state.fromCurrency}</th>
+		      				<th style={tableStyle}>{this.state.from}</th>
+		      				<th style={tableStyle}>1.00 {this.state.from}</th>
+		      				<th style={tableStyle}>inv. 1.00 {this.state.from}</th>
 		    			  </tr>
 		  			  </thead>
 		  			  <tbody>

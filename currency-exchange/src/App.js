@@ -44,6 +44,8 @@ class Home extends Component {
       currencies: [],
       crate: 1,
       cinvrate: 1,
+      from: "USD",
+      to: "GBP",
     };
   }
 
@@ -99,6 +101,8 @@ class Home extends Component {
             		this.setState({ cinvrate: invrate});
             	})
           this.setState({ crate: rate});
+          this.setState({ from: this.state.fromCurrency});
+          this.setState({ to: this.state.toCurrency});
         })
         .catch((error) => {
           console.log("Oops", error.message);
@@ -192,18 +196,18 @@ class Home extends Component {
             <div>
               <center>
               <span>{this.state.amount} </span>
-              <span>{this.state.fromCurrency} = </span>
+              <span>{this.state.from} = </span>
               <span>{<h3>{this.state.result}</h3>}</span>
-              <span>{this.state.toCurrency} </span>
+              <span>{this.state.to} </span>
               <br></br>
               <br></br>
-              <span> 1 {this.state.fromCurrency} = </span>
+              <span> 1 {this.state.from} = </span>
               <span>{this.state.crate} </span>
-              <span>{this.state.toCurrency} </span>
+              <span>{this.state.to} </span>
               <br></br>
-              <span> 1 {this.state.toCurrency} = </span>
+              <span> 1 {this.state.to} = </span>
               <span>{this.state.cinvrate} </span>
-              <span>{this.state.fromCurrency}</span>
+              <span>{this.state.from}</span>
               </center>
             </div>
           </div>

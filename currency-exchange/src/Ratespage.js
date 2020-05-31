@@ -20,6 +20,7 @@ class Ratespage extends React.Component {
       cname:null,
       ccountry:null,
       csymbol:null,
+      from: "USD",
     };
   }
 
@@ -133,6 +134,7 @@ class Ratespage extends React.Component {
           })
         this.setState({ currencies: currencycountry})
         this.setState({ currencyrates:currencyrates});
+        this.setState({ from: this.state.fromCurrency})
       })
       .catch((err) => {
         console.log("oops", err);
@@ -152,9 +154,9 @@ class Ratespage extends React.Component {
 		    	  <Table borderless >
 		  			  <thead>
 		    			  <tr>
-		      				<th style={tableStyle}>{this.state.fromCurrency}</th>
-		      				<th style={tableStyle}>1.00 {this.state.fromCurrency}</th>
-		      				<th style={tableStyle}>inv. 1.00 {this.state.fromCurrency}</th>
+		      				<th style={tableStyle}>{this.state.from}</th>
+		      				<th style={tableStyle}>1.00 {this.state.from}</th>
+		      				<th style={tableStyle}>inv. 1.00 {this.state.from}</th>
 		    			  </tr>
 		  			  </thead>
 		  			  <tbody>
