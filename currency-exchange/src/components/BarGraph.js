@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Bar } from "react-chartjs-2";
 
+
 class BarGraph extends React.Component {
   constructor(props) {
     super(props);
@@ -9,6 +10,12 @@ class BarGraph extends React.Component {
       Data: {},
     };
   }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.currencyfrom !== this.props.currencyfrom || prevProps.currencyto !== this.props.currencyto) {
+        this.componentDidMount();
+    }
+}
   componentDidMount = () => {
     axios
       .get(
