@@ -46,7 +46,7 @@ export default class BarChartComponent extends Component {
             (date2 >= dd && month >= mm && year == yyyy - 1)
           );
         });
-        console.log(date1);
+        //console.log(date1);
 
         for (var i = 0; i < date1.length; i++) {
           close_rates.push(
@@ -104,7 +104,7 @@ export default class BarChartComponent extends Component {
             (month == mm - 1 && year == yyyy)
           );
         });
-        console.log(date1);
+        //console.log(date1);
         for (var i = 0; i < date1.length; i++) {
           close_rates.push(
             Object.values(response.data["Time Series FX (Daily)"])[i][
@@ -179,7 +179,9 @@ export default class BarChartComponent extends Component {
       .then((response) => {
         var close_rates = [];
         var dates = [];
+        console.log("load data for the day");
         const data = response.data["Time Series FX (30min)"];
+        //console.log(response.data["Time Series FX (30min)"]);
 
         const Oneday_date = Object.keys(
           response.data["Time Series FX (30min)"]
@@ -194,7 +196,7 @@ export default class BarChartComponent extends Component {
 
           return date2 == today;
         });
-
+        //console.log(date1);
         for (var i = 0; i < date1.length; i++) {
           close_rates.push(
             Object.values(response.data["Time Series FX (30min)"])[i][
@@ -202,7 +204,7 @@ export default class BarChartComponent extends Component {
             ]
           );
         }
-
+        console.log(close_rates);
         this.setState({
           Data: {
             labels: date1,

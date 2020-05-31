@@ -3,10 +3,16 @@ import axios from "axios";
 import { Bar } from "react-chartjs-2";
 
 class BarGraph extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      Data: {},
+    };
+  }
   componentDidMount = () => {
     axios
       .get(
-        `https://www.alphavantage.co/query?function=FX_DAILY&from_symbol=USD&to_symbol=INR&apikey=X2DRFB6QVEIV9IXL`
+        `https://www.alphavantage.co/query?function=FX_MONTHLY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&apikey=X2DRFB6QVEIV9IXL`
       )
       .then((response) => {
         console.log(response.data);
@@ -19,27 +25,103 @@ class BarGraph extends React.Component {
 
         let close_rates = [];
 
-        var OneMonth = Object.keys(response.data["Time Series FX (Daily)"]);
+        var months = Object.keys(response.data["Time Series FX (Monthly)"]);
 
-        var date1 = OneMonth.filter(function (obj) {
+        var date1 = months.filter(function (obj) {
           var temp = new Date(obj);
           var date2 = temp.getDate();
           var month = temp.getMonth();
           var year = temp.getFullYear();
-          return (
-            (date2 <= dd && month == mm && year == yyyy) ||
-            (month == mm - 1 && year == yyyy)
+          return (year == yyyy);
+        });
+        console.log(date1);
+        for (var i = 0; i < date1.length; i++) {
+          close_rates.push(
+            Object.values(response.data["Time Series FX (Monthly)"])[i][
+              "4. close"
+            ]
           );
+        }
+        console.log(close_rates);
+        this.setState({
+          Data: {
+            labels: date1,
+            datasets: [
+              {
+                label: "Closing Rate for the day",
+                data: close_rates,
+                backgroundColor: [
+                  'rgba(255, 99, 132, 0.8)',
+                  'rgba(54, 162, 235, 0.8)',
+                  'rgba(255, 206, 86, 0.8)',
+                  'rgba(75, 192, 192, 0.8)',
+                  'rgba(153, 102, 255, 0.8)',
+                  'rgba(255, 99, 132, 0.8)',
+                  'rgba(54, 162, 235, 0.8)',
+                  'rgba(255, 206, 86, 0.8)',
+                  'rgba(75, 192, 192, 0.8)',
+                  'rgba(153, 102, 255, 0.8)',
+                  'rgba(255, 99, 132, 0.8)',
+                  'rgba(54, 162, 235, 0.8)',
+                  'rgba(255, 206, 86, 0.8)',
+                  'rgba(75, 192, 192, 0.8)',
+                  'rgba(153, 102, 255, 0.8)',
+                  ],
+               
+                hoverBackgroundColor:[
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  ],
+               
+               
+                borderWidth: 2,
+              },
+            ],
+          },
         });
       });
   };
 
+
   render() {
     return (
       <div>
-        <h4>Monthly Average</h4>
+        <h4>Monthly closing rate for the year</h4>
         <div className="chart_container">
-          <Bar />
+          <Bar data={this.state.Data}
+            options={{
+              responsive: true,
+              scales: {
+                xAxes: [
+                  {
+                    display: true,
+                    gridLines: {
+                      offsetGridLines: true
+                  }
+                  },
+                
+                ],
+                yAxes: [
+                  {
+                    display: true,
+                  },
+                ],
+              },
+            }}
+          />
         </div>
       </div>
     );

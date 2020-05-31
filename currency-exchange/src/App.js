@@ -212,11 +212,13 @@ class Home extends Component {
             <br></br>
           </div>
           <div className="col-lg-5 col-xl-5">
-            <BarGraph />
+            <BarGraph currencyfrom={this.state.fromCurrency}
+              currencyto={this.state.toCurrency}/>
             <br></br>
           </div>
         </div>
-      </div>
+        </div>
+      
     );
   }
 }
