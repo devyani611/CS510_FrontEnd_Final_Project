@@ -72,9 +72,7 @@ class Home extends Component {
                 `https://api.exchangeratesapi.io/latest?base=${this.state.toCurrency}&symbols=${this.state.fromCurrency}`
               )
               .then((response) => {
-                invrate = response.data.rates[this.state.fromCurrency].toFixed(
-                  5
-                );
+                invrate = response.data.rates[this.state.fromCurrency].toFixed(5);
                 this.setState({ cinvrate: invrate });
               });
             this.setState({ result: amt });
