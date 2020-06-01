@@ -4,11 +4,15 @@ import axios from "axios";
 import "./Ratespage.css";
 
 const tableStyle={
-    color:'white',
+    color:'black',
   };
 
 const colStyle={
-    backgroundColor:'#afdf99',
+    backgroundColor:'white',
+  };
+
+const trstyle={
+    borderBottom:"1pt solid white",
   };
 
 class Ratespage extends React.Component {
@@ -164,7 +168,7 @@ class Ratespage extends React.Component {
 		    			  </tr>
 		  			  </thead>
 		  			  <tbody>
-		    			  <tr>
+		    			  <tr style={trstyle}>
 		      				<td style={tableStyle}>{this.state.currencies.map((cur) => (
 		                        <tr>{cur}</tr>
 		                      ))}</td>

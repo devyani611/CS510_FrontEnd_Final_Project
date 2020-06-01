@@ -1,22 +1,21 @@
 html, 
 body {
-  background-color: white;
-  color: white;
+  background-color: lightgrey;
+  color: black;
   font-family: sans-serif;
   height: 100%;
   margin: 0;
 
 }
 .app-container {
-  padding: 25px;
+  padding: 5px;
   grid-column-gap: 80px;
 }
 
 .container div {
-  outline: solid 1px white;
-  background-color: grey;
+  outline: solid 1px lightgrey;
+  background-color: lightgrey;
   grid-column-gap: 80px;
-
 }
 
 .From {
@@ -32,29 +31,31 @@ select {
 }
 
 .row {
-  margin-bottom: 20px;
+  margin-bottom: 7px;
   margin-left: 20px;
 
 }
 
 .cur div{
-	background-color: #afdf99;
-	border: 1px solid #afdf99;
+	background-color: white;
+	border: 1px solid lightgrey;
 }
 
 .fact div{
-	background-color: #afdf99;
-	border: 1px solid #afdf99;
+	background-color: white;
+	border: 1px solid lightgrey;
 }
 
 .r div{
-	background-color: #afdf99;
-	border: 1px solid #afdf99;
+	background-color: white;
+	border: 1px solid lightgrey;
 }
-
 
 .table-borderless{
-	background-color: #afdf99;
-	border: 1px solid #afdf99;
+	background-color: white;
+	border: 1px solid white;
 }
 
+tr{
+  border-bottom:1pt solid black;
+}
