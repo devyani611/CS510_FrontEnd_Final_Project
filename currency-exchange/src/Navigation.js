@@ -13,6 +13,10 @@ import { Link } from "react-router-dom";
 const Navigation = () => {
 	const navStyle={
 		color:'white',
+		textDecoration: 'none',
+		"&:hover":{
+			color:'yellow',
+		},
 	};
 
 	const divstyle={

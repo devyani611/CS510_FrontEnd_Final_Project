@@ -13,7 +13,7 @@ body {
 }
 
 .container div {
-  outline: solid 1px black;
+  outline: solid 1px white;
   background-color: grey;
   grid-column-gap: 80px;
 
