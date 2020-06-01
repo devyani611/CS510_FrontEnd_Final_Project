@@ -93,20 +93,7 @@ class Home extends Component {
           const result =
             this.state.amount * response.data.rates[this.state.toCurrency];
           this.setState({ result: result.toFixed(5) });
-          var rate;
-          var invrate;
-          rate = response.data.rates[this.state.toCurrency].toFixed(5);
-          axios
-            .get(
-              `https://api.exchangeratesapi.io/latest?base=${this.state.toCurrency}&symbols=${this.state.fromCurrency}`
-            )
-            .then((response) => {
-              invrate = response.data.rates[this.state.fromCurrency].toFixed(5);
-              this.setState({ cinvrate: invrate });
-            });
-          this.setState({ crate: rate });
-          this.setState({ from: this.state.fromCurrency });
-          this.setState({ to: this.state.toCurrency });
+          
         })
         .catch((error) => {
           console.log("Oops", error.message);
