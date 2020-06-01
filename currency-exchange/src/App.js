@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { 
+  BrowserRouter as Router, 
+  Route, 
+  Link, 
+  Switch 
+} from "react-router-dom";
 import { Fragment } from "react";
 import axios from "axios";
 import "./App.css";
