@@ -21,10 +21,13 @@ export default class BarChartComponent extends Component {
     };
   }
   componentDidUpdate(prevProps) {
-    if (prevProps.currencyfrom !== this.props.currencyfrom || prevProps.currencyto !== this.props.currencyto) {
-        this.componentDidMount();
+    if (
+      prevProps.currencyfrom !== this.props.currencyfrom ||
+      prevProps.currencyto !== this.props.currencyto
+    ) {
+      this.componentDidMount();
     }
-}
+  }
 
   OneYearClose = () => {
     console.log("one year data");
@@ -231,11 +234,11 @@ export default class BarChartComponent extends Component {
   render() {
     return (
       <div>
-        <h4>
-          Time Series Graph for {this.props.currencyfrom} to{" "}
-          {this.props.currencyto}
-        </h4>
         <div className="chart_container">
+          <h4>
+            Time Series Graph for {this.props.currencyfrom} to{" "}
+            {this.props.currencyto}
+          </h4>
           <Line
             data={this.state.Data}
             options={{
@@ -255,52 +258,31 @@ export default class BarChartComponent extends Component {
             }}
           />
         </div>
-        <div>
-          <Container fluid>
-            <Row class="row1">
-              <Col sm={3} md={3}>
-                <Button
-                  variant="5day"
-                  className="button"
-                  //onClick={this.OneDayClose}
-                  onClick={this.componentDidMount}
-                  id="oned"
-                >
-                  1 D
-                </Button>
-              </Col>
-              <Col sm={3} md={3}>
-                <Button
-                  variant="1month"
-                  className="button"
-                  onClick={this.OneWeekClose}
-                  id="onew"
-                >
-                  1 W
-                </Button>
-              </Col>
-              <Col sm={3} md={3}>
-                <Button
-                  variant="6months"
-                  className="button"
-                  onClick={this.OneMonthClose}
-                  id="onem"
-                >
-                  1 M
-                </Button>
-              </Col>
-              <Col sm={3} md={3}>
-                <Button
-                  variant="ytd"
-                  className="button"
-                  onClick={this.OneYearClose}
-                  id="oney"
-                >
-                  1 Y
-                </Button>
-              </Col>
-            </Row>
-          </Container>
+        <div id="button_wrapper">
+          <button
+            name="5day"
+            className="button"
+            //onClick={this.OneDayClose}
+            onClick={this.componentDidMount}
+          >
+            1 D
+          </button>
+
+          <button name="1month" className="button" onClick={this.OneWeekClose}>
+            1 W
+          </button>
+
+          <button
+            name="6months"
+            className="button"
+            onClick={this.OneMonthClose}
+          >
+            1 M
+          </button>
+
+          <button name="ytd" className="button" onClick={this.OneYearClose}>
+            1 Y
+          </button>
         </div>
       </div>
     );
