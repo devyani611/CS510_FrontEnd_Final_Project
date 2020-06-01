@@ -5,9 +5,19 @@ import  Calendar  from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import "./App.css"
 
+
 const tableStyle={
-    color:'white',
+    color:'black',
+    borderBottom: "1px solid black",
 };
+
+const colStyle={
+    backgroundColor:'white',
+  };
+
+const headStyle={
+    backgroundColor:'white',
+  };
 
 class Historic extends React.Component {
   
@@ -111,12 +121,12 @@ class Historic extends React.Component {
     return (
     	<div className="app-container container">
     		<div className="row">
-    			<div className="col-lg-12 col-xl-12">
+    			<div className="col-lg-12 col-xl-12" style={headStyle}>
     				<h4> Historic Lookup Table </h4>
     			</div>
     		</div>
      		<div className="row">
-     			<div className="col-lg-6 col-xl-6">
+     			<div className="col-lg-6 col-xl-6" style={colStyle}>
 		    	  <Table borderless >
 		  			  <thead>
 		    			  <tr>

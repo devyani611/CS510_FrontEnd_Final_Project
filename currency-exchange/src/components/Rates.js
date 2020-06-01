@@ -3,8 +3,12 @@ import {Table} from "reactstrap";
 import axios from "axios";
 
 const tableStyle={
-    color:'white'
+    color:'black'
   };
+
+const borderstyle={
+    borderBottom:"1pt solid white",
+}
 
 const Rates =(props)=> {
   
@@ -50,7 +54,7 @@ const Rates =(props)=> {
     			  </tr>
   			  </thead>
   			  <tbody>
-    			  <tr>
+    			  <tr style={borderstyle}>
       				<td style={tableStyle}>{currencies.map((cur) => (
                         <tr>{cur}</tr>
                       ))}</td>

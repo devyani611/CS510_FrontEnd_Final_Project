@@ -38,17 +38,17 @@ select {
 
 .cur div{
 	background-color: white;
-	border: 1px solid lightgrey;
+	border: 1px solid white;
 }
 
 .fact div{
 	background-color: white;
-	border: 1px solid lightgrey;
+	border: 1px solid white;
 }
 
 .r div{
 	background-color: white;
-	border: 1px solid lightgrey;
+	border: 1px solid white;
 }
 
 .table-borderless{
