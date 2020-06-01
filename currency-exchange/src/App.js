@@ -68,9 +68,7 @@ class Home extends Component {
             amt = response.data.rates[this.state.toCurrency].toFixed(5);
             rate = response.data.rates[this.state.toCurrency].toFixed(5);
             axios
-              .get(
-                `https://api.exchangeratesapi.io/latest?base=${this.state.toCurrency}&symbols=${this.state.fromCurrency}`
-              )
+              .get(`https://api.exchangeratesapi.io/latest?base=${this.state.toCurrency}&symbols=${this.state.fromCurrency}`)
               .then((response) => {
                 invrate = response.data.rates[this.state.fromCurrency].toFixed(5);
                 this.setState({ cinvrate: invrate });
