@@ -40,8 +40,6 @@ class BarGraph extends React.Component {
         }
 
         this.setState({years : distinctyears}); 
-
-
         var date1 = months.filter(function (obj) {
           var temp = new Date(obj);
           var year = temp.getFullYear();
@@ -98,8 +96,6 @@ class BarGraph extends React.Component {
                   'rgba(75, 192, 192, 0.2)',
                   'rgba(153, 102, 255, 0.2)',
                   ],
-               
-               
                 borderWidth: 2,
               },
             ],
@@ -114,14 +110,89 @@ class BarGraph extends React.Component {
     } 
   };
 
+  convertHandler = () =>{
+    axios
+    .get(
+      `https://www.alphavantage.co/query?function=FX_MONTHLY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&apikey=X2DRFB6QVEIV9IXL`
+    )
+    .then((response) => {
+      let close_rates = [];
+      let cyear = this.state.foryear;
+      let object = response.data["Time Series FX (Monthly)"];
+      for (const property in object) {
+        //console.log(`${property}: ${object[property]["4. close"]}`);
+        var temp = new Date(property);
+        var year = temp.getFullYear();
+        if(year==cyear){
+          close_rates.push(`${object[property]["4. close"]}`);
+        }
+      }
+      console.log(close_rates);
+      var months = Object.keys(response.data["Time Series FX (Monthly)"]);
+      var date1 = months.filter(function (obj) {
+        var temp = new Date(obj);
+        var year = temp.getFullYear();
+        return (year==cyear);
+      });
+      
+      this.setState({
+        Data: {
+          labels: date1,
+          datasets: [
+            {
+              
+              data: close_rates,
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.8)',
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(255, 206, 86, 0.8)',
+                'rgba(75, 192, 192, 0.8)',
+                'rgba(153, 102, 255, 0.8)',
+                'rgba(255, 99, 132, 0.8)',
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(255, 206, 86, 0.8)',
+                'rgba(75, 192, 192, 0.8)',
+                'rgba(153, 102, 255, 0.8)',
+                'rgba(255, 99, 132, 0.8)',
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(255, 206, 86, 0.8)',
+                'rgba(75, 192, 192, 0.8)',
+                'rgba(153, 102, 255, 0.8)',
+                ],
+             
+              hoverBackgroundColor:[
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                ],
+              borderWidth: 2,
+            },
+          ],
+        },
+      });
+    });
+}
 
   render() {
     return (
       <div>
         <h4>Monthly closing rate for the year</h4>
         <div>
+        <span>
         <select
-                    style={{ width: "100px" }}
+                    style={{ width: "100px"}}
                     name="year"
                     onChange={(event) => this.selectHandler(event)}
                     value={this.state.foryear}
@@ -130,6 +201,8 @@ class BarGraph extends React.Component {
                       <option key={cur}>{cur}</option>
                     ))}
                   </select>
+        </span>
+        <span><button onClick={this.convertHandler}>Go</button></span>
         </div>
         <div className="chart_container">
           <Bar data={this.state.Data}
