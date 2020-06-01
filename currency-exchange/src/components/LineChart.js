@@ -209,7 +209,7 @@ export default class BarChartComponent extends Component {
             ]
           );
         }
-        console.log(close_rates);
+        //console.log(close_rates);
         this.setState({
           Data: {
             labels: date1,

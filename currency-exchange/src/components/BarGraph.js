@@ -2,12 +2,17 @@ import React from "react";
 import axios from "axios";
 import { Bar } from "react-chartjs-2";
 
+var today = new Date();
+var yyyy = today.getFullYear();
 
 class BarGraph extends React.Component {
+  
   constructor(props) {
     super(props);
     this.state = {
       Data: {},
+      years :[],
+      foryear : yyyy,
     };
   }
 
@@ -22,26 +27,27 @@ class BarGraph extends React.Component {
         `https://www.alphavantage.co/query?function=FX_MONTHLY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&apikey=X2DRFB6QVEIV9IXL`
       )
       .then((response) => {
-        console.log(response.data);
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, "0");
-
-        var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-
-        var yyyy = today.getFullYear();
-
+        //console.log(response.data);
         let close_rates = [];
-
+        let Nyears = [];
+        let distinctyears = [];
         var months = Object.keys(response.data["Time Series FX (Monthly)"]);
+        for(var i in months){
+          var temp = new Date(months[i]);
+          var year = temp.getFullYear();
+          Nyears.push (year);
+          distinctyears = [...new Set(Nyears)];
+        }
+
+        this.setState({years : distinctyears}); 
+
 
         var date1 = months.filter(function (obj) {
           var temp = new Date(obj);
-          var date2 = temp.getDate();
-          var month = temp.getMonth();
           var year = temp.getFullYear();
           return (year == yyyy);
         });
-        console.log(date1);
+
         for (var i = 0; i < date1.length; i++) {
           close_rates.push(
             Object.values(response.data["Time Series FX (Monthly)"])[i][
@@ -49,13 +55,13 @@ class BarGraph extends React.Component {
             ]
           );
         }
-        console.log(close_rates);
+
         this.setState({
           Data: {
             labels: date1,
             datasets: [
               {
-                label: "Closing Rate for the day",
+                
                 data: close_rates,
                 backgroundColor: [
                   'rgba(255, 99, 132, 0.8)',
@@ -102,15 +108,34 @@ class BarGraph extends React.Component {
       });
   };
 
+  selectHandler = (event) => {
+    if (event.target.name === "year") {
+      this.setState({ foryear: event.target.value });
+    } 
+  };
+
 
   render() {
     return (
       <div>
         <h4>Monthly closing rate for the year</h4>
+        <div>
+        <select
+                    style={{ width: "100px" }}
+                    name="year"
+                    onChange={(event) => this.selectHandler(event)}
+                    value={this.state.foryear}
+                  >
+                    {this.state.years.map((cur) => (
+                      <option key={cur}>{cur}</option>
+                    ))}
+                  </select>
+        </div>
         <div className="chart_container">
           <Bar data={this.state.Data}
             options={{
               responsive: true,
+             
               scales: {
                 xAxes: [
                   {
