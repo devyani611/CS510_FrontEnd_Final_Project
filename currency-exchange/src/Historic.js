@@ -178,6 +178,7 @@ class Historic extends React.Component {
         			  	<br></br>
                   <button onClick={this.convertHandler}>Go</button>
                   <br></br>
+                  <br></br>
                 </center>
 		      		</div>
 		      	</div>
