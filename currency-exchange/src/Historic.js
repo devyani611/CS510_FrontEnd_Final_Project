@@ -152,7 +152,7 @@ class Historic extends React.Component {
 		      </div>
 		      <div className="col-lg-6 col-xl-6">
 		      	<div className="row">
-		      		<div className="col-lg-12 col-xl-12">
+		      		<div className="col-lg-12 col-xl-12" style={headStyle}>
 		      			<br></br>
 		      			<center>
   		      			<h5>Choose the currency</h5>

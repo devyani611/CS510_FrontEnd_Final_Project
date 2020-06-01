@@ -65,3 +65,10 @@ select {
   color: black;
 }
 
+.react-calendar__navigation button{
+  background-color: purple;
+}
+
+.react-calendar button{
+  background-color: #f0f0f0;
+}
