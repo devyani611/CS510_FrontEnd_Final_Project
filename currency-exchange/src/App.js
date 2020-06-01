@@ -73,10 +73,10 @@ class Home extends Component {
               )
               .then((response) => {
                 invrate = response.data.rates[this.state.fromCurrency].toFixed(5);
-                this.setState({ cinvrate: invrate });
+                this.setState({ cinvrate: invrate});
               });
-            this.setState({ result: amt });
-            this.setState({ crate: rate });
+            this.setState({ result: amt});
+            this.setState({ crate: rate});
           });
         this.setState({ currencies: currencyAr });
       })
