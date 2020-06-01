@@ -54,17 +54,13 @@ select {
   color: black;
 }
 
-<<<<<<< HEAD
 .react-calendar__navigation button{
   background-color: purple;
 }
 
 .react-calendar button{
   background-color: #f0f0f0;
-=======
-.react-calendar__navigation button {
-  background-color: none;
-}
+
 
 #conversion_results {
   text-align: center;
@@ -87,5 +83,4 @@ select {
   background-color: white;
   border-radius: 5px;
   border-bottom: 2px solid grey;
->>>>>>> 26d7cce86410dd80f58ecdf89c218ddb72267efb
 }
