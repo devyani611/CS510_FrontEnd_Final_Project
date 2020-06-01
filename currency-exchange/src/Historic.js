@@ -7,7 +7,6 @@ import "./App.css"
 
 const tableStyle={
     color:'white',
-    
 };
 
 class Historic extends React.Component {

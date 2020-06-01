@@ -1,10 +1,14 @@
 import React from 'react';
 import {Table} from "reactstrap";
 import axios from "axios";
-import "./App.css";
+import "./Ratespage.css";
 
 const tableStyle={
     color:'white',
+  };
+
+const colStyle={
+    backgroundColor:'#afdf99',
   };
 
 class Ratespage extends React.Component {
@@ -144,13 +148,13 @@ class Ratespage extends React.Component {
   render() {
     return (
     	<div className="app-container container">
-    		<div className="row">
+    		<div className="row r">
     			<div className="col-lg-12 col-xl-12">
     				<h4> Rates Exchange Table </h4>
     			</div>
     		</div>
-     		<div className="row">
-     			<div className="col-lg-6 col-xl-6">
+     		<div className="row ex">
+     			<div className="col-lg-6 col-xl-6" style={colStyle}>
 		    	  <Table borderless >
 		  			  <thead>
 		    			  <tr>
@@ -175,7 +179,7 @@ class Ratespage extends React.Component {
 				    </Table>
 		      </div>
 		      <div className="col-lg-6 col-xl-6">
-		      	<div className="row">
+		      	<div className="row cur">
 		      		<div className="col-lg-12 col-xl-12">
 		      			<br></br>
                 <center>
@@ -196,7 +200,7 @@ class Ratespage extends React.Component {
                 </center>
 		      		</div>
 		      	</div>
-            <div className="row">
+            <div className="row fact">
               <div className="col-lg-12 col-xl-12">
                 <br></br>
                 <center>
@@ -205,7 +209,7 @@ class Ratespage extends React.Component {
                 <br></br>
                 <p><b>Name :</b> {this.state.cname}</p>
                 <p><b>Symbol :</b> {this.state.csymbol}</p>
-                <p><b>Code :</b> {this.state.fromCurrency}</p>
+                <p><b>Code :</b> {this.state.from}</p>
                 <p><b>Users :</b> {this.state.ccountry}</p>
                 <br></br>
               </div>

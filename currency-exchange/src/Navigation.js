@@ -12,14 +12,18 @@ import { Link } from "react-router-dom";
 
 const Navigation = () => {
 	const navStyle={
-		color:'white'
+		color:'white',
+	};
+
+	const divstyle={
+		backgroundColor:'pink',
 	};
 	
     return (
     	<div className="bootstrap-wrapper">
         	<div className="app-container container">
-          		<div className="row">
-            		<div className="col-lg-12 col-xl-12">
+          		<div className="row" >
+            		<div className="col-lg-12 col-xl-12" style={divstyle}>
 			          	<Fragment>
 			                <Navbar bg="dark" variant="dark" expand="md">
 			                  	<NavbarBrand style={navStyle}  className="Brand" href="/">
