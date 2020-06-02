@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { 
+  BrowserRouter as Router, 
+  Route, 
+  Link, 
+  Switch 
+} from "react-router-dom";
 import { Fragment } from "react";
 import axios from "axios";
 import "./App.css";
@@ -63,13 +68,9 @@ class Home extends Component {
             amt = response.data.rates[this.state.toCurrency].toFixed(5);
             rate = response.data.rates[this.state.toCurrency].toFixed(5);
             axios
-              .get(
-                `https://api.exchangeratesapi.io/latest?base=${this.state.toCurrency}&symbols=${this.state.fromCurrency}`
-              )
+              .get(`https://api.exchangeratesapi.io/latest?base=${this.state.toCurrency}&symbols=${this.state.fromCurrency}`)
               .then((response) => {
-                invrate = response.data.rates[this.state.fromCurrency].toFixed(
-                  5
-                );
+                invrate = response.data.rates[this.state.fromCurrency].toFixed(5);
                 this.setState({ cinvrate: invrate });
               });
             this.setState({ result: amt });
@@ -208,17 +209,17 @@ class Home extends Component {
                 <br></br>
                 <br></br>
                 <span> 1 {this.state.from} = </span>
-                <span>{this.state.crate} </span>
-                <span>{this.state.to} </span>
+                <span> {this.state.crate} </span>
+                <span> {this.state.to} </span>
                 <br></br>
                 <span> 1 {this.state.to} = </span>
-                <span>{this.state.cinvrate} </span>
-                <span>{this.state.from}</span>
+                <span> {this.state.cinvrate} </span>
+                <span> {this.state.from} </span>
               </center>
             </div>
           </div>
           <div className="col-lg-3 col-xl-3">
-            <Rates currencyfrom={this.state.fromCurrency} />
+            <Rates currencyfrom = {this.state.fromCurrency} />
             <br></br>
           </div>
           <div className="col-lg-5 col-xl-5">
