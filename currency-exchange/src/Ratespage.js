@@ -15,7 +15,7 @@ const headStyle = {
 const buttonstyle = {
   backgroundColor: "rgba(75,192,192,1)",
   color: "white",
-  border: "1px double white",
+  border: "1px double grey",
 };
 
 class Ratespage extends React.Component {
@@ -50,7 +50,9 @@ class Ratespage extends React.Component {
           currencycountry.push(key);
           currencyrates.push(response.data.rates[key].toFixed(5));
           axios
-            .get(`https://api.exchangeratesapi.io/latest?base=${key}`)
+            .get(
+              `https://api.exchangeratesapi.io/latest?base=${key}`
+            )
             .then((response) => {
               if (key != this.state.fromCurrency)
                 invcurrency.push(
@@ -116,7 +118,9 @@ class Ratespage extends React.Component {
           currencycountry.push(key);
           currencyrates.push(response.data.rates[key].toFixed(5));
           axios
-            .get(`https://api.exchangeratesapi.io/latest?base=${key}`)
+            .get(
+              `https://api.exchangeratesapi.io/latest?base=${key}`
+            )
             .then((response) => {
               invcurrency.push(
                 response.data.rates[this.state.fromCurrency].toFixed(5)
@@ -128,7 +132,9 @@ class Ratespage extends React.Component {
             });
         }
         axios
-          .get("https://restcountries.eu/rest/v2/all?fields=currencies;name;")
+          .get(
+            "https://restcountries.eu/rest/v2/all?fields=currencies;name;"
+          )
           .then((response) => {
             var cur;
             var cname = null;

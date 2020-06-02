@@ -5,6 +5,7 @@ body {
   height: 100%;
   margin: 0;
 }
+
 * {
   box-sizing: border-box;
 }
@@ -45,14 +46,6 @@ select {
   border: none;
 }
 
-.react-calendar__month-view__weekdays {
-  color: rgba(75,192,192,1);
-}
-
-.react-calendar button {
-  background-color: #f0f0f0;
-}
-
 #conversion_results {
   text-align: center;
   margin-left: 8%;
@@ -76,10 +69,6 @@ select {
   border-bottom: 2px solid grey;
 }
 
-h5{
-  color: rgba(75,192,192,1);
-}
-
 footer{
   margin-top: 1%;
   margin-left: auto;
@@ -87,4 +76,10 @@ footer{
   text-align: center;
   color: black;  
   padding: 1%;
+}
+
+button{
+  background-color: rgba(75,192,192,1);
+  color: white;
+  border: 1px double white;
 }

@@ -17,7 +17,7 @@ const headStyle = {
 const buttonstyle = {
   backgroundColor: "rgba(75,192,192,1)",
   color: "white",
-  border: "1px double white",
+  border: "1px double grey",
 };
 
 class Historic extends React.Component {
@@ -52,7 +52,9 @@ class Historic extends React.Component {
           currencycountry.push(key);
           currencyrates.push(response.data.rates[key].toFixed(5));
           axios
-            .get(`https://api.exchangeratesapi.io/latest?base=${key}`)
+            .get(
+              `https://api.exchangeratesapi.io/latest?base=${key}`
+            )
             .then((response) => {
               if (key != this.state.fromCurrency)
                 invcurrency.push(
@@ -115,7 +117,9 @@ class Historic extends React.Component {
           currencycountry.push(key);
           currencyrates.push(response.data.rates[key].toFixed(5));
           axios
-            .get(`https://api.exchangeratesapi.io/${Cdate}?base=${key}`)
+            .get(
+              `https://api.exchangeratesapi.io/${Cdate}?base=${key}`
+            )
             .then((response) => {
               if (key != this.state.fromCurrency)
                 invcurrency.push(

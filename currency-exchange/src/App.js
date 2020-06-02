@@ -14,6 +14,7 @@ import Historic from "./Historic";
 import Rates from "./components/Rates";
 import LineChart from "./components/LineChart";
 import BarGraph from "./components/BarGraph";
+import OpenChart from "./components/OpenChart";
 import "./Converter.css";
 
 function App() {
@@ -134,7 +135,7 @@ class Home extends Component {
     return (
       <div className="container">
         <div className="row" id="row2">
-          <div className="col-lg-5 col-xl-5" id="col1">
+          <div className="col-lg-4 col-xl-4" id="col1">
             <div id="Converter">
               <h4>
                 Currency Converter
@@ -190,8 +191,14 @@ class Home extends Component {
               <button onClick={this.convertHandler}>Convert</button>
             </div>
           </div>
-          <div className="col-lg-7 col-xl-7">
+          <div className="col-lg-4 col-xl-4">
             <LineChart
+              currencyfrom={this.state.fromCurrency}
+              currencyto={this.state.toCurrency}
+            />
+          </div>
+          <div className="col-lg-4 col-xl-4">
+            <OpenChart
               currencyfrom={this.state.fromCurrency}
               currencyto={this.state.toCurrency}
             />

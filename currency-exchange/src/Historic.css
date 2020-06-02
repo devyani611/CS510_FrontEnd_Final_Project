@@ -5,3 +5,11 @@
 h5{
   color: rgba(75,192,192,1);
 }
+
+.react-calendar__month-view__weekdays {
+  color: rgba(75,192,192,1);
+}
+
+.react-calendar button {
+  background-color: #f0f0f0;
+}
