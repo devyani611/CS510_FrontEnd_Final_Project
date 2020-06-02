@@ -14,6 +14,12 @@ const headStyle = {
   fontWeight: "bold",
 };
 
+const buttonstyle = {
+  backgroundColor: "rgba(75,192,192,1)",
+  color: "white",
+  border: "1px double white",
+};
+
 class Historic extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -195,13 +201,16 @@ class Historic extends React.Component {
                   />
                   <br></br>
                   <br></br>
-                  <button onClick={this.convertHandler}>Go</button>
+                  <button onClick={this.convertHandler} style={buttonstyle}>Go</button>
                   <br></br>
                 </center>
               </div>
             </div>
           </div>
         </div>
+        <footer class="page-footer footer font-small">
+          © 2020 All rights reserved
+        </footer>
       </div>
     );
   }

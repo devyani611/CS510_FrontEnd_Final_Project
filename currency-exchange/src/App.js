@@ -33,6 +33,10 @@ function App() {
   );
 }
 
+const footerstyle = {
+  backgroundColor: "orange",
+};
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -230,7 +234,11 @@ class Home extends Component {
             <br></br>
           </div>
         </div>
+        <footer class="page-footer footer font-small">
+          © 2020 All rights reserved
+        </footer>
       </div>
+      
     );
   }
 }
