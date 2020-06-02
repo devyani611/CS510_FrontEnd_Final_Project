@@ -18,6 +18,12 @@
   margin-top: 2%;
   margin-bottom: 2%;
   width: auto;
+ 
+}
+.chart_container:hover{
+  -webkit-transform: scale(1.02);
+  -ms-transform: scale(1.02);
+  transform: scale(1.02);
 }
 
 #button_wrapper {
@@ -50,6 +56,9 @@ button {
 button:hover,
 button:focus {
   background: rgb(110, 109, 109);
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 button:focus {
@@ -62,3 +71,4 @@ button:focus {
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+

@@ -198,10 +198,11 @@ class BarGraph extends React.Component {
   render() {
     return (
     <div>
+       <div id="header"><h4>Monthly closing rates</h4></div>
       <div id="select_wrapper">
       <span>
         <select
-          style={{ width: "100px" }}
+          style={{ width: "100px" , height:"35px" }}
           name="year"
           onChange={(event) => this.selectHandler(event)}
           value={this.state.foryear}
@@ -217,7 +218,8 @@ class BarGraph extends React.Component {
         </button>
       </span>
     </div>
-    <h4>Monthly closing rates for the year</h4>
+   
+    
         <div className="Barchart_container">
        
           <Bar

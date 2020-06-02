@@ -277,10 +277,11 @@ export default class BarChartComponent extends Component {
             Time Series Graph for {this.props.currencyfrom} to{" "}
             {this.props.currencyto}
           </h4>
-          <Line
+          <Line 
             data={this.state.Data}
             options={{
               responsive: true,
+
               scales: {
                
                 xAxes: [

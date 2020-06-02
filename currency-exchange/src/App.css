@@ -73,7 +73,7 @@ select {
 }
 
 #result {
-  background-color: white;
+  background-color: rgb(220, 230, 235);
   border-radius: 5px;
   border-bottom: 2px solid grey;
 }
