@@ -219,7 +219,7 @@ class Home extends Component {
             </div>
           </div>
           <div className="col-lg-3 col-xl-3">
-            <Rates currencyfrom={this.state.fromCurrency} />
+            <Rates currencyfrom = {this.state.fromCurrency} />
             <br></br>
           </div>
           <div className="col-lg-5 col-xl-5">
