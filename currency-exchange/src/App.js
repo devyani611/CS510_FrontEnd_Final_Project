@@ -208,7 +208,13 @@ class Home extends Component {
                 </div>
                 <br></br>
                 <br></br>
-                
+                <span> 1 {this.state.from} = </span>
+                <span> {this.state.crate} </span>
+                <span> {this.state.to} </span>
+                <br></br>
+                <span> 1 {this.state.to} = </span>
+                <span> {this.state.cinvrate} </span>
+                <span> {this.state.from} </span>
               </center>
             </div>
           </div>
