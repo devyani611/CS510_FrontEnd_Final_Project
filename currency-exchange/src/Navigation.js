@@ -6,6 +6,11 @@ import { Link } from "react-router-dom";
 const Navigation = () => {
   const navStyle = {
     color: "black",
+    textDecoration: 'none',
+  };
+
+  const headStyle = {
+    color: "rgba(75,192,192,1)",
   };
 
   return (
@@ -19,8 +24,8 @@ const Navigation = () => {
               variant="dark"
               expand="md"
             >
-              <NavbarBrand style={navStyle} className="Brand" href="/">
-                <h2>X-rates Dash</h2>
+              <NavbarBrand style={headStyle} className="Brand" href="/">
+                <h2><b>X-rates Dash</b></h2>
               </NavbarBrand>
               <Nav className="ml-auto" navbar>
                 <NavItem className="d-flex align-items-center">

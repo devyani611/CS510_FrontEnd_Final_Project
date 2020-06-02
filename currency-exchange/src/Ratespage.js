@@ -1,10 +1,15 @@
 import React from "react";
 import { Table } from "reactstrap";
 import axios from "axios";
-import "./App.css";
+import "./Ratespage.css";
 
 const tableStyle = {
-  color: "white",
+  color: "black",
+};
+
+const headStyle = {
+  color: "rgba(75,192,192,1)",
+  fontWeight: "bold",
 };
 
 class Ratespage extends React.Component {
@@ -150,20 +155,20 @@ class Ratespage extends React.Component {
 
   render() {
     return (
-      <div className="app-container container">
-        <div className="row">
+      <div className="app-container container ">
+        <div className="row ">
           <div className="col-lg-12 col-xl-12">
             <h4> Rates Exchange Table </h4>
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-6 col-xl-6">
+          <div className="col-lg-6 col-xl-6 ">
             <Table borderless>
               <thead>
                 <tr>
-                  <th style={tableStyle}>{this.state.from}</th>
-                  <th style={tableStyle}>1.00 {this.state.from}</th>
-                  <th style={tableStyle}>inv. 1.00 {this.state.from}</th>
+                  <th style={headStyle}>{this.state.from}</th>
+                  <th style={headStyle}>1.00 {this.state.from}</th>
+                  <th style={headStyle}>inv. 1.00 {this.state.from}</th>
                 </tr>
               </thead>
               <tbody>
@@ -187,7 +192,7 @@ class Ratespage extends React.Component {
               </tbody>
             </Table>
           </div>
-          <div className="col-lg-6 col-xl-6">
+          <div className="col-lg-6 col-xl-6 ratepag">
             <div className="row">
               <div className="col-lg-12 col-xl-12">
                 <br></br>

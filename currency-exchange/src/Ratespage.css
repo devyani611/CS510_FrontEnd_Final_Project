@@ -1,61 +1,13 @@
-html, 
-body {
-  background-color: lightgrey;
-  color: black;
-  font-family: sans-serif;
-  height: 100%;
-  margin: 0;
-
-}
-.app-container {
-  padding: 5px;
-  grid-column-gap: 80px;
-}
-
-.container div {
-  outline: solid 1px lightgrey;
-  background-color: lightgrey;
-  grid-column-gap: 80px;
-}
-
-.From {
-  margin: 0 auto;
-  width: 100%;
-}
-
-.From input, 
-select {
-  padding: 5px;
-  margin: 5px 10px;
-  border: 1px solid rgba(119, 119, 119, 0.5);
-}
-
-.row {
-  margin-bottom: 7px;
-  margin-left: 20px;
-
-}
-
-.cur div{
+.currencyfacts div{
 	background-color: white;
 	border: 1px solid white;
 }
 
-.fact div{
-	background-color: white;
-	border: 1px solid white;
+.ratepag div {
+  padding: 40px;
+  
 }
 
-.r div{
-	background-color: white;
-	border: 1px solid white;
-}
-
-.table-borderless{
-	background-color: white;
-	border: 1px solid white;
-}
-
-tr{
-  border-bottom:1pt solid black;
+.histo div{
+	padding: 7px;
 }

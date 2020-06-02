@@ -6,7 +6,12 @@ import "react-calendar/dist/Calendar.css";
 import "./App.css";
 
 const tableStyle = {
-  color: "white",
+  color: "black",
+};
+
+const headStyle = {
+  color: "rgba(75,192,192,1)",
+  fontWeight: "bold",
 };
 
 class Historic extends React.Component {
@@ -138,9 +143,9 @@ class Historic extends React.Component {
             <Table borderless>
               <thead>
                 <tr>
-                  <th style={tableStyle}>{this.state.from}</th>
-                  <th style={tableStyle}>1.00 {this.state.from}</th>
-                  <th style={tableStyle}>inv. 1.00 {this.state.from}</th>
+                  <th style={headStyle}>{this.state.from}</th>
+                  <th style={headStyle}>1.00 {this.state.from}</th>
+                  <th style={headStyle}>inv. 1.00 {this.state.from}</th>
                 </tr>
               </thead>
               <tbody>
@@ -164,7 +169,7 @@ class Historic extends React.Component {
               </tbody>
             </Table>
           </div>
-          <div className="col-lg-6 col-xl-6">
+          <div className="col-lg-6 col-xl-6 histo">
             <div className="row">
               <div className="col-lg-12 col-xl-12">
                 <br></br>

@@ -53,7 +53,7 @@ const Rates = (props) => {
     <div id="rates_container">
       <h4>Rates Table</h4>
       <center>
-        <h4> Top 10 currencies</h4>
+        <h5> Top 10 currencies</h5>
       </center>
       <Table borderless>
         <center>
