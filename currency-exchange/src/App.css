@@ -1,6 +1,6 @@
 html,
 body {
-  background-color: white;
+  background-color: #e3e5e9;
   font-family: sans-serif;
   height: 100%;
   margin: 0;
@@ -17,17 +17,14 @@ body {
   color: white;
 }
 
-.buttons-right > button {
-  float: right;
-  margin: 5px;
-}
+
 
 div[class^="col"] {
-  border: 5px solid white;
+  border: 5px solid #e3e5e9;
 }
 
 .container {
-  background-color: #e3e5e9;
+  background-color: white;
   padding: 5px;
 }
 
@@ -43,7 +40,7 @@ select {
   border: 1px solid rgba(119, 119, 119, 0.5);
 }
 
-.From button {
+.From {
   padding: 5px 10px;
   border-radius: 5px;
   color: white;

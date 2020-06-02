@@ -47,7 +47,7 @@ export default class BarChartComponent extends Component {
         var date1 = OneYear.filter(function (obj) {
           var temp = new Date(obj);
           var date2 = temp.getDate();
-          var month = temp.getMonth();
+          var month = (temp.getMonth()+1);
           var year = temp.getFullYear();
           return (
             (date2 <= dd && month <= mm && year == yyyy) ||
@@ -96,7 +96,7 @@ export default class BarChartComponent extends Component {
     console.log("one month data");
     axios
       .get(
-        `https://www.alphavantage.co/query?function=FX_DAILY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&apikey=X2DRFB6QVEIV9IXL`
+        `https://www.alphavantage.co/query?function=FX_DAILY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&outputsize=full&apikey=X2DRFB6QVEIV9IXL`
       )
       .then((response) => {
         var today = new Date();
@@ -113,13 +113,16 @@ export default class BarChartComponent extends Component {
         var date1 = OneMonth.filter(function (obj) {
           var temp = new Date(obj);
           var date2 = temp.getDate();
-          var month = temp.getMonth();
+          var month = (temp.getMonth()+1);
           var year = temp.getFullYear();
+         
           return (
             (date2 <= dd && month == mm && year == yyyy) ||
-            (date2 > dd && month == mm - 1 && year == yyyy)
+            (month == mm-1 && year == yyyy)
           );
         });
+
+        console.log("data", date1);
 
         for (var i = 0; i < date1.length; i++) {
           close_rates.push(
@@ -279,6 +282,7 @@ export default class BarChartComponent extends Component {
             options={{
               responsive: true,
               scales: {
+               
                 xAxes: [
                   {
                     display: false,

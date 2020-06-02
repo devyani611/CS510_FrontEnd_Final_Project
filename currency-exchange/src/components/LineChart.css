@@ -1,3 +1,8 @@
+  
+* {
+  box-sizing: border-box;
+}
+
 .chart_container {
   text-align: center;
   margin-left: 8%;
@@ -27,6 +32,7 @@ button {
   background-color: white;
   border-radius: 5px;
   border: 1px double #303030;
+  box-shadow: 0 9px #999;
   color: black;
   text-align: center;
   font-size: 15px;
@@ -51,6 +57,8 @@ button:focus {
   outline-offset: -4px;
 }
 
-button:active {
-  transform: scale(0.99);
+.button:active {
+  background-color: rgb(110, 109, 109);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }

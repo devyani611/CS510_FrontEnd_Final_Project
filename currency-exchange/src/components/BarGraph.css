@@ -1,3 +1,8 @@
+  
+* {
+  box-sizing: border-box;
+}
+
 .Barchart_container {
   text-align: center;
   margin-left: 5%;
@@ -10,7 +15,7 @@
   box-shadow: 0px 1px 1px rgba(000, 000, 000, 0.5),
     inset 1px 2px 0px rgba(255, 255, 255, 0.4);
   padding: 1%;
-  margin-top: 2%;
+  margin-top: 10%;
   margin-bottom: 2%;
   width: auto;
   height: auto;
