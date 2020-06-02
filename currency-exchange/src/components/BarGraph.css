@@ -1,3 +1,8 @@
+  
+* {
+  box-sizing: border-box;
+}
+
 .Barchart_container {
   text-align: center;
   margin-left: 5%;
@@ -10,10 +15,16 @@
   box-shadow: 0px 1px 1px rgba(000, 000, 000, 0.5),
     inset 1px 2px 0px rgba(255, 255, 255, 0.4);
   padding: 1%;
-  margin-top: 2%;
+  margin-top: 10%;
   margin-bottom: 2%;
   width: auto;
   height: auto;
+}
+
+.Barchart_container:hover{
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 #select_wrapper {
@@ -21,9 +32,17 @@
   flex-direction: row;
 
   justify-content: flex-end;
-  margin-top: 2%;
+  margin-top: 4%;
 }
 
 #butn {
   margin-top: 8%;
+}
+#header{
+ text-align: center;
+ padding: 2%;
+ margin-top: 4%;
+ font-weight: bold;
+ font-family: Arial, Helvetica, sans-serif;
+
 }

@@ -66,7 +66,7 @@ class BarGraph extends React.Component {
             }),
             datasets: [
               {
-                label: "Closing Rates on monthly basis",
+                label: `${this.props.currencyto} per 1 ${this.props.currencyfrom}`,
                 data: close_rates,
                 backgroundColor: [
                   "rgba(255, 99, 132, 0.8)",
@@ -127,7 +127,6 @@ class BarGraph extends React.Component {
         let cyear = this.state.foryear;
         let object = response.data["Time Series FX (Monthly)"];
         for (const property in object) {
-          //console.log(`${property}: ${object[property]["4. close"]}`);
           var temp = new Date(property);
           var year = temp.getFullYear();
           if (year == cyear) {
@@ -198,28 +197,31 @@ class BarGraph extends React.Component {
 
   render() {
     return (
-      <div>
-        <h4>Monthly closing rates for the year</h4>
-        <div id="select_wrapper">
-          <span>
-            <select
-              style={{ width: "100px" }}
-              name="year"
-              onChange={(event) => this.selectHandler(event)}
-              value={this.state.foryear}
-            >
-              {this.state.years.map((cur) => (
-                <option key={cur}>{cur}</option>
-              ))}
-            </select>
-          </span>
-          <span>
-            <button id="butn" onClick={this.convertHandler}>
-              Go
-            </button>
-          </span>
-        </div>
+    <div>
+       <div id="header"><h4>Monthly closing rates</h4></div>
+      <div id="select_wrapper">
+      <span>
+        <select
+          style={{ width: "100px" , height:"35px" }}
+          name="year"
+          onChange={(event) => this.selectHandler(event)}
+          value={this.state.foryear}
+        >
+          {this.state.years.map((cur) => (
+            <option key={cur}>{cur}</option>
+          ))}
+        </select>
+      </span>
+      <span>
+        <button id="butn" onClick={this.convertHandler}>
+          Go
+        </button>
+      </span>
+    </div>
+   
+    
         <div className="Barchart_container">
+       
           <Bar
             data={this.state.Data}
             options={{
@@ -243,7 +245,7 @@ class BarGraph extends React.Component {
             }}
           />
         </div>
-      </div>
+        </div>
     );
   }
 }
