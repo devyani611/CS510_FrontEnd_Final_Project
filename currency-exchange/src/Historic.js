@@ -3,7 +3,7 @@ import { Table } from "reactstrap";
 import axios from "axios";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import "./App.css";
+import "./Historic.css";
 
 const tableStyle = {
   color: "black",

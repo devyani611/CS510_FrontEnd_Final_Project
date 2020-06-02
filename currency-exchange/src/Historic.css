@@ -23,14 +23,8 @@ select {
   border: 1px solid rgba(119, 119, 119, 0.5);
 }
 
-.currencyfacts div{
-	background-color: white;
-	border: 1px solid white;
-}
-
-.ratepag div {
-  padding: 40px;
-  
+.histo div{
+	padding: 7px;
 }
 
 h5{
