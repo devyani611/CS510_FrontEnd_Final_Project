@@ -59,9 +59,14 @@ class BarGraph extends React.Component {
 
         this.setState({
           Data: {
-            labels: date1,
+            labels: date1.map(function (obj) {
+              var temp = new Date(obj);
+              var months = temp.toLocaleString("en-US", { month: "short" });
+              return months;
+            }),
             datasets: [
               {
+                label: "Closing Rates on monthly basis",
                 data: close_rates,
                 backgroundColor: [
                   "rgba(255, 99, 132, 0.8)",
@@ -139,9 +144,14 @@ class BarGraph extends React.Component {
 
         this.setState({
           Data: {
-            labels: date1,
+            labels: date1.map(function (obj) {
+              var temp = new Date(obj);
+              var months = temp.toLocaleString("en-US", { month: "short" });
+              return months;
+            }),
             datasets: [
               {
+                label: "Closing Rates on monthly basis",
                 data: close_rates,
                 backgroundColor: [
                   "rgba(255, 99, 132, 0.8)",
@@ -189,8 +199,8 @@ class BarGraph extends React.Component {
   render() {
     return (
       <div>
-        <h4>Monthly closing rate for the year</h4>
-        <div>
+        <h4>Monthly closing rates for the year</h4>
+        <div id="select_wrapper">
           <span>
             <select
               style={{ width: "100px" }}
@@ -204,7 +214,9 @@ class BarGraph extends React.Component {
             </select>
           </span>
           <span>
-            <button onClick={this.convertHandler}>Go</button>
+            <button id="butn" onClick={this.convertHandler}>
+              Go
+            </button>
           </span>
         </div>
         <div className="Barchart_container">

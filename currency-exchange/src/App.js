@@ -185,7 +185,7 @@ class Home extends Component {
               <button onClick={this.convertHandler}>Convert</button>
             </div>
           </div>
-          <div className="col-lg-7 col-xl-7" id="col2">
+          <div className="col-lg-7 col-xl-7">
             <LineChart
               currencyfrom={this.state.fromCurrency}
               currencyto={this.state.toCurrency}

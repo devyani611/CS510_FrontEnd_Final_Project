@@ -21,12 +21,12 @@ body {
   float: right;
   margin: 5px;
 }
+
 div[class^="col"] {
   border: 5px solid white;
 }
 
 .container {
-  outline: solid 1px black;
   background-color: #e3e5e9;
   padding: 5px;
 }
@@ -54,11 +54,11 @@ select {
   color: black;
 }
 
-.react-calendar__navigation button{
+.react-calendar__navigation button {
   background-color: purple;
 }
 
-.react-calendar button{
+.react-calendar button {
   background-color: #f0f0f0;
 }
 

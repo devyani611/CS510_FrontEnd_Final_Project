@@ -70,13 +70,21 @@ export default class BarChartComponent extends Component {
               {
                 label: "Closing Rates for the year",
                 data: close_rates,
-                backgroundColor: ["rgba(255,105,145,0.6)"],
-                borderColor: ["rgba((34,139,34 1)"],
-                borderWidth: "2px",
                 fill: true,
-                lineTension: 0.5,
-                hoverBackgroundColor: "rgba(255,99,132,0.4)",
-                hoverBorderColor: "rgba(255,99,132,1)",
+                lineTension: 0.1,
+                backgroundColor: "rgba(75,192,192,0.4)",
+                borderColor: "rgba(75,192,192,1)",
+                borderCapStyle: "butt",
+                borderJoinStyle: "miter",
+                pointBorderColor: "rgba(75,192,192,1)",
+                pointBackgroundColor: "#fff",
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                pointHoverBorderColor: "rgba(220,220,220,1)",
+                pointHoverBorderWidth: 2,
+                pointRadius: 2,
+                pointHitRadius: 10,
               },
             ],
           },
@@ -109,10 +117,10 @@ export default class BarChartComponent extends Component {
           var year = temp.getFullYear();
           return (
             (date2 <= dd && month == mm && year == yyyy) ||
-            (month == mm - 1 && year == yyyy)
+            (date2 > dd && month == mm - 1 && year == yyyy)
           );
         });
-        //console.log(date1);
+
         for (var i = 0; i < date1.length; i++) {
           close_rates.push(
             Object.values(response.data["Time Series FX (Daily)"])[i][
@@ -127,13 +135,21 @@ export default class BarChartComponent extends Component {
               {
                 label: "Closing Rates for the Month",
                 data: close_rates,
-                backgroundColor: ["rgba(255,105,145,0.6)"],
-                borderColor: ["rgba((34,139,34 1)"],
-                borderWidth: "2px",
                 fill: true,
-                lineTension: 0.5,
-                hoverBackgroundColor: "rgba(255,99,132,0.4)",
-                hoverBorderColor: "rgba(255,99,132,1)",
+                lineTension: 0.1,
+                backgroundColor: "rgba(75,192,192,0.4)",
+                borderColor: "rgba(75,192,192,1)",
+                borderCapStyle: "butt",
+                borderJoinStyle: "miter",
+                pointBorderColor: "rgba(75,192,192,1)",
+                pointBackgroundColor: "#fff",
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                pointHoverBorderColor: "rgba(220,220,220,1)",
+                pointHoverBorderWidth: 2,
+                pointRadius: 2,
+                pointHitRadius: 10,
               },
             ],
           },
@@ -166,13 +182,21 @@ export default class BarChartComponent extends Component {
               {
                 label: "Closing Rate for the week",
                 data: close_rate,
-                backgroundColor: ["rgba(255,105,145,0.6)"],
-                borderColor: ["rgba((34,139,34 1)"],
-                borderWidth: "2px",
                 fill: true,
-                lineTension: 0.5,
-                hoverBackgroundColor: "rgba(255,99,132,0.4)",
-                hoverBorderColor: "rgba(255,99,132,1)",
+                lineTension: 0.1,
+                backgroundColor: "rgba(75,192,192,0.4)",
+                borderColor: "rgba(75,192,192,1)",
+                borderCapStyle: "butt",
+                borderJoinStyle: "miter",
+                pointBorderColor: "rgba(75,192,192,1)",
+                pointBackgroundColor: "#fff",
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                pointHoverBorderColor: "rgba(220,220,220,1)",
+                pointHoverBorderWidth: 2,
+                pointRadius: 2,
+                pointHitRadius: 10,
               },
             ],
           },
@@ -218,12 +242,23 @@ export default class BarChartComponent extends Component {
             labels: date1,
             datasets: [
               {
-                label: "Closing Rate for the day",
+                label: "Closing Rates for the day",
                 data: close_rates,
-                backgroundColor: ["rgba(255,105,145,0.6)"],
-                borderColor: ["rgba((34,139,34 1)"],
-                hoverBackgroundColor: "rgba(255,99,132,0.4)",
-                hoverBorderColor: "rgba(255,99,132,1)",
+                fill: true,
+                lineTension: 0.1,
+                backgroundColor: "rgba(75,192,192,0.4)",
+                borderColor: "rgba(75,192,192,1)",
+                borderCapStyle: "butt",
+                borderJoinStyle: "miter",
+                pointBorderColor: "rgba(75,192,192,1)",
+                pointBackgroundColor: "#fff",
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                pointHoverBorderColor: "rgba(220,220,220,1)",
+                pointHoverBorderWidth: 2,
+                pointRadius: 2,
+                pointHitRadius: 10,
               },
             ],
           },
@@ -254,6 +289,12 @@ export default class BarChartComponent extends Component {
                     display: true,
                   },
                 ],
+              },
+              legend: {
+                labels: {
+                  fontColor: "black",
+                  fontSize: 15,
+                },
               },
             }}
           />

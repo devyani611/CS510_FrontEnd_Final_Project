@@ -15,3 +15,14 @@
   width: auto;
   height: auto;
 }
+
+#select_wrapper {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: flex-end;
+  margin-top: 2%;
+}
+#butn {
+  margin-top: 8%;
+}
