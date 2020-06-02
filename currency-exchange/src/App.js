@@ -141,7 +141,7 @@ class Home extends Component {
 
               <div>
                 <label>Amount </label>
-                <br> </br>
+                <br></br>
                 <input
                   style={{ width: "200px" }}
                   name="amount"
@@ -151,7 +151,7 @@ class Home extends Component {
                     this.setState({ amount: event.target.value })
                   }
                 />
-                <br> </br>
+                <br></br>
               </div>
               <div>
                 <br></br>
@@ -181,7 +181,7 @@ class Home extends Component {
                     <option key={cur}>{cur}</option>
                   ))}
                 </select>
-                <br> </br>
+                <br></br>
               </div>
               <button onClick={this.convertHandler}>Convert</button>
             </div>
@@ -197,7 +197,7 @@ class Home extends Component {
           <div className="col-lg-4 col-xl-4">
             <div id="conversion_results">
               <h4>Calculation results</h4>
-              <br> </br>
+              <br></br>
 
               <center>
                 <div id="result">
@@ -206,12 +206,12 @@ class Home extends Component {
                   <span>{<h3>{this.state.result}</h3>}</span>
                   <span>{this.state.to} </span>
                 </div>
-                <br> </br>
-                <br> </br>
+                <br></br>
+                <br></br>
                 <span> 1 {this.state.from} = </span>
                 <span> {this.state.crate} </span>
                 <span> {this.state.to} </span>
-                <br> </br>
+                <br></br>
                 <span> 1 {this.state.to} = </span>
                 <span> {this.state.cinvrate} </span>
                 <span> {this.state.from} </span>
@@ -220,7 +220,7 @@ class Home extends Component {
           </div>
           <div className="col-lg-3 col-xl-3">
             <Rates currencyfrom = {this.state.fromCurrency} />
-            <br> </br>
+            <br></br>
           </div>
           <div className="col-lg-5 col-xl-5">
             <BarGraph
