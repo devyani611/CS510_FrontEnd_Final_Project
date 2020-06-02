@@ -60,7 +60,21 @@ class Home extends Component {
         for (const key in response.data.rates) {
           currencyAr.push(key);
         }
-        
+        axios
+          .get(
+            `https://api.exchangeratesapi.io/latest?base=${this.state.fromCurrency}`
+          )
+          .then((response) => {
+            amt = response.data.rates[this.state.toCurrency].toFixed(5);
+            rate = response.data.rates[this.state.toCurrency].toFixed(5);
+            axios
+              .get(`https://api.exchangeratesapi.io/latest?base=${this.state.toCurrency}&symbols=${this.state.fromCurrency}`)
+              .then((response) => {
+                invrate = response.data.rates[this.state.fromCurrency].toFixed(5);
+                this.setState({ cinvrate: invrate });
+              });
+            this.setState({ result: amt });
+            this.setState({ crate: rate });
           });
         this.setState({ currencies: currencyAr });
       })
