@@ -24,7 +24,6 @@ class OpenChart extends React.Component {
       this.componentDidMount();
     }
   }
-
   componentDidMount = () => {
     axios
       .get(
@@ -68,41 +67,8 @@ class OpenChart extends React.Component {
               {
                 label: `${this.props.currencyto} per 1 ${this.props.currencyfrom}`,
                 data: open_rates,
-                backgroundColor: [
-                  "rgba(110, 255, 255, 0.8)",
-                  "rgba(23, 236, 236, 0.8)",
-                  "rgba(75, 192, 192, 0.8)",
-                  "rgba(75, 192, 231, 0.8)",
-                  "rgba(82, 219, 230, 0.8)",
-                  "rgba(52, 204, 255, 0.8)",
-                  "rgba(0, 153, 204, 0.8)",
-                  "rgba(0, 102, 204, 0.8)",
-                  "rgba(0, 0, 255, 0.8)",
-                  "rgba(0, 0, 153, 0.8)",
-                  "rgba(0, 0, 102, 0.8)",
-                  "rgba(51, 0, 128, 0.8)",
-                  "rgba(51, 51, 204, 0.8)",
-                  "rgba(102, 0, 204, 0.8)",
-                  "rgba(102, 0, 255, 0.8)",
-                ],
-
-                hoverBackgroundColor: [
-                  "rgba(110, 255, 255, 0.2)",
-                  "rgba(23, 236, 236, 0.2)",
-                  "rgba(75, 192, 192, 0.2)",
-                  "rgba(75, 192, 231, 0.2)",
-                  "rgba(82, 219, 230, 0.2)",
-                  "rgba(52, 204, 255, 0.2)",
-                  "rgba(0, 153, 204, 0.2)",
-                  "rgba(0, 102, 204, 0.2)",
-                  "rgba(0, 0, 255, 0.2)",
-                  "rgba(0, 0, 153, 0.2)",
-                  "rgba(0, 0, 102, 0.2)",
-                  "rgba(51, 0, 128, 0.2)",
-                  "rgba(51, 51, 204, 0.2)",
-                  "rgba(102, 0, 204, 0.2)",
-                  "rgba(102, 0, 255, 0.2)",
-                ],
+                backgroundColor: "rgba(75,192,192,1)",
+                hoverBackgroundColor: "rgba(75,192,192,0.6)",
                 borderWidth: 2,
               },
             ],
@@ -142,6 +108,7 @@ class OpenChart extends React.Component {
         });
 
         this.setState({
+         
           Data: {
             labels: date1.map(function (obj) {
               var temp = new Date(obj);
@@ -152,41 +119,8 @@ class OpenChart extends React.Component {
               {
                 label: "Opening Rates on monthly basis",
                 data: open_rates,
-                backgroundColor: [
-                  "rgba(110, 255, 255, 0.8)",
-                  "rgba(23, 236, 236, 0.8)",
-                  "rgba(75, 192, 192, 0.8)",
-                  "rgba(75, 192, 231, 0.8)",
-                  "rgba(82, 219, 230, 0.8)",
-                  "rgba(52, 204, 255, 0.8)",
-                  "rgba(0, 153, 204, 0.8)",
-                  "rgba(0, 102, 204, 0.8)",
-                  "rgba(0, 0, 255, 0.8)",
-                  "rgba(0, 0, 153, 0.8)",
-                  "rgba(0, 0, 102, 0.8)",
-                  "rgba(51, 0, 128, 0.8)",
-                  "rgba(51, 51, 204, 0.8)",
-                  "rgba(102, 0, 204, 0.8)",
-                  "rgba(102, 0, 255, 0.8)",
-                ],
-
-                hoverBackgroundColor: [
-                  "rgba(110, 255, 255, 0.2)",
-                  "rgba(23, 236, 236, 0.2)",
-                  "rgba(75, 192, 192, 0.2)",
-                  "rgba(75, 192, 231, 0.2)",
-                  "rgba(82, 219, 230, 0.2)",
-                  "rgba(52, 204, 255, 0.2)",
-                  "rgba(0, 153, 204, 0.2)",
-                  "rgba(0, 102, 204, 0.2)",
-                  "rgba(0, 0, 255, 0.2)",
-                  "rgba(0, 0, 153, 0.2)",
-                  "rgba(0, 0, 102, 0.2)",
-                  "rgba(51, 0, 128, 0.2)",
-                  "rgba(51, 51, 204, 0.2)",
-                  "rgba(102, 0, 204, 0.2)",
-                  "rgba(102, 0, 255, 0.2)",
-                ],
+                backgroundColor: "rgba(75,192,192,1)",
+                hoverBackgroundColor: "rgba(75,192,192,0.6)",
                 borderWidth: 2,
               },
             ],
@@ -197,51 +131,58 @@ class OpenChart extends React.Component {
 
   render() {
     return (
-    <div>
-      <div id="header"><h4>Monthly Opening Rates</h4></div>
-      <div id="select_wrapper">
-        <span>
-          <select
-            style={{ width: "100px" , height:"35px" }}
-            name="year"
-            onChange={(event) => this.selectHandler(event)}
-            value={this.state.foryear}
-          >
-            {this.state.years.map((cur) => (
-              <option key={cur}>{cur}</option>
-            ))}
-          </select>
-        </span>
-        <span>
-          <button id="butn" onClick={this.convertHandler}>
-            Go
-          </button>
-        </span>
-      </div>
-      <div className="Barchart_container">
-        <Bar
-          data={this.state.Data}
-          options={{
-            responsive: true,
-            scales: {
-              xAxes: [
-                {
-                  display: true,
-                  gridLines: {
-                    offsetGridLines: true,
+      <div>
+        <div className="Barchart_container">
+          <h4>Monthly Opening Rates</h4>
+          <div id="select_wrapper">
+            <span>
+              <select
+                style={{ width: "80px", height: "35px" }}
+                name="year"
+                onChange={(event) => this.selectHandler(event)}
+                value={this.state.foryear}
+              >
+                {this.state.years.map((cur) => (
+                  <option key={cur}>{cur}</option>
+                ))}
+              </select>
+            </span>
+            <span>
+              <button id="butn" onClick={this.convertHandler}>
+                Go
+              </button>
+            </span>
+          </div>
+
+          <Bar 
+            data={this.state.Data}
+            width={50}
+            height={50}
+            options={{responsive: true, 
+              
+          
+              responsive: true,
+
+              scales: {
+                xAxes: [
+                  {
+                    display: true,
+                    gridLines: {
+                      offsetGridLines: true,
+                    },
                   },
-                },
-              ],
-              yAxes: [
-                {
-                  display: true,
-                },
-              ],
-            },
-          }}
-        />
+                ],
+                yAxes: [
+                  {
+                    display: true,
+                  },
+                ],
+              },
+          
+            }}
+          />
+        </div>
       </div>
-    </div>
     );
   }
 }
