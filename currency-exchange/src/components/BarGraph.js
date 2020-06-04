@@ -68,41 +68,8 @@ class BarGraph extends React.Component {
               {
                 label: `${this.props.currencyto} per 1 ${this.props.currencyfrom}`,
                 data: close_rates,
-                backgroundColor: [
-                  "rgba(255, 99, 132, 0.8)",
-                  "rgba(54, 162, 235, 0.8)",
-                  "rgba(255, 206, 86, 0.8)",
-                  "rgba(75, 192, 192, 0.8)",
-                  "rgba(153, 102, 255, 0.8)",
-                  "rgba(255, 99, 132, 0.8)",
-                  "rgba(54, 162, 235, 0.8)",
-                  "rgba(255, 206, 86, 0.8)",
-                  "rgba(75, 192, 192, 0.8)",
-                  "rgba(153, 102, 255, 0.8)",
-                  "rgba(255, 99, 132, 0.8)",
-                  "rgba(54, 162, 235, 0.8)",
-                  "rgba(255, 206, 86, 0.8)",
-                  "rgba(75, 192, 192, 0.8)",
-                  "rgba(153, 102, 255, 0.8)",
-                ],
-
-                hoverBackgroundColor: [
-                  "rgba(255, 99, 132, 0.2)",
-                  "rgba(54, 162, 235, 0.2)",
-                  "rgba(255, 206, 86, 0.2)",
-                  "rgba(75, 192, 192, 0.2)",
-                  "rgba(153, 102, 255, 0.2)",
-                  "rgba(255, 99, 132, 0.2)",
-                  "rgba(54, 162, 235, 0.2)",
-                  "rgba(255, 206, 86, 0.2)",
-                  "rgba(75, 192, 192, 0.2)",
-                  "rgba(153, 102, 255, 0.2)",
-                  "rgba(255, 99, 132, 0.2)",
-                  "rgba(54, 162, 235, 0.2)",
-                  "rgba(255, 206, 86, 0.2)",
-                  "rgba(75, 192, 192, 0.2)",
-                  "rgba(153, 102, 255, 0.2)",
-                ],
+                backgroundColor: "rgba(75,192,192,1)",
+                hoverBackgroundColor: "rgba(75,192,192,0.6)",
                 borderWidth: 2,
               },
             ],
@@ -142,6 +109,7 @@ class BarGraph extends React.Component {
         });
 
         this.setState({
+         
           Data: {
             labels: date1.map(function (obj) {
               var temp = new Date(obj);
@@ -152,41 +120,8 @@ class BarGraph extends React.Component {
               {
                 label: "Closing Rates on monthly basis",
                 data: close_rates,
-                backgroundColor: [
-                  "rgba(255, 99, 132, 0.8)",
-                  "rgba(54, 162, 235, 0.8)",
-                  "rgba(255, 206, 86, 0.8)",
-                  "rgba(75, 192, 192, 0.8)",
-                  "rgba(153, 102, 255, 0.8)",
-                  "rgba(255, 99, 132, 0.8)",
-                  "rgba(54, 162, 235, 0.8)",
-                  "rgba(255, 206, 86, 0.8)",
-                  "rgba(75, 192, 192, 0.8)",
-                  "rgba(153, 102, 255, 0.8)",
-                  "rgba(255, 99, 132, 0.8)",
-                  "rgba(54, 162, 235, 0.8)",
-                  "rgba(255, 206, 86, 0.8)",
-                  "rgba(75, 192, 192, 0.8)",
-                  "rgba(153, 102, 255, 0.8)",
-                ],
-
-                hoverBackgroundColor: [
-                  "rgba(255, 99, 132, 0.2)",
-                  "rgba(54, 162, 235, 0.2)",
-                  "rgba(255, 206, 86, 0.2)",
-                  "rgba(75, 192, 192, 0.2)",
-                  "rgba(153, 102, 255, 0.2)",
-                  "rgba(255, 99, 132, 0.2)",
-                  "rgba(54, 162, 235, 0.2)",
-                  "rgba(255, 206, 86, 0.2)",
-                  "rgba(75, 192, 192, 0.2)",
-                  "rgba(153, 102, 255, 0.2)",
-                  "rgba(255, 99, 132, 0.2)",
-                  "rgba(54, 162, 235, 0.2)",
-                  "rgba(255, 206, 86, 0.2)",
-                  "rgba(75, 192, 192, 0.2)",
-                  "rgba(153, 102, 255, 0.2)",
-                ],
+                backgroundColor: "rgba(75,192,192,1)",
+                hoverBackgroundColor: "rgba(75,192,192,0.6)",
                 borderWidth: 2,
               },
             ],
@@ -197,34 +132,36 @@ class BarGraph extends React.Component {
 
   render() {
     return (
-    <div>
-       <div id="header"><h4>Monthly closing rates</h4></div>
-      <div id="select_wrapper">
-      <span>
-        <select
-          style={{ width: "100px" , height:"35px" }}
-          name="year"
-          onChange={(event) => this.selectHandler(event)}
-          value={this.state.foryear}
-        >
-          {this.state.years.map((cur) => (
-            <option key={cur}>{cur}</option>
-          ))}
-        </select>
-      </span>
-      <span>
-        <button id="butn" onClick={this.convertHandler}>
-          Go
-        </button>
-      </span>
-    </div>
-   
-    
+      <div>
         <div className="Barchart_container">
-       
-          <Bar
+          <h4>Monthly Closing Rates</h4>
+          <div id="select_wrapper">
+            <span>
+              <select
+                style={{ width: "80px", height: "35px" }}
+                name="year"
+                onChange={(event) => this.selectHandler(event)}
+                value={this.state.foryear}
+              >
+                {this.state.years.map((cur) => (
+                  <option key={cur}>{cur}</option>
+                ))}
+              </select>
+            </span>
+            <span>
+              <button id="butn" onClick={this.convertHandler}>
+                Go
+              </button>
+            </span>
+          </div>
+
+          <Bar 
             data={this.state.Data}
-            options={{
+            width={50}
+            height={50}
+            options={{responsive: true, 
+              
+          
               responsive: true,
 
               scales: {
@@ -242,10 +179,11 @@ class BarGraph extends React.Component {
                   },
                 ],
               },
+          
             }}
           />
         </div>
-        </div>
+      </div>
     );
   }
 }

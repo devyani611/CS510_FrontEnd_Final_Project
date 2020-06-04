@@ -1,13 +1,20 @@
-import React from "react";
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
-import { Fragment } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Collapse,
+  NavbarToggler } from "reactstrap";
+import "./Navigation.css";
 
-const Navigation = () => {
+
+const Navigation = (props) => {
   const navStyle = {
     color: "black",
     textDecoration: 'none',
+    border:"none"
+    
   };
+  
+  const [isOpen, setIsOpen] = useState(false);
+  
+  const toggle = () => setIsOpen(!isOpen);
 
   const headStyle = {
     color: "rgba(75,192,192,1)",
@@ -15,11 +22,7 @@ const Navigation = () => {
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-lg-12 col-xl-12">
-          <Fragment>
             <Navbar
-              style={{ height: "50px" }}
               bg="dark"
               variant="dark"
               expand="md"
@@ -27,27 +30,26 @@ const Navigation = () => {
               <NavbarBrand style={headStyle} className="Brand" href="/">
                 <h2><b>X-rates Dash</b></h2>
               </NavbarBrand>
+              <NavbarToggler className="toggle" onClick={toggle} aria-controls="basic-navbar-nav">
+              &#x290A;</NavbarToggler>
+             
+              <Collapse isOpen={isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 <NavItem className="d-flex align-items-center">
-                  <NavLink className="font-weight-bold">
-                    <Link style={navStyle} to="/Ratespage">
-                      Rates Table
-                    </Link>
+                  <NavLink className="font-weight-bold" href="/Ratespage" style={navStyle}> 
+                  Rates Table   
                   </NavLink>
                 </NavItem>
                 <NavItem className="d-flex align-items-center">
-                  <NavLink className="font-weight-bold">
-                    <Link style={navStyle} to="/Historic">
+                  <NavLink className="font-weight-bold" href="/Historic" style={navStyle}>
                       Historic Lookup
-                    </Link>
                   </NavLink>
                 </NavItem>
               </Nav>
+              </Collapse>
             </Navbar>
-          </Fragment>
         </div>
-      </div>
-    </div>
+       
   );
 };
 

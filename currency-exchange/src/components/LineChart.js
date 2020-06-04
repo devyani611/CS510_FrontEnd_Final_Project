@@ -274,7 +274,7 @@ export default class BarChartComponent extends Component {
       <div>
         <div className="chart_container">
           <h4>
-            Time Series Graph for {this.props.currencyfrom} to{" "}
+            {this.props.currencyfrom} to{" "}
             {this.props.currencyto}
           </h4>
           <Line 
@@ -298,7 +298,7 @@ export default class BarChartComponent extends Component {
               legend: {
                 labels: {
                   fontColor: "black",
-                  fontSize: 15,
+                  fontSize: 12,
                 },
               },
             }}
@@ -307,26 +307,25 @@ export default class BarChartComponent extends Component {
         <div id="button_wrapper">
           <button
             name="5day"
-            className="button"
-            //onClick={this.OneDayClose}
+            className="butn"
             onClick={this.componentDidMount}
           >
             1 D
           </button>
 
-          <button name="1month" className="button" onClick={this.OneWeekClose}>
+          <button name="1month" className="butn" onClick={this.OneWeekClose}>
             1 W
           </button>
 
           <button
             name="6months"
-            className="button"
+            className="butn"
             onClick={this.OneMonthClose}
           >
             1 M
           </button>
 
-          <button name="ytd" className="button" onClick={this.OneYearClose}>
+          <button name="1year" className="butn" onClick={this.OneYearClose}>
             1 Y
           </button>
         </div>

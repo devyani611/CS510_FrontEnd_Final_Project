@@ -10,6 +10,10 @@ body {
   box-sizing: border-box;
 }
 
+div[class^="col-"] {
+  border: 5px solid #e3e5e9;
+}
+
 .Brand {
   color: white;
 }
@@ -18,13 +22,18 @@ body {
   color: white;
 }
 
-div[class^="col"] {
-  border: 5px solid #e3e5e9;
+#wrapper{
+ height: 60px;
+ background-color: white;
+ padding-bottom: 20px;
+ padding-top: 2px;
+ 
+
 }
 
 .container {
   background-color: white;
-  padding: 5px;
+  border: 2px solid #e3e5e9;
 }
 
 .From {
@@ -58,13 +67,13 @@ select {
   box-shadow: 0px 1px 1px rgba(000, 000, 000, 0.5),
     inset 1px 2px 0px rgba(70, 68, 68, 0.4);
   padding: 1%;
-  margin-top: 10%;
+  margin-top: 6%;
   margin-bottom: 2%;
   width: auto;
 }
 
 #result {
-  background-color: rgb(220, 230, 235);
+  background-color: rgba(75,192,192,0.4);
   border-radius: 5px;
   border-bottom: 2px solid grey;
 }
