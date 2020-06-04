@@ -73,9 +73,10 @@ select {
 }
 
 #result {
-  background-color: rgba(75,192,192,0.4);
+  background-color: purple;
   border-radius: 5px;
   border-bottom: 2px solid grey;
+  color: white;
 }
 
 footer{
@@ -88,13 +89,13 @@ footer{
 }
 
 button{
-  background-color: rgba(75,192,192,1);
+  background-color: purple;
   color: white;
   border: 1px double white;
 }
 
 #convertbutton{
-  background-color: rgba(75,192,192,1);
+  background-color: purple;
   color: white;
-  border: 1px double rgba(75,192,192,1);
+  border: 1px double purple;
 }

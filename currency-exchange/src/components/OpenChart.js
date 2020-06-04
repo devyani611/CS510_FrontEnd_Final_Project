@@ -27,7 +27,7 @@ class OpenChart extends React.Component {
   componentDidMount = () => {
     axios
       .get(
-        `https://www.alphavantage.co/query?function=FX_MONTHLY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&apikey=X2DRFB6QVEIV9IXL`
+        `https://www.alphavantage.co/query?function=FX_MONTHLY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&apikey=B9ZVAB9VTJOSUOMD`
       )
       .then((response) => {
         let open_rates = [];
@@ -86,7 +86,7 @@ class OpenChart extends React.Component {
   convertHandler = () => {
     axios
       .get(
-        `https://www.alphavantage.co/query?function=FX_MONTHLY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&apikey=X2DRFB6QVEIV9IXL`
+        `https://www.alphavantage.co/query?function=FX_MONTHLY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&apikey=B9ZVAB9VTJOSUOMD`
       )
       .then((response) => {
         let open_rates = [];
@@ -119,8 +119,8 @@ class OpenChart extends React.Component {
               {
                 label: "Opening Rates on monthly basis",
                 data: open_rates,
-                backgroundColor: "rgba(75,192,192,1)",
-                hoverBackgroundColor: "rgba(75,192,192,0.6)",
+                backgroundColor: "rgba(128,0,128,1)",
+                hoverBackgroundColor: "rgba(128,0,128,0.6)",
                 borderWidth: 2,
               },
             ],

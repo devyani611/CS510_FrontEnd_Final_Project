@@ -10,14 +10,14 @@ const tableStyle = {
 };
 
 const headStyle = {
-  color: "rgba(75,192,192,1)",
+  color: "purple",
   fontWeight: "bold",
 };
 
 const buttonstyle = {
-  backgroundColor: "rgba(75,192,192,1)",
+  backgroundColor: "purple",
   color: "white",
-  border: "1px double rgba(75,192,192,1)",
+  border: "1px double purple",
 };
 
 class Historic extends React.Component {

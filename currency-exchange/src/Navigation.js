@@ -17,7 +17,7 @@ const Navigation = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   const headStyle = {
-    color: "rgba(75,192,192,1)",
+    color: "purple",
   };
 
   return (
