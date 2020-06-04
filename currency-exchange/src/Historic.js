@@ -17,7 +17,7 @@ const headStyle = {
 const buttonstyle = {
   backgroundColor: "rgba(75,192,192,1)",
   color: "white",
-  border: "1px double grey",
+  border: "1px double rgba(75,192,192,1)",
 };
 
 class Historic extends React.Component {
@@ -46,6 +46,7 @@ class Historic extends React.Component {
         const currencycountry = [];
         const currency = [];
         const invcurrency = [];
+        
         for (const key in response.data.rates) {
           currency.push(key);
           if (key == this.state.fromCurrency) continue;
@@ -98,11 +99,13 @@ class Historic extends React.Component {
       "Nov",
       "Dec",
     ];
+
     for (var i = 0; i < 12; i++) {
       if (d[1] == month[i]) {
         month_num = i + 1;
       }
     }
+    
     var Cdate = d[3] + "-" + month_num + "-" + d[2];
     axios
       .get(
@@ -180,7 +183,7 @@ class Historic extends React.Component {
             </Table>
           </div>
           <div className="col-lg-6 col-xl-6 histo">
-            <div className="row">
+            <div className="historic_row">
               <div className="col-lg-12 col-xl-12">
                 <br></br>
                 <center>

@@ -67,9 +67,7 @@ class Home extends Component {
                 `https://api.exchangeratesapi.io/latest?base=${this.state.toCurrency}&symbols=${this.state.fromCurrency}`
               )
               .then((response) => {
-                invrate = response.data.rates[this.state.fromCurrency].toFixed(
-                  5
-                );
+                invrate = response.data.rates[this.state.fromCurrency].toFixed(5);
                 this.setState({ cinvrate: invrate });
               });
             this.setState({ result: amt });
@@ -137,7 +135,6 @@ class Home extends Component {
                   &#x1f4b5;
                 </span>
               </h4>
-
               <div>
                 <label>Amount </label>
                 <br></br>
@@ -182,7 +179,7 @@ class Home extends Component {
                 </select>
                 <br></br>
               </div>
-              <button onClick={this.convertHandler}>Convert</button>
+              <button onClick={this.convertHandler} id="convertbutton">Convert</button>
             </div>
           </div>
           <div className="col-lg-3 col-xl-3">
@@ -207,7 +204,6 @@ class Home extends Component {
                 <span> {this.state.from} </span>
               </center>
             </div>
-          
           </div>
           <div className="col-lg-5 col-xl-5">
           <LineChart
@@ -226,7 +222,6 @@ class Home extends Component {
               currencyfrom={this.state.fromCurrency}
               currencyto={this.state.toCurrency}
             />
-          
           </div>
           <div className="col-lg-4 col-xl-4">
             <BarGraph

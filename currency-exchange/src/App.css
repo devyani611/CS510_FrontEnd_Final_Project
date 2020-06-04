@@ -92,3 +92,9 @@ button{
   color: white;
   border: 1px double white;
 }
+
+#convertbutton{
+  background-color: rgba(75,192,192,1);
+  color: white;
+  border: 1px double rgba(75,192,192,1);
+}

@@ -15,7 +15,7 @@ const headStyle = {
 const buttonstyle = {
   backgroundColor: "rgba(75,192,192,1)",
   color: "white",
-  border: "1px double grey",
+  border: "1px double rgba(75,192,192,1)",
 };
 
 class Ratespage extends React.Component {
@@ -44,6 +44,7 @@ class Ratespage extends React.Component {
         const currencycountry = [];
         const currency = [];
         const invcurrency = [];
+        
         for (const key in response.data.rates) {
           currency.push(key);
           if (key == this.state.fromCurrency) continue;
@@ -205,7 +206,7 @@ class Ratespage extends React.Component {
             </Table>
           </div>
           <div className="col-lg-6 col-xl-6 ratepag">
-            <div className="row">
+            <div className="currency_row">
               <div className="col-lg-12 col-xl-12">
                 <br></br>
                 <center>
@@ -221,12 +222,13 @@ class Ratespage extends React.Component {
                   </select>
                   <br></br>
                   <br></br>
+                  
                   <button onClick={this.convertHandler} style={buttonstyle}>Go</button>
                   <br></br>
                 </center>
               </div>
             </div>
-            <div className="row">
+            <div className="facts_row">
               <div className="col-lg-12 col-xl-12">
                 <br></br>
                 <center>

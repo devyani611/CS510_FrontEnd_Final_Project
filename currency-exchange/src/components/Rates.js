@@ -28,6 +28,7 @@ const Rates = (props) => {
       "SGD",
       "AUD",
     ];
+    
     axios
       .get(`https://api.exchangeratesapi.io/latest?base=${props.currencyfrom}`)
       .then((response) => {
