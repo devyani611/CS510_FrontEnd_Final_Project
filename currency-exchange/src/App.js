@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
 import Navigation from "./Navigation";
@@ -23,10 +23,6 @@ function App() {
     </Router>
   );
 }
-
-const footerstyle = {
-  backgroundColor: "orange",
-};
 
 class Home extends Component {
   constructor(props) {
@@ -180,7 +176,9 @@ class Home extends Component {
                 </select>
                 <br></br>
               </div>
-              <button onClick={this.convertHandler} id="convertbutton">Convert</button>
+              <button onClick={this.convertHandler} id="convertbutton">
+                Convert
+              </button>
             </div>
           </div>
           <div className="col-lg-3 col-xl-3">

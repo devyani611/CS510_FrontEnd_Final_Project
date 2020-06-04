@@ -30,7 +30,6 @@ class BarGraph extends React.Component {
         `https://www.alphavantage.co/query?function=FX_MONTHLY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&apikey=B9ZVAB9VTJOSUOMD`
       )
       .then((response) => {
-        //console.log(response.data);
         let close_rates = [];
         let Nyears = [];
         let distinctyears = [];
@@ -109,7 +108,6 @@ class BarGraph extends React.Component {
         });
 
         this.setState({
-         
           Data: {
             labels: date1.map(function (obj) {
               var temp = new Date(obj);
@@ -155,13 +153,11 @@ class BarGraph extends React.Component {
             </span>
           </div>
 
-          <Bar 
+          <Bar
             data={this.state.Data}
             width={50}
             height={50}
-            options={{responsive: true, 
-              
-          
+            options={{
               responsive: true,
 
               scales: {
@@ -179,7 +175,6 @@ class BarGraph extends React.Component {
                   },
                 ],
               },
-          
             }}
           />
         </div>

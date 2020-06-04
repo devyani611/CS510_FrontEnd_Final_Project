@@ -56,7 +56,7 @@ const Rates = (props) => {
       <center>
         <h5> Top 10 currencies</h5>
       </center>
-      <Table borderless>
+      <Table responsive>
         <center>
           <thead>
             <tr>

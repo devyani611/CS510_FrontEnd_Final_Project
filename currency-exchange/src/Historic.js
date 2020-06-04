@@ -145,7 +145,7 @@ class Historic extends React.Component {
 
   render() {
     return (
-      <div className="app-container container">
+      <div className="container">
         <div className="row">
           <div className="col-lg-12 col-xl-12">
             <h4> Historic Lookup Table </h4>
@@ -153,7 +153,7 @@ class Historic extends React.Component {
         </div>
         <div className="row">
           <div className="col-lg-6 col-xl-6">
-            <Table borderless>
+            <Table responsive>
               <thead>
                 <tr>
                   <th style={headStyle}>{this.state.from}</th>
