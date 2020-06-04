@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/CS510_FrontEnd_Final_Project/currency-exchange/static/css/main.6b830825.chunk.css",
-    "main.js": "/CS510_FrontEnd_Final_Project/currency-exchange/static/js/main.84aec789.chunk.js",
-    "main.js.map": "/CS510_FrontEnd_Final_Project/currency-exchange/static/js/main.84aec789.chunk.js.map",
-    "runtime-main.js": "/CS510_FrontEnd_Final_Project/currency-exchange/static/js/runtime-main.21af4b1e.js",
-    "runtime-main.js.map": "/CS510_FrontEnd_Final_Project/currency-exchange/static/js/runtime-main.21af4b1e.js.map",
-    "static/css/2.80468ea7.chunk.css": "/CS510_FrontEnd_Final_Project/currency-exchange/static/css/2.80468ea7.chunk.css",
-    "static/js/2.34bfe79e.chunk.js": "/CS510_FrontEnd_Final_Project/currency-exchange/static/js/2.34bfe79e.chunk.js",
-    "static/js/2.34bfe79e.chunk.js.map": "/CS510_FrontEnd_Final_Project/currency-exchange/static/js/2.34bfe79e.chunk.js.map",
-    "index.html": "/CS510_FrontEnd_Final_Project/currency-exchange/index.html",
-    "precache-manifest.b4ff1162ed5983c1b0e4c34432a714c4.js": "/CS510_FrontEnd_Final_Project/currency-exchange/precache-manifest.b4ff1162ed5983c1b0e4c34432a714c4.js",
-    "service-worker.js": "/CS510_FrontEnd_Final_Project/currency-exchange/service-worker.js",
-    "static/css/2.80468ea7.chunk.css.map": "/CS510_FrontEnd_Final_Project/currency-exchange/static/css/2.80468ea7.chunk.css.map",
-    "static/css/main.6b830825.chunk.css.map": "/CS510_FrontEnd_Final_Project/currency-exchange/static/css/main.6b830825.chunk.css.map",
-    "static/js/2.34bfe79e.chunk.js.LICENSE.txt": "/CS510_FrontEnd_Final_Project/currency-exchange/static/js/2.34bfe79e.chunk.js.LICENSE.txt"
+    "main.css": "/CS510_FrontEnd_Final_Project/static/css/main.6b830825.chunk.css",
+    "main.js": "/CS510_FrontEnd_Final_Project/static/js/main.ae63d5d5.chunk.js",
+    "main.js.map": "/CS510_FrontEnd_Final_Project/static/js/main.ae63d5d5.chunk.js.map",
+    "runtime-main.js": "/CS510_FrontEnd_Final_Project/static/js/runtime-main.9467be4b.js",
+    "runtime-main.js.map": "/CS510_FrontEnd_Final_Project/static/js/runtime-main.9467be4b.js.map",
+    "static/css/2.80468ea7.chunk.css": "/CS510_FrontEnd_Final_Project/static/css/2.80468ea7.chunk.css",
+    "static/js/2.dfdbbcb6.chunk.js": "/CS510_FrontEnd_Final_Project/static/js/2.dfdbbcb6.chunk.js",
+    "static/js/2.dfdbbcb6.chunk.js.map": "/CS510_FrontEnd_Final_Project/static/js/2.dfdbbcb6.chunk.js.map",
+    "index.html": "/CS510_FrontEnd_Final_Project/index.html",
+    "precache-manifest.c124af05f44f11a3b19e400953aff4ce.js": "/CS510_FrontEnd_Final_Project/precache-manifest.c124af05f44f11a3b19e400953aff4ce.js",
+    "service-worker.js": "/CS510_FrontEnd_Final_Project/service-worker.js",
+    "static/css/2.80468ea7.chunk.css.map": "/CS510_FrontEnd_Final_Project/static/css/2.80468ea7.chunk.css.map",
+    "static/css/main.6b830825.chunk.css.map": "/CS510_FrontEnd_Final_Project/static/css/main.6b830825.chunk.css.map",
+    "static/js/2.dfdbbcb6.chunk.js.LICENSE.txt": "/CS510_FrontEnd_Final_Project/static/js/2.dfdbbcb6.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.21af4b1e.js",
+    "static/js/runtime-main.9467be4b.js",
     "static/css/2.80468ea7.chunk.css",
-    "static/js/2.34bfe79e.chunk.js",
+    "static/js/2.dfdbbcb6.chunk.js",
     "static/css/main.6b830825.chunk.css",
-    "static/js/main.84aec789.chunk.js"
+    "static/js/main.ae63d5d5.chunk.js"
   ]
 }
