@@ -30,7 +30,8 @@ const Navigation = (props) => {
               <NavbarBrand style={headStyle} className="Brand" href="/">
                 <h2><b>X-rates Dash</b></h2>
               </NavbarBrand>
-              <NavbarToggler className="toggle" onClick={toggle} aria-controls="basic-navbar-nav">
+              <NavbarToggler id="toggle" onClick={toggle} aria-controls="basic-navbar-nav" 
+              aria-label="Toggle navigation">
               &#x290A;</NavbarToggler>
              
               <Collapse isOpen={isOpen} navbar>

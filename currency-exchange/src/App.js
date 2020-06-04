@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
 import Navigation from "./Navigation";
@@ -67,7 +67,9 @@ class Home extends Component {
                 `https://api.exchangeratesapi.io/latest?base=${this.state.toCurrency}&symbols=${this.state.fromCurrency}`
               )
               .then((response) => {
-                invrate = response.data.rates[this.state.fromCurrency].toFixed(5);
+                invrate = response.data.rates[this.state.fromCurrency].toFixed(
+                  5
+                );
                 this.setState({ cinvrate: invrate });
               });
             this.setState({ result: amt });
@@ -180,11 +182,13 @@ class Home extends Component {
                 </select>
                 <br></br>
               </div>
-              <button onClick={this.convertHandler} id="convertbutton">Convert</button>
+              <button onClick={this.convertHandler} id="convertbutton">
+                Convert
+              </button>
             </div>
           </div>
           <div className="col-lg-3 col-xl-3">
-          <div id="conversion_results">
+            <div id="conversion_results">
               <h4>Calculation Results</h4>
               <br></br>
               <center>
@@ -207,7 +211,7 @@ class Home extends Component {
             </div>
           </div>
           <div className="col-lg-5 col-xl-5">
-          <LineChart
+            <LineChart
               currencyfrom={this.state.fromCurrency}
               currencyto={this.state.toCurrency}
             />
@@ -215,11 +219,11 @@ class Home extends Component {
         </div>
         <div className="row">
           <div className="col-lg-4 col-xl-4">
-          <Rates currencyfrom={this.state.fromCurrency} />
+            <Rates currencyfrom={this.state.fromCurrency} />
             <br></br>
           </div>
           <div className="col-lg-4 col-xl-4">
-          <OpenChart
+            <OpenChart
               currencyfrom={this.state.fromCurrency}
               currencyto={this.state.toCurrency}
             />

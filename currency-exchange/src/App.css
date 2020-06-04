@@ -22,15 +22,6 @@ div[class^="col-"] {
   color: white;
 }
 
-#wrapper{
- height: 60px;
- background-color: white;
- padding-bottom: 20px;
- padding-top: 2px;
- 
-
-}
-
 .container {
   background-color: white;
   border: 2px solid #e3e5e9;
@@ -72,29 +63,35 @@ select {
   width: auto;
 }
 
+#conversion_results:hover {
+  -webkit-transform: scale(1.02);
+  -ms-transform: scale(1.02);
+  transform: scale(1.02);
+}
+
 #result {
-  background-color: rgba(75,192,192,0.4);
+  background-color: rgba(75, 192, 192, 0.4);
   border-radius: 5px;
   border-bottom: 2px solid grey;
 }
 
-footer{
+footer {
   margin-top: 1%;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  color: black;  
+  color: black;
   padding: 1%;
 }
 
-button{
-  background-color: rgba(75,192,192,1);
+button {
+  background-color: rgba(75, 192, 192, 1);
   color: white;
   border: 1px double white;
 }
 
-#convertbutton{
-  background-color: rgba(75,192,192,1);
+#convertbutton {
+  background-color: rgba(75, 192, 192, 1);
   color: white;
-  border: 1px double rgba(75,192,192,1);
+  border: 1px double rgba(75, 192, 192, 1);
 }

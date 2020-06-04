@@ -1,16 +1,6 @@
 import React, { Component } from "react";
 import { Line } from "react-chartjs-2";
 import axios from "axios";
-import {
-  Container,
-  Col,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Button,
-  Row,
-} from "reactstrap";
 import "./LineChart.css";
 
 export default class BarChartComponent extends Component {
@@ -38,23 +28,20 @@ export default class BarChartComponent extends Component {
       .then((response) => {
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, "0");
-        var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+        var mm = String(today.getMonth() + 1).padStart(2, "0");
         var yyyy = today.getFullYear();
-
         let close_rates = [];
-
         var OneYear = Object.keys(response.data["Time Series FX (Daily)"]);
         var date1 = OneYear.filter(function (obj) {
           var temp = new Date(obj);
           var date2 = temp.getDate();
-          var month = (temp.getMonth()+1);
+          var month = temp.getMonth() + 1;
           var year = temp.getFullYear();
           return (
             (date2 <= dd && month <= mm && year == yyyy) ||
             (date2 >= dd && month >= mm && year == yyyy - 1)
           );
         });
-        //console.log(date1);
 
         for (var i = 0; i < date1.length; i++) {
           close_rates.push(
@@ -102,7 +89,7 @@ export default class BarChartComponent extends Component {
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, "0");
 
-        var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+        var mm = String(today.getMonth() + 1).padStart(2, "0");
 
         var yyyy = today.getFullYear();
 
@@ -113,12 +100,12 @@ export default class BarChartComponent extends Component {
         var date1 = OneMonth.filter(function (obj) {
           var temp = new Date(obj);
           var date2 = temp.getDate();
-          var month = (temp.getMonth()+1);
+          var month = temp.getMonth() + 1;
           var year = temp.getFullYear();
-         
+
           return (
             (date2 <= dd && month == mm && year == yyyy) ||
-            (month == mm-1 && year == yyyy)
+            (month == mm - 1 && year == yyyy)
           );
         });
 
@@ -216,8 +203,6 @@ export default class BarChartComponent extends Component {
         var dates = [];
         console.log("load data for the day");
         const data = response.data["Time Series FX (30min)"];
-        //console.log(response.data["Time Series FX (30min)"]);
-
         const Oneday_date = Object.keys(
           response.data["Time Series FX (30min)"]
         );
@@ -231,7 +216,7 @@ export default class BarChartComponent extends Component {
 
           return date2 == today;
         });
-        //console.log(date1);
+
         for (var i = 0; i < date1.length; i++) {
           close_rates.push(
             Object.values(response.data["Time Series FX (30min)"])[i][
@@ -239,7 +224,7 @@ export default class BarChartComponent extends Component {
             ]
           );
         }
-        //console.log(close_rates);
+
         this.setState({
           Data: {
             labels: date1,
@@ -274,16 +259,14 @@ export default class BarChartComponent extends Component {
       <div>
         <div className="chart_container">
           <h4>
-            {this.props.currencyfrom} to{" "}
-            {this.props.currencyto}
+            {this.props.currencyfrom} to {this.props.currencyto}
           </h4>
-          <Line 
+          <Line
             data={this.state.Data}
             options={{
               responsive: true,
 
               scales: {
-               
                 xAxes: [
                   {
                     display: false,
@@ -305,11 +288,7 @@ export default class BarChartComponent extends Component {
           />
         </div>
         <div id="button_wrapper">
-          <button
-            name="5day"
-            className="butn"
-            onClick={this.componentDidMount}
-          >
+          <button name="5day" className="butn" onClick={this.componentDidMount}>
             1 D
           </button>
 
@@ -317,11 +296,7 @@ export default class BarChartComponent extends Component {
             1 W
           </button>
 
-          <button
-            name="6months"
-            className="butn"
-            onClick={this.OneMonthClose}
-          >
+          <button name="6months" className="butn" onClick={this.OneMonthClose}>
             1 M
           </button>
 
