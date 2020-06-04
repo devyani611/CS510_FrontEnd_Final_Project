@@ -136,11 +136,12 @@ class Home extends Component {
                 </span>
               </h4>
               <div>
-                <label>Amount </label>
+                <label for="amount">Amount </label>
                 <br></br>
                 <input
                   style={{ width: "200px" }}
                   name="amount"
+                  id="amount"
                   type="text"
                   value={this.state.amount}
                   onChange={(event) =>

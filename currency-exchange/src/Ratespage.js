@@ -210,11 +210,13 @@ class Ratespage extends React.Component {
               <div className="col-lg-12 col-xl-12">
                 <br></br>
                 <center>
-                  <h5>Choose the currency</h5>
+                  <h5><label for="from">Choose the currency</label></h5>
                   <select
                     name="from"
+                    id="from"
                     onChange={(event) => this.selectHandler(event)}
                     value={this.state.fromCurrency}
+                    aria-required="true"
                   >
                     {this.state.currency.map((cur) => (
                       <option key={cur}>{cur}</option>
