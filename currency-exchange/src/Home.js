@@ -7,7 +7,6 @@ import BarGraph from "./components/BarGraph";
 import OpenChart from "./components/OpenChart";
 import "./Converter.css";
 
-
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -17,8 +16,6 @@ class Home extends Component {
       toCurrency: "GBP",
       amount: 1,
       currencies: [],
-      crate: 1,
-      cinvrate: 1,
       from: "USD",
       to: "GBP",
     };
@@ -35,24 +32,7 @@ class Home extends Component {
         for (const key in response.data.rates) {
           currencyAr.push(key);
         }
-        axios
-          .get(
-            `https://api.exchangeratesapi.io/latest?base=${this.state.fromCurrency}`
-          )
-          .then((response) => {
-            amt = response.data.rates[this.state.toCurrency].toFixed(5);
-            rate = response.data.rates[this.state.toCurrency].toFixed(5);
-            axios
-              .get(
-                `https://api.exchangeratesapi.io/latest?base=${this.state.toCurrency}&symbols=${this.state.fromCurrency}`
-              )
-              .then((response) => {
-                invrate = response.data.rates[this.state.fromCurrency].toFixed(5);
-                this.setState({ cinvrate: invrate });
-              });
-            this.setState({ result: amt });
-            this.setState({ crate: rate });
-          });
+
         this.setState({ currencies: currencyAr });
       })
       .catch((err) => {
@@ -73,15 +53,7 @@ class Home extends Component {
           var rate;
           var invrate;
           rate = response.data.rates[this.state.toCurrency].toFixed(5);
-          axios
-            .get(
-              `https://api.exchangeratesapi.io/latest?base=${this.state.toCurrency}&symbols=${this.state.fromCurrency}`
-            )
-            .then((response) => {
-              invrate = response.data.rates[this.state.fromCurrency].toFixed(5);
-              this.setState({ cinvrate: invrate });
-            });
-          this.setState({ crate: rate });
+
           this.setState({ from: this.state.fromCurrency });
           this.setState({ to: this.state.toCurrency });
         })
@@ -105,7 +77,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="container"  role="main">
+      <div className="container" role="main">
         <div className="row">
           <div className="col-lg-4 col-xl-4">
             <div id="Converter">
@@ -168,7 +140,7 @@ class Home extends Component {
             </div>
           </div>
           <div className="col-lg-3 col-xl-3">
-          <div id="conversion_results">
+            <div id="conversion_results">
               <div id="heading2">Calculation Results</div>
               <br></br>
               <center>
@@ -180,34 +152,18 @@ class Home extends Component {
                 </div>
                 <br></br>
                 <br></br>
-                <span> 1 {this.state.from} = </span>
-                <span> {this.state.crate} </span>
-                <span> {this.state.to} </span>
-                <br></br>
-                <span> 1 {this.state.to} = </span>
-                <span> {this.state.cinvrate} </span>
-                <span> {this.state.from} </span>
               </center>
             </div>
           </div>
           <div className="col-lg-5 col-xl-5">
-          <LineChart
+            <LineChart
               currencyfrom={this.state.fromCurrency}
               currencyto={this.state.toCurrency}
             />
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-4 col-xl-4">
-          <Rates currencyfrom={this.state.fromCurrency} />
-            <br></br>
-          </div>
-          <div className="col-lg-4 col-xl-4">
-          <OpenChart
-              currencyfrom={this.state.fromCurrency}
-              currencyto={this.state.toCurrency}
-            />
-          </div>
+          <div className="col-lg-4 col-xl-4"></div>
           <div className="col-lg-4 col-xl-4">
             <BarGraph
               currencyfrom={this.state.fromCurrency}
@@ -216,13 +172,7 @@ class Home extends Component {
             <br></br>
           </div>
         </div>
-        <footer class="page-footer footer font-small" role="contentinfo">
-        © 2020 All rights reserved
-      </footer>
       </div>
-    
-     
-    
     );
   }
 }
