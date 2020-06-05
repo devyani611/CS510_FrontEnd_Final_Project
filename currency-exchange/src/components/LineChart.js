@@ -59,11 +59,11 @@ export default class BarChartComponent extends Component {
                 data: close_rates,
                 fill: true,
                 lineTension: 0.1,
-                backgroundColor: "rgba(75,192,192,0.4)",
-                borderColor: "rgba(75,192,192,1)",
+                backgroundColor: "rgba(128,0,128,0.9)",
+                borderColor: "rgba(128,0,128,0.6)",
                 borderCapStyle: "butt",
                 borderJoinStyle: "miter",
-                pointBorderColor: "rgba(75,192,192,1)",
+                pointBorderColor: "rgba(128,0,128,1)",
                 pointBackgroundColor: "#fff",
                 pointBorderWidth: 1,
                 pointHoverRadius: 5,
@@ -83,7 +83,7 @@ export default class BarChartComponent extends Component {
     console.log("one month data");
     axios
       .get(
-        `https://www.alphavantage.co/query?function=FX_DAILY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&outputsize=full&apikey=B9ZVAB9VTJOSUOMD`
+        `https://www.alphavantage.co/query?function=FX_DAILY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&outputsize=full&apikey=X2DRFB6QVEIV9IXL`
       )
       .then((response) => {
         var today = new Date();
@@ -127,11 +127,11 @@ export default class BarChartComponent extends Component {
                 data: close_rates,
                 fill: true,
                 lineTension: 0.1,
-                backgroundColor: "rgba(75,192,192,0.4)",
-                borderColor: "rgba(75,192,192,1)",
+                backgroundColor: "rgba(128,0,128,0.9)",
+                borderColor: "rgba(128,0,128,0.6)",
                 borderCapStyle: "butt",
                 borderJoinStyle: "miter",
-                pointBorderColor: "rgba(75,192,192,1)",
+                pointBorderColor: "rgba(128,0,128,1)",
                 pointBackgroundColor: "#fff",
                 pointBorderWidth: 1,
                 pointHoverRadius: 5,
@@ -174,11 +174,11 @@ export default class BarChartComponent extends Component {
                 data: close_rate,
                 fill: true,
                 lineTension: 0.1,
-                backgroundColor: "rgba(75,192,192,0.4)",
-                borderColor: "rgba(75,192,192,1)",
+                backgroundColor: "rgba(128,0,128,0.9)",
+                borderColor: "rgba(128,0,128,0.6)",
                 borderCapStyle: "butt",
                 borderJoinStyle: "miter",
-                pointBorderColor: "rgba(75,192,192,1)",
+                pointBorderColor: "rgba(128,0,128,1)",
                 pointBackgroundColor: "#fff",
                 pointBorderWidth: 1,
                 pointHoverRadius: 5,
@@ -196,15 +196,15 @@ export default class BarChartComponent extends Component {
   componentDidMount = () => {
     axios
       .get(
-        `https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&interval=30min&apikey=B9ZVAB9VTJOSUOMD`
+        `https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&interval=15min&apikey=B9ZVAB9VTJOSUOMD`
       )
       .then((response) => {
         var close_rates = [];
         var dates = [];
         console.log("load data for the day");
-        const data = response.data["Time Series FX (30min)"];
+        const data = response.data["Time Series FX (15min)"];
         const Oneday_date = Object.keys(
-          response.data["Time Series FX (30min)"]
+          response.data["Time Series FX (15min)"]
         );
 
         var date1 = Oneday_date.filter(function (obj) {
@@ -219,7 +219,7 @@ export default class BarChartComponent extends Component {
 
         for (var i = 0; i < date1.length; i++) {
           close_rates.push(
-            Object.values(response.data["Time Series FX (30min)"])[i][
+            Object.values(response.data["Time Series FX (15min)"])[i][
               "4. close"
             ]
           );
@@ -234,11 +234,11 @@ export default class BarChartComponent extends Component {
                 data: close_rates,
                 fill: true,
                 lineTension: 0.1,
-                backgroundColor: "rgba(75,192,192,0.4)",
-                borderColor: "rgba(75,192,192,1)",
+                backgroundColor: "rgba(128,0,128,0.9)",
+                borderColor: "rgba(128,0,128,0.6)",
                 borderCapStyle: "butt",
                 borderJoinStyle: "miter",
-                pointBorderColor: "rgba(75,192,192,1)",
+                pointBorderColor: "rgba(128,0,128,1)",
                 pointBackgroundColor: "#fff",
                 pointBorderWidth: 1,
                 pointHoverRadius: 5,
@@ -258,9 +258,9 @@ export default class BarChartComponent extends Component {
     return (
       <div>
         <div className="chart_container">
-          <h4>
+          <div id="heading3">
             {this.props.currencyfrom} to {this.props.currencyto}
-          </h4>
+          </div>
           <Line
             data={this.state.Data}
             options={{
