@@ -23,6 +23,12 @@ div[class^="col-"] {
   font-size: 20px;
   font-weight: bold;
 }
+
+#heading4{
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .Brand {
   color: white;
 }
