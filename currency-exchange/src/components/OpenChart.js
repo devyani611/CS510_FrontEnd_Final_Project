@@ -134,7 +134,7 @@ class OpenChart extends React.Component {
     return (
       <div>
         <div className="Barchart_container">
-          <div id="heading6">Monthly Opening Rates</div>
+          <div id="heading4">Monthly Opening Rates</div>
           <div id="select_wrapper1">
             <span>
               <select

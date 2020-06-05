@@ -51,14 +51,13 @@ const Rates = (props) => {
     getrates();
   }, [props.currencyfrom]);
 
-  
 
   return (
     <div id="rates_container">
-      <div id="heading4">Rates Table</div>
-     <br></br>
+      <div id="heading6">Rates Table</div>
       <center>
-        <h5> Top 10 currencies</h5>
+        <br></br>
+        <div id="heading7">Top 10 currencies</div>
       </center>
       <Table responsive>
         <center>
