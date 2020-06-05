@@ -12,43 +12,46 @@ const Rates = (props) => {
   const [currencyrates, setcurrencyrates] = useState([]);
 
   useEffect(() => {
+
+    const getrates = (prop) => {
+      const top10 = [
+        "CAD",
+        "GBP",
+        "INR",
+        "CHF",
+        "EUR",
+        "MYR",
+        "CNY",
+        "USD",
+        "SGD",
+        "AUD",
+      ];
+      
+      axios
+        .get(`https://api.exchangeratesapi.io/latest?base=${props.currencyfrom}`)
+        .then((response) => {
+          const currencyrates = [];
+          const currencycountry = [];
+          for (const key in response.data.rates) {
+            for (var i = 0; i <= 10; i++) {
+              if (top10[i] === key) {
+                currencycountry.push(key);
+                currencyrates.push(response.data.rates[key].toFixed(5));
+              }
+            }
+          }
+          setcurrencies(currencycountry);
+          setcurrencyrates(currencyrates);
+        })
+        .catch((err) => {
+          console.log("oops", err);
+        });
+    };
+
     getrates();
   }, [props.currencyfrom]);
 
-  const getrates = (prop) => {
-    const top10 = [
-      "CAD",
-      "GBP",
-      "INR",
-      "CHF",
-      "EUR",
-      "MYR",
-      "CNY",
-      "USD",
-      "SGD",
-      "AUD",
-    ];
-    
-    axios
-      .get(`https://api.exchangeratesapi.io/latest?base=${props.currencyfrom}`)
-      .then((response) => {
-        const currencyrates = [];
-        const currencycountry = [];
-        for (const key in response.data.rates) {
-          for (var i = 0; i <= 10; i++) {
-            if (top10[i] === key) {
-              currencycountry.push(key);
-              currencyrates.push(response.data.rates[key].toFixed(5));
-            }
-          }
-        }
-        setcurrencies(currencycountry);
-        setcurrencyrates(currencyrates);
-      })
-      .catch((err) => {
-        console.log("oops", err);
-      });
-  };
+  
 
   return (
     <div id="rates_container">
