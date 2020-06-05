@@ -27,7 +27,7 @@ const Navigation = (props) => {
               variant="dark"
               expand="md"
             >
-              <NavbarBrand style={headStyle} className="Brand" href="/CS510_FrontEnd_Final_Project/currency-exchange#/">
+              <NavbarBrand style={headStyle} className="Brand" href="/CS510_FrontEnd_Final_Project#/">
                 <h2><b>X-rates Dash</b></h2>
               </NavbarBrand>
               <NavbarToggler id="toggle" onClick={toggle} aria-controls="basic-navbar-nav" 
@@ -37,12 +37,12 @@ const Navigation = (props) => {
               <Collapse isOpen={isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 <NavItem className="d-flex align-items-center">
-                  <NavLink className="font-weight-bold" href="/CS510_FrontEnd_Final_Project/currency-exchange/#/Ratespage" style={navStyle}> 
+                  <NavLink className="font-weight-bold" href="/CS510_FrontEnd_Final_Project/#/Ratespage" style={navStyle}> 
                   Rates Table   
                   </NavLink>
                 </NavItem>
                 <NavItem className="d-flex align-items-center">
-                  <NavLink className="font-weight-bold" href="/CS510_FrontEnd_Final_Project/currency-exchange/#/Historic" style={navStyle}>
+                  <NavLink className="font-weight-bold" href="/CS510_FrontEnd_Final_Project/#/Historic" style={navStyle}>
                       Historic Lookup
                   </NavLink>
                 </NavItem>
