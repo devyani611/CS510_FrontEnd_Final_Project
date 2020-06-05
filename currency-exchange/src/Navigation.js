@@ -27,7 +27,7 @@ const Navigation = (props) => {
               variant="dark"
               expand="md"
             >
-              <NavbarBrand style={headStyle} className="Brand" href="/currency-exchange/#/">
+              <NavbarBrand style={headStyle} className="Brand" href="/currency-exchange#/">
                 <h2><b>X-rates Dash</b></h2>
               </NavbarBrand>
               <NavbarToggler id="toggle" onClick={toggle} aria-controls="basic-navbar-nav" 
