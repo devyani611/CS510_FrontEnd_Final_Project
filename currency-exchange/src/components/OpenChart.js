@@ -133,12 +133,13 @@ class OpenChart extends React.Component {
     return (
       <div>
         <div className="Barchart_container">
-          <h4>Monthly Opening Rates</h4>
-          <div id="select_wrapper">
+          <div id="heading6">Monthly Opening Rates</div>
+          <div id="select_wrapper1">
             <span>
               <select
                 style={{ width: "80px", height: "35px" }}
                 name="year"
+                aria-label="Select year"
                 onChange={(event) => this.selectHandler(event)}
                 value={this.state.foryear}
               >
@@ -148,7 +149,7 @@ class OpenChart extends React.Component {
               </select>
             </span>
             <span>
-              <button id="butn" onClick={this.convertHandler}>
+              <button id="butn2" onClick={this.convertHandler}>
                 Go
               </button>
             </span>

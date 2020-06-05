@@ -27,7 +27,7 @@ class BarGraph extends React.Component {
   componentDidMount = () => {
     axios
       .get(
-        `https://www.alphavantage.co/query?function=FX_MONTHLY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&apikey=B9ZVAB9VTJOSUOMD`
+        `https://www.alphavantage.co/query?function=FX_MONTHLY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&apikey=787GW6OSVREOIQAA`
       )
       .then((response) => {
         let close_rates = [];
@@ -86,7 +86,7 @@ class BarGraph extends React.Component {
   convertHandler = () => {
     axios
       .get(
-        `https://www.alphavantage.co/query?function=FX_MONTHLY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&apikey=B9ZVAB9VTJOSUOMD`
+        `https://www.alphavantage.co/query?function=FX_MONTHLY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&apikey=787GW6OSVREOIQAA`
       )
       .then((response) => {
         let close_rates = [];
@@ -132,12 +132,13 @@ class BarGraph extends React.Component {
     return (
       <div>
         <div className="Barchart_container">
-          <h4>Monthly Closing Rates</h4>
+          <div id="heading5">Monthly Closing Rates</div>
           <div id="select_wrapper">
             <span>
               <select
                 style={{ width: "80px", height: "35px" }}
                 name="year"
+                aria-label="Select year"
                 onChange={(event) => this.selectHandler(event)}
                 value={this.state.foryear}
               >
@@ -147,7 +148,7 @@ class BarGraph extends React.Component {
               </select>
             </span>
             <span>
-              <button id="butn" onClick={this.convertHandler}>
+              <button id="butn1" onClick={this.convertHandler}>
                 Go
               </button>
             </span>

@@ -55,7 +55,8 @@ const Rates = (props) => {
 
   return (
     <div id="rates_container">
-      <h4>Rates Table</h4>
+      <div id="heading4">Rates Table</div>
+     <br></br>
       <center>
         <h5> Top 10 currencies</h5>
       </center>

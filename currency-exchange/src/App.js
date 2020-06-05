@@ -121,16 +121,16 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container"  role="main">
         <div className="row">
           <div className="col-lg-4 col-xl-4">
             <div id="Converter">
-              <h4>
+              <div id="heading">
                 Currency Converter
                 <span role="img" aria-label="money">
                   &#x1f4b5;
                 </span>
-              </h4>
+              </div>
               <div>
                 <label for="amount">Amount </label>
                 <br></br>
@@ -151,6 +151,7 @@ class Home extends Component {
                 <select
                   style={{ width: "200px" }}
                   name="from"
+                  aria-label="From Currency"
                   onChange={(event) => this.selectHandler(event)}
                   value={this.state.fromCurrency}
                 >
@@ -167,6 +168,7 @@ class Home extends Component {
                 <select
                   style={{ width: "200px" }}
                   name="to"
+                  aria-label="To Currency"
                   onChange={(event) => this.selectHandler(event)}
                   value={this.state.toCurrency}
                 >
@@ -183,7 +185,7 @@ class Home extends Component {
           </div>
           <div className="col-lg-3 col-xl-3">
           <div id="conversion_results">
-              <h4>Calculation Results</h4>
+              <div id="heading2">Calculation Results</div>
               <br></br>
               <center>
                 <div id="result">
@@ -230,10 +232,13 @@ class Home extends Component {
             <br></br>
           </div>
         </div>
-        <footer class="page-footer footer font-small">
-          © 2020 All rights reserved
-        </footer>
+        <footer class="page-footer footer font-small" role="contentinfo">
+        © 2020 All rights reserved
+      </footer>
       </div>
+    
+     
+    
     );
   }
 }
