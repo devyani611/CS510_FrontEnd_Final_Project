@@ -22,6 +22,7 @@ class BarGraph extends React.Component {
       prevProps.currencyto !== this.props.currencyto
     ) {
       this.componentDidMount();
+      this.setState({ foryear: today.getFullYear()});
     }
   }
   componentDidMount = () => {
