@@ -14,17 +14,17 @@ div[class^="col-"] {
   border: 5px solid #e3e5e9;
 }
 
-#heading{
+#heading {
   font-size: 20px;
   font-weight: bold;
 }
 
-#heading2{
+#heading2 {
   font-size: 20px;
   font-weight: bold;
 }
 
-#heading4{
+#heading4 {
   font-size: 20px;
   font-weight: bold;
 }
@@ -101,18 +101,75 @@ footer {
   color: black;
 }
 
-button{
+button {
   background-color: purple;
   color: white;
   border: 1px double white;
 }
 
-#convertbutton{
+#convertbutton {
   background-color: purple;
   color: white;
   border: 1px double purple;
 }
 
-#heading7{
+#heading7 {
   color: purple;
+}
+
+@-moz-keyframes marquee {
+  0% {
+    -moz-transform: translateX(20%);
+  }
+  100% {
+    -moz-transform: translateX(-20%);
+  }
+}
+
+@-webkit-keyframes marquee {
+  0% {
+    -webkit-transform: translateX(20%);
+  }
+  100% {
+    -webkit-transform: translateX(-20%);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    -moz-transform: translateX(20%);
+    -webkit-transform: translateX(20%);
+    transform: translateX(20%);
+  }
+  100% {
+    -moz-transform: translateX(-20%);
+    -webkit-transform: translateX(-20%);
+    transform: translateX(-20%);
+  }
+}
+
+.marqueeEffect {
+  background: white;
+  color: purple;
+  overflow: hidden;
+  position: relative;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 55px;
+}
+
+.marqueeEffect p {
+  line-height: 55px;
+  text-align: center;
+  position: absolute;
+  width: auto;
+  height: auto;
+  margin: 0;
+  -moz-transform: translateX(20%);
+  -webkit-transform: translateX(-22%);
+  transform: translateX(22%);
+  -moz-animation: marquee 15s linear infinite alternate;
+  -webkit-animation: marquee 15s linear infinite alternate;
+  animation: marquee 18s linear infinite alternate;
 }

@@ -23,7 +23,7 @@ export default class BarChartComponent extends Component {
     console.log("one year data");
     axios
       .get(
-        `https://www.alphavantage.co/query?function=FX_DAILY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&outputsize=full&apikey=B9ZVAB9VTJOSUOMD`
+        `https://www.alphavantage.co/query?function=FX_DAILY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&outputsize=full&apikey=AJ2AZ72QK50T17JO`
       )
       .then((response) => {
         var today = new Date();
@@ -196,7 +196,7 @@ export default class BarChartComponent extends Component {
   componentDidMount = () => {
     axios
       .get(
-        `https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&interval=15min&apikey=B9ZVAB9VTJOSUOMD`
+        `https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&interval=15min&apikey=AJ2AZ72QK50T17JO`
       )
       .then((response) => {
         var close_rates = [];
