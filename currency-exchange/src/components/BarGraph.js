@@ -28,7 +28,7 @@ class BarGraph extends React.Component {
   componentDidMount = () => {
     axios
       .get(
-        `https://www.alphavantage.co/query?function=FX_MONTHLY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&apikey=787GW6OSVREOIQAA`
+        `https://www.alphavantage.co/query?function=FX_MONTHLY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&apikey=679CLZ1DX7EOQLX0`
       )
       .then((response) => {
         let close_rates = [];
