@@ -28,7 +28,6 @@ Deployed Website:  https://devyani611.github.io/CS510_FrontEnd_Final_Project/#/
 * react-chartjs-2 for Bar and line Chart
 * reactstrap
 * react-calender
-* react-chartjs-2
 * axios
 * react-router-dom
 
