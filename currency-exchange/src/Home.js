@@ -14,11 +14,11 @@ class Home extends Component {
     this.state = {
       result: null,
       fromCurrency: "USD",
-      toCurrency: "GBP",
+      toCurrency: "INR",
       amount: 1,
       currencies: [],
       from: "USD",
-      to: "GBP",
+      to: "INR",
       currency_names: [],
     };
   }
@@ -54,7 +54,7 @@ class Home extends Component {
           });
         this.setState({ currencies: currencyAr });
       })
-      axios
+      /**axios
       .get('https://financialmodelingprep.com/api/v3/quotes/forex?apikey=992f0505ea9b957539c47ce38e501c6a')
       .then((response) => { 
         var names =[];
@@ -62,7 +62,7 @@ class Home extends Component {
                 names.push(response.data[i]);
         }
         this.setState({ currency_names: names });
-      })
+      })**/
      
       .catch((err) => {
         console.log("oops", err);
@@ -116,12 +116,9 @@ class Home extends Component {
   render() {
     return (
       <div className="container" role="main">
-        <div className="row marqueeEffect">   
-       <p>{this.state.currency_names.map((cur) => (
-                      <span style={{ marginLeft: '8px' }}>{cur.name}:{cur.changesPercentage}</span>    
-                    ))}</p>
-        </div>    
+        
         <div className="row">
+    
           <div className="col-lg-4 col-xl-4">
             <div id="Converter">
               <div id="heading">

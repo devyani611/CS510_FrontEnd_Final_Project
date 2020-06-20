@@ -6,7 +6,7 @@ import "./Navigation.css";
 
 const Navigation = (props) => {
   const navStyle = {
-    color: "black",
+    color: "#1C4E80",
     textDecoration: 'none',
     border:"none"
     
@@ -17,7 +17,7 @@ const Navigation = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   const headStyle = {
-    color: "purple",
+    color: "#1C4E80",
   };
 
   return (

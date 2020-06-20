@@ -59,11 +59,11 @@ export default class BarChartComponent extends Component {
                 data: close_rates,
                 fill: true,
                 lineTension: 0.1,
-                backgroundColor: "rgba(128,0,128,0.9)",
-                borderColor: "rgba(128,0,128,0.6)",
+                backgroundColor: "#1C4E80",
+                borderColor: "#1C4E80",
                 borderCapStyle: "butt",
                 borderJoinStyle: "miter",
-                pointBorderColor: "rgba(128,0,128,1)",
+                pointBorderColor: "#1C4E80",
                 pointBackgroundColor: "#fff",
                 pointBorderWidth: 1,
                 pointHoverRadius: 5,
@@ -79,7 +79,7 @@ export default class BarChartComponent extends Component {
       });
   };
 
-  OneMonthClose = () => {
+  componentDidMount = () => {
     console.log("one month data");
     axios
       .get(
@@ -127,11 +127,11 @@ export default class BarChartComponent extends Component {
                 data: close_rates,
                 fill: true,
                 lineTension: 0.1,
-                backgroundColor: "rgba(128,0,128,0.9)",
-                borderColor: "rgba(128,0,128,0.6)",
+                backgroundColor: "#1C4E80",
+                borderColor: "#1C4E80",
                 borderCapStyle: "butt",
                 borderJoinStyle: "miter",
-                pointBorderColor: "rgba(128,0,128,1)",
+                pointBorderColor: "#1C4E80",
                 pointBackgroundColor: "#fff",
                 pointBorderWidth: 1,
                 pointHoverRadius: 5,
@@ -174,11 +174,11 @@ export default class BarChartComponent extends Component {
                 data: close_rate,
                 fill: true,
                 lineTension: 0.1,
-                backgroundColor: "rgba(128,0,128,0.9)",
-                borderColor: "rgba(128,0,128,0.6)",
+                backgroundColor: "#1C4E80",
+                borderColor: "#1C4E80",
                 borderCapStyle: "butt",
                 borderJoinStyle: "miter",
-                pointBorderColor: "rgba(128,0,128,1)",
+                pointBorderColor: "#1C4E80",
                 pointBackgroundColor: "#fff",
                 pointBorderWidth: 1,
                 pointHoverRadius: 5,
@@ -193,18 +193,19 @@ export default class BarChartComponent extends Component {
         });
       });
   };
-  componentDidMount = () => {
+  OnedayClose = () => {
     axios
       .get(
-        `https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&interval=15min&apikey=AJ2AZ72QK50T17JO`
+        `https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol=${this.props.currencyfrom}&to_symbol=${this.props.currencyto}&interval=5min&apikey=679CLZ1DX7EOQLX0`
       )
       .then((response) => {
         var close_rates = [];
         var dates = [];
         console.log("load data for the day");
-        const data = response.data["Time Series FX (15min)"];
+        console.log(response.data["Time Series FX (5min)"]);
+        const data = response.data["Time Series FX (5min)"];
         const Oneday_date = Object.keys(
-          response.data["Time Series FX (15min)"]
+          response.data["Time Series FX (5min)"]
         );
 
         var date1 = Oneday_date.filter(function (obj) {
@@ -219,7 +220,7 @@ export default class BarChartComponent extends Component {
 
         for (var i = 0; i < date1.length; i++) {
           close_rates.push(
-            Object.values(response.data["Time Series FX (15min)"])[i][
+            Object.values(response.data["Time Series FX (5min)"])[i][
               "4. close"
             ]
           );
@@ -234,11 +235,11 @@ export default class BarChartComponent extends Component {
                 data: close_rates,
                 fill: true,
                 lineTension: 0.1,
-                backgroundColor: "rgba(128,0,128,0.9)",
-                borderColor: "rgba(128,0,128,0.6)",
+                backgroundColor: "#1C4E80",
+                borderColor: "#1C4E80",
                 borderCapStyle: "butt",
                 borderJoinStyle: "miter",
-                pointBorderColor: "rgba(128,0,128,1)",
+                pointBorderColor: "#1C4E80",
                 pointBackgroundColor: "#fff",
                 pointBorderWidth: 1,
                 pointHoverRadius: 5,
@@ -288,7 +289,7 @@ export default class BarChartComponent extends Component {
           />
         </div>
         <div id="button_wrapper">
-          <button name="5day" className="butn" onClick={this.componentDidMount}>
+          <button name="1day" className="butn" onClick={this.OnedayClose}>
             1 D
           </button>
 
@@ -296,7 +297,7 @@ export default class BarChartComponent extends Component {
             1 W
           </button>
 
-          <button name="6months" className="butn" onClick={this.OneMonthClose}>
+          <button name="6months" className="butn" onClick={this.componentDidMount}>
             1 M
           </button>
 

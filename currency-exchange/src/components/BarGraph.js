@@ -68,8 +68,8 @@ class BarGraph extends React.Component {
               {
                 label: `${this.props.currencyto} per 1 ${this.props.currencyfrom}`,
                 data: close_rates,
-                backgroundColor: "rgba(128,0,128,0.9)",
-                hoverBackgroundColor: "rgba(128,0,128,0.6)",
+                backgroundColor: "#1C4E80",
+                hoverBackgroundColor: "#A5D8DD",
                 borderWidth: 2,
               },
             ],
@@ -117,10 +117,10 @@ class BarGraph extends React.Component {
             }),
             datasets: [
               {
-                label: "Closing Rates on monthly basis",
+                label: `${this.props.currencyto} per 1 ${this.props.currencyfrom}`,
                 data: close_rates,
-                backgroundColor: "rgba(128,0,128,0.9)",
-                hoverBackgroundColor: "rgba(128,0,128,0.6)",
+                backgroundColor: "#1C4E80",
+                hoverBackgroundColor: "#A5D8DD",
                 borderWidth: 2,
               },
             ],

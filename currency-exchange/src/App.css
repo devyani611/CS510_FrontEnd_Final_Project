@@ -39,7 +39,7 @@ div[class^="col-"] {
 
 .container {
   background-color: white;
-  border: 2px solid #e3e5e9;
+  border: 2px solid white;
 }
 
 .From {
@@ -86,7 +86,7 @@ select {
 }
 
 #result {
-  background-color: purple;
+  background-color: #1C4E80;
   border-radius: 5px;
   border-bottom: 2px solid grey;
   color: white;
@@ -102,61 +102,62 @@ footer {
 }
 
 button {
-  background-color: purple;
+  background-color: #1C4E80;
   color: white;
   border: 1px double white;
 }
 
 #convertbutton {
-  background-color: purple;
+  background-color: #1C4E80;
   color: white;
-  border: 1px double purple;
+  border: 1px double #1C4E80;
 }
 
 #heading7 {
-  color: purple;
+  color: #1C4E80;
 }
 
 @-moz-keyframes marquee {
   0% {
-    -moz-transform: translateX(20%);
+    -moz-transform: translateX(10%);
   }
   100% {
-    -moz-transform: translateX(-20%);
+    -moz-transform: translateX(-10%);
   }
 }
 
 @-webkit-keyframes marquee {
   0% {
-    -webkit-transform: translateX(20%);
+    -webkit-transform: translateX(10%);
   }
   100% {
-    -webkit-transform: translateX(-20%);
+    -webkit-transform: translateX(-10%);
   }
 }
 
 @keyframes marquee {
   0% {
-    -moz-transform: translateX(20%);
-    -webkit-transform: translateX(20%);
-    transform: translateX(20%);
+    -moz-transform: translateX(10%);
+    -webkit-transform: translateX(10%);
+    transform: translateX(10%);
   }
   100% {
-    -moz-transform: translateX(-20%);
-    -webkit-transform: translateX(-20%);
-    transform: translateX(-20%);
+    -moz-transform: translateX(-10%);
+    -webkit-transform: translateX(-10%);
+    transform: translateX(-10%);
   }
 }
 
 .marqueeEffect {
   background: white;
-  color: purple;
+  color: #1C4E80;
   overflow: hidden;
   position: relative;
   font-size: 14px;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   height: 55px;
+
 }
 
 .marqueeEffect p {
@@ -166,10 +167,10 @@ button {
   width: auto;
   height: auto;
   margin: 0;
-  -moz-transform: translateX(20%);
-  -webkit-transform: translateX(-22%);
-  transform: translateX(22%);
-  -moz-animation: marquee 15s linear infinite alternate;
-  -webkit-animation: marquee 15s linear infinite alternate;
-  animation: marquee 18s linear infinite alternate;
+  -moz-transform: translateX(10%);
+  -webkit-transform: translateX(-12%);
+  transform: translateX(12%);
+  -moz-animation: marquee 8s linear infinite alternate;
+  -webkit-animation: marquee 8s linear infinite alternate;
+  animation: marquee 10s linear infinite alternate;
 }

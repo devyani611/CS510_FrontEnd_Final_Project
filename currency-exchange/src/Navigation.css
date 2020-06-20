@@ -53,7 +53,7 @@
 }
 
 #toggle {
-  background-color: purple;
+  background-color: #1C4E80;
   width: 50px;
   height: 30px;
   border-radius: 0;
@@ -75,7 +75,6 @@
   text-decoration: none;
   transition: 0.1s;
   text-decoration: none;
-  background: purple;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1.02) translate(-1%, -1%);
@@ -84,7 +83,7 @@
 .navbar-brand:hover,
 .navbar-brand:focus {
   text-decoration: none;
-  color: purple;
+  color: #1C4E80;
   transition: 0.1s;
   text-decoration: none;
   transform: scale(1.02) translate(-1%, -1%);

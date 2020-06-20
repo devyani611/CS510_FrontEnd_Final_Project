@@ -68,8 +68,8 @@ class OpenChart extends React.Component {
               {
                 label: `${this.props.currencyto} per 1 ${this.props.currencyfrom}`,
                 data: open_rates,
-                backgroundColor: "rgba(128,0,128,1)",
-                hoverBackgroundColor: "rgba(128,0,128,0.6)",
+                backgroundColor: "#1C4E80",
+                hoverBackgroundColor: "#A5D8DD",
                 borderWidth: 2,
               },
             ],
@@ -118,10 +118,10 @@ class OpenChart extends React.Component {
             }),
             datasets: [
               {
-                label: "Opening Rates on monthly basis",
+                label: `${this.props.currencyto} per 1 ${this.props.currencyfrom}`,
                 data: open_rates,
-                backgroundColor: "rgba(128,0,128,1)",
-                hoverBackgroundColor: "rgba(128,0,128,0.6)",
+                backgroundColor: "#1C4E80",
+                hoverBackgroundColor: "#A5D8DD",
                 borderWidth: 2,
               },
             ],

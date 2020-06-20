@@ -3,11 +3,11 @@
 }
 
 h5{
-  color: purple;
+  color: #1C4E80;
 }
 
 .react-calendar__month-view__weekdays {
-  color: purple;
+  color: #1C4E80;
 }
 
 .react-calendar button {
@@ -41,4 +41,6 @@ h5{
   -ms-transform: scale(1.02);
   transform: scale(1.02);
 }
+
+
 

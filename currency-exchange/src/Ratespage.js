@@ -8,14 +8,14 @@ const tableStyle = {
 };
 
 const headStyle = {
-  color: "purple",
+  color: "#1C4E80",
   fontWeight: "bold",
 };
 
 const buttonstyle = {
-  backgroundColor: "purple",
+  backgroundColor: "#1C4E80",
   color: "white",
-  border: "1px double purple",
+  border: "1px double #1C4E80",
 };
 
 class Ratespage extends React.Component {
@@ -169,14 +169,23 @@ class Ratespage extends React.Component {
   render() {
     return (
       <div className="container ">
-        <div className="row ">
-          <div className="col-lg-12 col-xl-12">
-            <h4> Rates Exchange Table </h4>
-          </div>
+          <div className="row">
+            <div className="col-lg-12 col-xl-12 marqueeEffect"  style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          color: "#1C4E80",
+          fontWeight: "bold",
+          fontSize: "1.5rem",
+          padding: "0.5rem"
+        }}>
+        <p
+ >Exchange Rates Table </p>
         </div>
-        <div className="row">
+        
+      
           <div className="col-lg-6 col-xl-6 ">
-            <Table responsive>
+            <Table borderless>
               <thead>
                 <tr>
                   <th style={headStyle}>{this.state.from}</th>
